@@ -23,9 +23,9 @@ extern "C"
 /*
  *  Lifecycle functions
  */
-EXPORT char** new_CharStringList_default();
-EXPORT char** new_CharStringList( const char** list );
-EXPORT void free_CharStringList( char** self );
+EXPORT char** new_CharStringList();
+EXPORT char** new_CharStringList_from( const char** list );
+EXPORT char** free_CharStringList( char** self );
 
 EXPORT int CharStringList_copyItem( char** self, const char* item );
 

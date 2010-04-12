@@ -10,13 +10,13 @@
 
 static const unsigned int DEFAULT_LIST_SIZE = 512;
 
-char** new_CharStringList_default()
+char** new_CharStringList()
 {
 	char** self = CRuntime_calloc( DEFAULT_LIST_SIZE + 1, sizeof( char* ) );
 	return self;
 }
 
-char** new_CharStringList( const char** list )
+char** new_CharStringList_from( const char** list )
 {
 	unsigned int required_list_length = CharStringList_getLength( list ) + 1;
 	char** self = CRuntime_calloc( required_list_length, sizeof( char* ) );
@@ -33,7 +33,7 @@ char** new_CharStringList( const char** list )
 	return self;
 }
 
-void free_CharStringList( char** self )
+char** free_CharStringList( char** self )
 {
 	char** tmp = self;
 	while ( NULL != *tmp )
@@ -41,7 +41,7 @@ void free_CharStringList( char** self )
 		free_CharString( *tmp );
 		tmp++;
 	}
-	CRuntime_free( self );
+	return (char**) CRuntime_free( self );
 }
 
 int CharStringList_copyItem( char** self, const char* item )

@@ -22,7 +22,7 @@ typedef struct _Time Time;
  *  Lifecycle functions
  */
 EXPORT	Time*      new_Time( unsigned long long );
-EXPORT	void        free_Time( Time* self );
+EXPORT	Time*     free_Time( Time* self );
 
 EXPORT	Time*      Time_copy( const Time* self );
 EXPORT	const char* Time_getTextual( const Time* self );

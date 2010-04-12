@@ -2,10 +2,12 @@
  *  Copyright (c) 2004-2010 Daniel Robert Bradley. All rights reserved.
  */
 
+/*	Win32 */
+
 #define _ALL_SOURCE 1
 //#include <unistd.h>
 #include <stdlib.h>
-#include <time.h>		/** time()    **/
+#include <time.h>				/** time()    **/
 #include <sys/types.h>
 #include <sys/timeb.h>
 #include "openxds/base/psa/Clock.h"
@@ -15,8 +17,8 @@
 
 struct _Clock
 {
-	unsigned long start;
-	unsigned long stop;
+	unsigned long long start;
+	unsigned long long stop;
 	unsigned long long interval;
 };
 
@@ -29,17 +31,6 @@ IClock* new_Clock()
 void free_Clock( IClock* self )
 {
 	CRuntime_free( self );
-}
-
-/*
- *  Class Methods
- */
-int Clock_GetTimeAsInt()
-{
-	//__time64_t ltime;
-	//_time64( &ltime );
-	//return ltime;
-	return 0;
 }
 
 void
@@ -72,6 +63,14 @@ Clock_getInterval( const IClock* self )
 /*
  *  Class Methods
  */
+
+int Clock_GetTimeAsInt()
+{
+	//__time64_t ltime;
+	//_time64( &ltime );
+	//return ltime;
+	return 0;
+}
 
 unsigned long long
 Clock_GetMicroSecondsSinceEpoch()

@@ -6,6 +6,7 @@
 #define OPENXDS_CORE_BASE_ENVIRONMENT_H
 
 #include "openxds.core/export.h"
+#include "openxds.core.base.h"
 #include <stdarg.h>
 
 #ifdef __cplusplus
@@ -21,19 +22,17 @@ extern "C"
 #endif
 #endif
 
-typedef struct _IEnvironment IEnvironment;
+EXPORT	Environment* new_Environment( const char* argv_0 );
+EXPORT	Environment* new_Environment_using( const char* argv_0, char fileSeparator );
+EXPORT	Environment* free_Environment( Environment* self );
 
-EXPORT	IEnvironment* new_Environment( const char* argv_0 );
-EXPORT	IEnvironment* new_Environment_using( const char* argv_0, char fileSeparator );
-EXPORT	void          free_Environment( IEnvironment* self );
+EXPORT  char*       Environment_searchPathFor( const Environment* self, const char* file );
 
-EXPORT  char*       Environment_searchPathFor( const IEnvironment* self, const char* file );
+EXPORT	const char* Environment_getExecutableName( const Environment* self );
+EXPORT	const char* Environment_getExecutableLocation( const Environment* self );
+EXPORT	const char* Environment_getDirectoryContainingExecutable( const Environment* self );
 
-EXPORT	const char* Environment_getExecutableName( const IEnvironment* self );
-EXPORT	const char* Environment_getExecutableLocation( const IEnvironment* self );
-EXPORT	const char* Environment_getDirectoryContainingExecutable( const IEnvironment* self );
-
-EXPORT	const char* Environment_getPath( const IEnvironment* self );
+EXPORT	const char* Environment_getPath( const Environment* self );
 //EXPORT	const char* Environment_getOrigin( const IEnvironment* self );
 
 EXPORT	const char* Environment_GetEnvironmentValue( const char* variable );

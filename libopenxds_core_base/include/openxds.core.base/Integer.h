@@ -17,7 +17,7 @@ namespace openxds {
 	#endif
 
 EXPORT	Integer*      new_Integer( int aValue );
-EXPORT  void*        free_Integer( Integer* self );
+EXPORT  Integer*     free_Integer( Integer* self );
 EXPORT  void     Integer_setValue( Integer* self, int aValue );
 EXPORT  int      Integer_getValue( const Integer* self );
 

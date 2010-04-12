@@ -39,11 +39,11 @@ IProcess* new_Process( const char* executable, const char** arguments )
 {
 	IProcess* self = (IProcess*) CRuntime_calloc( 1, sizeof( IProcess ) );
 	self->executable = new_CharString( executable );
-	self->arguments = new_CharStringList( arguments );
+	self->arguments = new_CharStringList_from( arguments );
 	return self;
 }
 
-void free_Process( IProcess* self )
+IProcess* free_Process( IProcess* self )
 {
 	free_CharString( self->executable );
 	free_CharStringList( self->arguments );
@@ -59,7 +59,7 @@ void free_Process( IProcess* self )
 	if ( self->io.error ) {
 		free_CharString( self->io.error );
 	}
-	CRuntime_free( self );
+	return (IProcess*) CRuntime_free( self );
 }
 
 int Process_start( IProcess* self )
@@ -109,11 +109,15 @@ int Process_start( IProcess* self )
 			dup2( error, STDERR_FILENO );
 			close( error );
 		}
-	
+
 		if ( self->usePath ) {
 			execvp( self->executable, (char*const*) self->arguments );
+			printf( "execvp failed\n" );
+			exit( -1 );
 		} else  {
 			execv( self->executable, (char*const*) self->arguments );
+			printf( "execv failed\n" );
+			exit( -1 );
 		}
 	}
 	return state;

@@ -14,7 +14,9 @@ namespace openxds {
 	#endif
 
 
-	typedef struct _Integer Integer;
+	typedef struct _Clock       Clock;
+	typedef struct _Environment Environment;
+	typedef struct _Integer     Integer;
 
 	
 	#ifdef __cplusplus

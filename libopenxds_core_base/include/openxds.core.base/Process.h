@@ -23,7 +23,7 @@
 	 *  Lifecycle functions
 	 */
 EXPORT		IProcess* new_Process( const char* executable, const char** arguments );
-EXPORT		void free_Process( IProcess* self );
+EXPORT		IProcess* free_Process( IProcess* self );
 
 	/*
 	 *  Functions

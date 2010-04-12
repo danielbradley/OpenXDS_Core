@@ -13,7 +13,7 @@
 
 static const char* EMPTY_STRING = "";
 
-struct _IEnvironment
+struct _Environment
 {
 	char* executableName;
 	char* executableLocation;
@@ -23,14 +23,14 @@ struct _IEnvironment
 
 extern bool  Environment_private_CheckExistance( const char* path, const char* filename );
 
-IEnvironment* new_Environment( const char* argv_0 )
+Environment* new_Environment( const char* argv_0 )
 {
 	return new_Environment_using( argv_0, Environment_getFileSeparator() );
 }
 
-IEnvironment* new_Environment_using( const char* argv_0, char fileSeparator )
+Environment* new_Environment_using( const char* argv_0, char fileSeparator )
 {
-	IEnvironment* self = NULL;
+	Environment* self = NULL;
 	char fs     = fileSeparator;
 	char ifs[2] = { fs, '\0' };
 	int  argv_len = CharString_getLength( argv_0 );
@@ -39,45 +39,47 @@ IEnvironment* new_Environment_using( const char* argv_0, char fileSeparator )
 	{
 		char* exe_dirname = NULL;
 
-		self                 = CRuntime_calloc( 1, sizeof( IEnvironment ) );
+		self                 = CRuntime_calloc( 1, sizeof( Environment ) );
 		self->path           = new_CharString( getenv( "PATH" ) );
 		self->executableName = CharString_basename_using( argv_0, fs );
 
 		exe_dirname = CharString_dirname_using( argv_0, fs );
-
-		if ( 0 == CharString_compare( exe_dirname, "." ) )
 		{
-			//	If dirname( argv[0] ) is . either the executable was run
-			//	from the current directory, or via the $PATH.
-
-			if ( CharString_startsWith( argv_0, "." ) )
+			if ( 0 == CharString_compare( exe_dirname, "." ) )
 			{
-				self->directoryContainingExecutable = System_CurrentDirectory();
-			} else {
-				self->directoryContainingExecutable = Environment_searchPathFor( self, self->executableName );
+				//	If dirname( argv[0] ) is . either the executable was run
+				//	from the current directory, or via the $PATH.
+
+				if ( CharString_startsWith( argv_0, "." ) )
+				{
+					self->directoryContainingExecutable = System_CurrentDirectory();
+				} else {
+					self->directoryContainingExecutable = Environment_searchPathFor( self, self->executableName );
+				}
+				
+				if ( NULL == self->directoryContainingExecutable )
+				{
+					//	Could not find executable on path!, assuming it is because program
+					fprintf( stdout, "Could not find executable directory! assuming current directory!\n" );
+					self->directoryContainingExecutable = System_CurrentDirectory();
+				}
 			}
-			
-			if ( NULL == self->directoryContainingExecutable )
+			else if ( fs == argv_0[0] )
 			{
-				//	Could not find executable on path!, assuming it is because program
-				fprintf( stdout, "Could not find executable directory! assuming current directory!\n" );
-				self->directoryContainingExecutable = System_CurrentDirectory();
+				self->directoryContainingExecutable = new_CharString( exe_dirname );
+			}
+			else if ( (argv_len > 3) && (':' == argv_0[1]) && ('\\' == argv_0[2]) )
+			{
+				self->directoryContainingExecutable = new_CharString( exe_dirname );
+			}
+			else if ( exe_dirname )
+			{
+				char* current = System_CurrentDirectory();
+				self->directoryContainingExecutable = CharString_cat3( current, ifs, exe_dirname );
+				free_CharString( current );
 			}
 		}
-		else if ( fs == argv_0[0] )
-		{
-			self->directoryContainingExecutable = new_CharString( exe_dirname );
-		}
-		else if ( (argv_len > 3) && (':' == argv_0[1]) && ('\\' == argv_0[2]) )
-		{
-			self->directoryContainingExecutable = new_CharString( exe_dirname );
-		}
-		else if ( exe_dirname )
-		{
-			char* current = System_CurrentDirectory();
-			self->directoryContainingExecutable = CharString_cat3( current, ifs, exe_dirname );
-			free_CharString( current );
-		}
+		free_CharString( exe_dirname );
 
 		self->executableLocation = CharString_cat3( self->directoryContainingExecutable, ifs, self->executableName );
 
@@ -109,18 +111,18 @@ IEnvironment* new_Environment_using( const char* argv_0, char fileSeparator )
 	return self;
 }
 
-void free_Environment( IEnvironment* self )
+Environment* free_Environment( Environment* self )
 {
 	if ( self->executableName )                free_CharString( self->executableName );
 	if ( self->executableLocation )            free_CharString( self->executableLocation );
 	if ( self->directoryContainingExecutable ) free_CharString( self->directoryContainingExecutable );
 	if ( self->path )                          free_CharString( self->path );
 
-	CRuntime_free( self );
+	return (Environment*) CRuntime_free( self );
 }
 
 char*
-Environment_searchPathFor( const IEnvironment* self, const char* file )
+Environment_searchPathFor( const Environment* self, const char* file )
 {
 	char* dir    = NULL;
 	int   last   = 0;
@@ -152,25 +154,25 @@ Environment_searchPathFor( const IEnvironment* self, const char* file )
 }
 
 const char*
-Environment_getExecutableName( const IEnvironment* self )
+Environment_getExecutableName( const Environment* self )
 {
 	return self->executableName;
 }
 
 const char*
-Environment_getExecutableLocation( const IEnvironment* self )
+Environment_getExecutableLocation( const Environment* self )
 {
 	return self->executableLocation;
 }
 
 const char*
-Environment_getDirectoryContainingExecutable( const IEnvironment* self )
+Environment_getDirectoryContainingExecutable( const Environment* self )
 {
 	return self->directoryContainingExecutable;
 }
 
 const char*
-Environment_getPath( const IEnvironment* self )
+Environment_getPath( const Environment* self )
 {
 	return self->path;
 }

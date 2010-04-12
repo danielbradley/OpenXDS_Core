@@ -36,10 +36,10 @@ Time* new_Time( unsigned long long secondsSinceEpoch )
 	return self;
 }
 
-void free_Time( Time* self )
+Time* free_Time( Time* self )
 {
 	free_CharString( self->textual );
-	CRuntime_free( self );
+	return CRuntime_free( self );
 }
 
 Time* Time_copy( const Time* self )

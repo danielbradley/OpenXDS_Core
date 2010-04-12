@@ -27,8 +27,12 @@ extern "C"
 EXPORT char* new_CharString( const char* charString );
 EXPORT char* new_CharString_delimiter( const char** tokens, const char delimiter );
 EXPORT char* new_CharString_format_args( const char* format, ... );
-EXPORT char* new_CharString_format_valist( const char* format, va_list args );
-EXPORT void free_CharString( char* self );
+EXPORT char* free_CharString( char* self );
+
+/*
+ *  Internal constructor
+ */
+       char* new_CharString_format_valist( const char* format, va_list args );
 
 /*
  *  Functions
@@ -45,7 +49,8 @@ EXPORT char* CharString_cat3( const char* self, const char* two, const char* thr
 EXPORT char* CharString_copy( const char* self );
 EXPORT char* CharString_removeWhitespace( const char* self );
 EXPORT char* CharString_substring( const char* self, int start, int end );
-EXPORT char* CharString_token( const char* self, unsigned int start, char delimiter );
+EXPORT int   CharString_skip( const char* self, int start, char delimiter );
+EXPORT char* CharString_token( const char* self, int start, char delimiter );
 
 EXPORT char* CharString_basename( const char* path );
 EXPORT char* CharString_dirname( const char* path );

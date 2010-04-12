@@ -31,7 +31,7 @@ EXPORT	char* System_CurrentDirectory();
 EXPORT	char* System_CurrentVolume();
 EXPORT	char* System_Hostname();
 
-EXPORT	IEnvironment* System_GetInitialEnvironment();
+EXPORT	Environment* System_GetInitialEnvironment();
 
 #ifdef __cplusplus
 }

@@ -2,6 +2,8 @@
  *  Copyright (c) 2004-2010 Daniel Robert Bradley. All rights reserved.
  */
 
+/*	posix */
+
 #include "openxds.core.base/Clock.h"
 
 #include <stdlib.h>
@@ -45,10 +47,17 @@ Clock_getInterval( const Clock* self )
 {
 	unsigned long long ret = 0;
 	unsigned long long now = Clock_GetMicroSecondsSinceEpoch();
-	if ( self->interval )
+
+	if ( 0 == self->start )
+	{
+		return 0;
+	}
+	else if ( 0 != self->stop )
 	{
 		ret = self->interval;
-	} else {
+	}
+	else
+	{
 		ret = now - self->start;
 	}
 	return ret;

@@ -22,9 +22,9 @@ Integer* new_Integer( int aValue )
 	return self;
 }
 
-void* free_Integer( Integer* self )
+Integer* free_Integer( Integer* self )
 {
-	return CRuntime_free( self );
+	return (Integer*) CRuntime_free( self );
 }
 
 void Integer_setValue( Integer* self, int aValue )

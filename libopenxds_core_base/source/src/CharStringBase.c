@@ -65,9 +65,9 @@ char* new_CharString_format_args( const char* format, ... )
 	return new_CharString_format_valist( format, ap ); 
 }
 
-void free_CharString( char* self )
+char* free_CharString( char* self )
 {
-	CRuntime_free( self );
+	return (char*) CRuntime_free( self );
 }
 
 void CharString_replace( char* str, char old, char with )
@@ -197,12 +197,18 @@ char* CharString_substring( const char* self, int start, int end )
 	return string;
 }
 
-char* CharString_token( const char* self, unsigned int start, char delimiter )
+int CharString_skip( const char* self, int start, char delimiter )
 {
+	while ( delimiter == self[start] ) start++;
+	return start;
+}
+
+char* CharString_token( const char* self, int start, char delimiter )
+{
+	while ( delimiter == self[start] ) start++;
 	unsigned int index = CharString_indexOfNext( self, start, delimiter );
 	return CharString_substring( self, start, index - 1 );
 }
-
 
 char* CharString_basename( const char* path )
 {

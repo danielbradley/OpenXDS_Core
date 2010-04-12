@@ -16,8 +16,6 @@ extern "C"
 {
 #endif
 
-typedef struct _Clock Clock;
-
 /*
  *  Lifecycle functions
  */
