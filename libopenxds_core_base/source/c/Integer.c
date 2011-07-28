@@ -2,24 +2,27 @@
  *  Copyright (c) 2008-2010 Daniel Robert Bradley. All rights reserved.
  */
 
-#include "openxds.core.base/Integer.h"
+#include "openxds.core.base/Integer.private.h"
 
 #include <openxds.core/IObject.h>
 #include <openxds.core.base/CRuntime.h>
 
 struct _Integer
 {
-	IObject super;
-	int     value;
+	IInteger super;
+	int      value;
 };
 
-Integer* new_Integer( int aValue )
+IInteger* new_Integer( int aValue )
 {
-	struct _Integer* self = CRuntime_calloc( 1, sizeof( struct _Integer ) );
-	self->super.free = (void* (*)( IObject* )) free_Integer;
+	Integer* self = CRuntime_calloc( 1, sizeof( Integer ) );
+	self->super.free       = (IInteger* (*)(       IInteger* ))      free_Integer;
+	self->super.setValue   = (    void  (*)(       IInteger*, int )) Integer_setValue;
+	self->super.getValue   = (    int   (*)( const IInteger* ))      Integer_getValue;
+
 	self->value = aValue;
 	
-	return self;
+	return (IInteger*) self;
 }
 
 Integer* free_Integer( Integer* self )

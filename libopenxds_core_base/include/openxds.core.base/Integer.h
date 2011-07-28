@@ -5,23 +5,29 @@
 #ifndef OPENXDS_CORE_BASE_INTEGER_H
 #define OPENXDS_CORE_BASE_INTEGER_H
 
-
 #include "openxds.core/export.h"
 #include "openxds.core/types.h"
 #include "openxds.core.base.h"
 
-	#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace base {
-	#endif
+#ifdef __cplusplus
+	namespace openxds {
+		namespace core {
+			namespace base {
+	extern "C"
+	{
+#endif
 
-EXPORT	Integer*      new_Integer( int aValue );
-EXPORT  Integer*     free_Integer( Integer* self );
-EXPORT  void     Integer_setValue( Integer* self, int aValue );
-EXPORT  int      Integer_getValue( const Integer* self );
+struct _IInteger
+{
+	IInteger*     (*free)(       IInteger* self );
+	    void  (*setValue)(       IInteger* self, int aValue );
+	     int  (*getValue)( const IInteger* self );
+};
 
-	#ifdef __cplusplus
-};};};
-	#endif
+EXPORT	IInteger* new_Integer( int aValue );
+
+#ifdef __cplusplus
+	}
+	};};};
+#endif
 #endif

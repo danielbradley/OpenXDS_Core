@@ -2,9 +2,10 @@
  *  Copyright (c) 2005-2010 Daniel Robert Bradley. All rights reserved.
  */
 
+#include "openxds.core.base/Environment.private.h"
+
 #include "openxds.core.base/CRuntime.h"
 #include "openxds.core.base/CharString.h"
-#include "openxds.core.base/Environment.h"
 #include "openxds.core.base/System.h"
 
 #include <stdlib.h>
@@ -15,31 +16,50 @@ static const char* EMPTY_STRING = "";
 
 struct _Environment
 {
-	char* executableName;
-	char* executableLocation;
-	char* directoryContainingExecutable;
-	char* path;
+	IEnvironment super;
+	char*        executableName;
+	char*        executableLocation;
+	char*        directoryContainingExecutable;
+	char*        path;
 };
 
 extern bool  Environment_private_CheckExistance( const char* path, const char* filename );
 
-Environment* new_Environment( const char* argv_0 )
+IEnvironment* new_Environment( const char* argv_0 )
 {
 	return new_Environment_using( argv_0, Environment_getFileSeparator() );
 }
 
-Environment* new_Environment_using( const char* argv_0, char fileSeparator )
+IEnvironment* new_Environment_using( const char* argv_0, char fileSeparator )
 {
-	Environment* self = NULL;
-	char fs     = fileSeparator;
-	char ifs[2] = { fs, '\0' };
+	Environment* self = (Environment*) CRuntime_calloc( 1, sizeof( Environment ) );
+
+	self->super.free                             = (IEnvironment* (*)(       IEnvironment* self )) free_Environment;
+	self->super.searchPathFor                    = (        char* (*)( const IEnvironment* self, const char* file )) Environment_searchPathFor;
+	self->super.getExecutableName                = (  const char* (*)( const IEnvironment* self )) Environment_getExecutableName;
+	self->super.getExecutableLocation            = (  const char* (*)( const IEnvironment* self )) Environment_getExecutableLocation;
+	self->super.getDirectoryContainingExecutable = (  const char* (*)( const IEnvironment* self )) Environment_getDirectoryContainingExecutable;
+	self->super.getPath                          = (  const char* (*)( const IEnvironment* self )) Environment_getPath;
+	self->super.getEnvironmentVariable           = (  const char* (*)( const char* variable ))     Environment_getEnvironmentVariable;
+	self->super.setEnvironmentVariable           = (        void  (*)( const char* key, const char* value, bool overwrite )) Environment_setEnvironmentVariable;
+	self->super.getFileSeparator                 = (        char  (*)())                                                     Environment_getFileSeparator;
+	
+	Environment_initialise( self, argv_0, fileSeparator );
+
+	return (IEnvironment*) self;
+}
+
+void
+Environment_initialise( Environment* self, const char* argv_0, char fileSeparator )
+{
+	char fs       = fileSeparator;
+	char ifs[2]   = { fs, '\0' };
 	int  argv_len = CharString_getLength( argv_0 );
 
 	if ( 0 < CharString_getLength( argv_0 ) )
 	{
 		char* exe_dirname = NULL;
 
-		self                 = CRuntime_calloc( 1, sizeof( Environment ) );
 		self->path           = new_CharString( getenv( "PATH" ) );
 		self->executableName = CharString_basename_using( argv_0, fs );
 
@@ -107,8 +127,6 @@ Environment* new_Environment_using( const char* argv_0, char fileSeparator )
 	} else {
 		abort();
 	}
-
-	return self;
 }
 
 Environment* free_Environment( Environment* self )
@@ -176,13 +194,3 @@ Environment_getPath( const Environment* self )
 {
 	return self->path;
 }
-
-//const char* Environment_GetEnvironmentValue( const char* variable )
-//{
-//	const char* value = getenv( variable );
-//	if ( !value )
-//	{
-//		value = EMPTY_STRING;
-//	}
-//	return value;
-//}

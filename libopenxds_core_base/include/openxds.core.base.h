@@ -13,10 +13,10 @@ namespace openxds {
 		namespace base {
 	#endif
 
-
-	typedef struct _Clock       Clock;
-	typedef struct _Environment Environment;
-	typedef struct _Integer     Integer;
+	typedef struct _IClock       IClock;
+	typedef struct _IEnvironment IEnvironment;
+	typedef struct _IInteger     IInteger;
+	typedef struct _IProcess     IProcess;
 
 	
 	#ifdef __cplusplus

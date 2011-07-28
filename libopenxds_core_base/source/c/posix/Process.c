@@ -4,7 +4,7 @@
 
 #include "openxds.core.base/CharString.h"
 #include "openxds.core.base/CharStringList.h"
-#include "openxds.core.base/Process.h"
+#include "openxds.core.base/Process.private.h"
 
 #include <errno.h>
 #include <fcntl.h>
@@ -15,21 +15,22 @@
 #include <sys/wait.h>		/** waitpid() **/
 #include <sys/stat.h>
 
-typedef struct _IProcessIO
+typedef struct _ProcessIO
 {
 	char* in;
 	char* out;
 	char* error;
-} IProcessIO;
+} ProcessIO;
 
-struct _IProcess
+struct _Process
 {
+	IProcess   super;
 	char*      executable;
 	char**     arguments;
 	char*      searchPath;
 	int        usePath;
 	pid_t      pid;
-	IProcessIO io;
+	ProcessIO  io;
 	int        exitStatus;
 	bool       finished;
 	bool       exitedNormally;
@@ -37,13 +38,35 @@ struct _IProcess
 
 IProcess* new_Process( const char* executable, const char** arguments )
 {
-	IProcess* self = (IProcess*) CRuntime_calloc( 1, sizeof( IProcess ) );
+	Process* self = (Process*) CRuntime_calloc( 1, sizeof( Process ) );
+	self->super.free                      = (             IProcess*  (*)(       IProcess* ))              free_Process;
+	self->super.start                     = (                   int  (*)(       IProcess* ))              Process_start;
+	self->super.waitFor                   = (                   int  (*)(       IProcess* ))              Process_waitFor;
+	self->super.setSearchPath             = (                  void  (*)(       IProcess*, const char* )) Process_setSearchPath;
+	self->super.setUsePath                = (                  void  (*)(       IProcess*, bool ))        Process_setUsePath;
+	self->super.setStandardIn             = (                  void  (*)(       IProcess*, const char* )) Process_setStandardIn;
+	self->super.setStandardOut            = (                  void  (*)(       IProcess*, const char* )) Process_setStandardOut;
+	self->super.setStandardError          = (                  void  (*)(       IProcess*, const char* )) Process_setStandardError;
+
+	self->super.getExecutable             = (           const char*  (*)( const IProcess* ))              Process_getExecutable;
+	self->super.getArguments              = (           const char** (*)( const IProcess* ))              Process_getArguments;
+	self->super.getProcessID              = (         unsigned int   (*)( const IProcess* ))              Process_getProcessID;
+	self->super.getSearchPath             = (           const char*  (*)( const IProcess* ))              Process_getSearchPath;
+	self->super.getExitStatus             = (                  int   (*)( const IProcess* ))              Process_getExitStatus;
+
+	self->super.hasFinished               = (                 bool   (*)( const IProcess* ))              Process_hasFinished;
+	self->super.hasExitedNormally         = (                 bool   (*)( const IProcess* ))              Process_hasExitedNormally;
+
+	self->super.getCurrentID              = (         unsigned int   (*)())                               Process_GetCurrentID;
+	self->super.getCurrentParentID        = (         unsigned int   (*)())                               Process_GetCurrentParentID;
+
 	self->executable = new_CharString( executable );
 	self->arguments = new_CharStringList_from( arguments );
-	return self;
+
+	return (IProcess*) self;
 }
 
-IProcess* free_Process( IProcess* self )
+Process* free_Process( Process* self )
 {
 	free_CharString( self->executable );
 	free_CharStringList( self->arguments );
@@ -59,10 +82,10 @@ IProcess* free_Process( IProcess* self )
 	if ( self->io.error ) {
 		free_CharString( self->io.error );
 	}
-	return (IProcess*) CRuntime_free( self );
+	return CRuntime_free( self );
 }
 
-int Process_start( IProcess* self )
+int Process_start( Process* self )
 {
 	int state = 1;
 	
@@ -123,7 +146,7 @@ int Process_start( IProcess* self )
 	return state;
 }
 
-int Process_waitFor( IProcess* self )
+int Process_waitFor( Process* self )
 {
 	if ( !self->finished )
 	{
@@ -144,63 +167,63 @@ int Process_waitFor( IProcess* self )
 	return self->finished;
 }
 
-void Process_setSearchPath( IProcess* self, const char* aSearchPath )
+void Process_setSearchPath( Process* self, const char* aSearchPath )
 {
 	if ( self->searchPath ) free_CharString( self->searchPath );
 	self->searchPath = new_CharString( aSearchPath );
 }
 
-void Process_setUsePath( IProcess* self, int aBoolean )
+void Process_setUsePath( Process* self, int aBoolean )
 {
 	self->usePath = aBoolean;
 }
 
-void Process_setStandardIn( IProcess* self, const char* location )
+void Process_setStandardIn( Process* self, const char* location )
 {
 	self->io.in = CharString_copy( location );
 }
 
-void Process_setStandardOut( IProcess* self, const char* location )
+void Process_setStandardOut( Process* self, const char* location )
 {
 	self->io.out = CharString_copy( location );
 }
 
-void Process_setStandardError( IProcess* self, const char* location )
+void Process_setStandardError( Process* self, const char* location )
 {
 	self->io.error = CharString_copy( location );
 }
 
-const char* Process_getExecutable( const IProcess* self )
+const char* Process_getExecutable( const Process* self )
 {
 	return self->executable;
 }
 
-const char** Process_getArguments( const IProcess* self )
+const char** Process_getArguments( const Process* self )
 {
 	return (const char**) self->arguments;
 }
 
-unsigned int Process_getProcessID( const IProcess* self )
+unsigned int Process_getProcessID( const Process* self )
 {
 	return self->pid;
 }
 
-const char* Process_getSearchPath( const IProcess* self )
+const char* Process_getSearchPath( const Process* self )
 {
 	return self->searchPath;
 }
 
-int	Process_getExitStatus( const IProcess* self )
+int	Process_getExitStatus( const Process* self )
 {
 	return self->exitStatus;
 }
 
-bool	Process_hasFinished( const IProcess* self )
+bool	Process_hasFinished( const Process* self )
 {
 	return self->finished;
 }
 
-bool	Process_hasExitedNormally( const IProcess* self )
+bool	Process_hasExitedNormally( const Process* self )
 {
 	return self->exitedNormally;
 }

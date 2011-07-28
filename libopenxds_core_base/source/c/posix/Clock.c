@@ -4,7 +4,7 @@
 
 /*	posix */
 
-#include "openxds.core.base/Clock.h"
+#include "openxds.core.base/Clock.private.h"
 
 #include <stdlib.h>
 #include <time.h>			/** times()    **/
@@ -13,18 +13,31 @@
 
 struct _Clock
 {
+	IClock             super;
 	unsigned long long start;
 	unsigned long long stop;
 	unsigned long long interval;
 };
 
-Clock* new_Clock()
+IClock* new_Clock()
 {
 	Clock* self = CRuntime_calloc( 1, sizeof( Clock ) );
-	return self;
+	self->super.free                      = (             IClock* (*)(       IClock* )) free_Clock;
+	self->super.start                     = (               void  (*)(       IClock* )) Clock_start;
+	self->super.stop                      = (               void  (*)(       IClock* )) Clock_stop;
+	self->super.getInterval               = ( unsigned long long  (*)( const IClock* )) Clock_getInterval;
+	self->super.getTimeAsInt              = (                int  (*)())                Clock_GetTimeAsInt;
+	self->super.getMicroSecondsSinceEpoch = ( unsigned long long  (*)())                Clock_GetMicroSecondsSinceEpoch;
+	self->super.getSecondsSinceEpoch      = ( unsigned long long  (*)())                Clock_GetSecondsSinceEpoch;
+	self->super.getClockCyclesUsed        = ( unsigned long       (*)())                Clock_GetClockCyclesUsed;
+	self->super.getUserTime               = ( unsigned long       (*)())                Clock_GetUserTime;
+	self->super.getSystemTime             = ( unsigned long       (*)())                Clock_GetSystemTime;
+	self->super.getUptime                 = ( unsigned long       (*)())                Clock_GetUptime;
+
+	return (IClock*) self;
 }
 
-void free_Clock( Clock* self )
+Clock* free_Clock( Clock* self )
 {
 	CRuntime_free( self );
 }
@@ -38,7 +51,7 @@ Clock_start( Clock* self )
 void
 Clock_stop( Clock* self )
 {
-	self->stop = Clock_GetMicroSecondsSinceEpoch();
+	self->stop     = Clock_GetMicroSecondsSinceEpoch();
 	self->interval = self->stop - self->start;
 }
 

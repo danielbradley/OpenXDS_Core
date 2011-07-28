@@ -10,6 +10,11 @@
 	#ifdef __cplusplus
 namespace openxds {
 	namespace core {
+	#else
+		#ifndef BOOLEAN
+		#define BOOLEAN
+			typedef int bool;
+		#endif
 	#endif
 
 	typedef struct _IObject IObject;

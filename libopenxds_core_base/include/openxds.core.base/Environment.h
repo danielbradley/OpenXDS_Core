@@ -22,25 +22,23 @@ extern "C"
 #endif
 #endif
 
-EXPORT	Environment* new_Environment( const char* argv_0 );
-EXPORT	Environment* new_Environment_using( const char* argv_0, char fileSeparator );
-EXPORT	Environment* free_Environment( Environment* self );
+struct _IEnvironment
+{
+	IEnvironment*                              (*free)(       IEnvironment* self );
+	        char*                     (*searchPathFor)( const IEnvironment* self, const char* file );
+	  const char*                 (*getExecutableName)( const IEnvironment* self );
+	  const char*             (*getExecutableLocation)( const IEnvironment* self );
+	  const char*  (*getDirectoryContainingExecutable)( const IEnvironment* self );
 
-EXPORT  char*       Environment_searchPathFor( const Environment* self, const char* file );
+	  const char*                           (*getPath)( const IEnvironment* self );
+	  const char*            (*getEnvironmentVariable)( const char* variable );
+	  void                   (*setEnvironmentVariable)( const char* key, const char* value, bool overwrite );
+	  
+	  char                         (*getFileSeparator)();
+};
 
-EXPORT	const char* Environment_getExecutableName( const Environment* self );
-EXPORT	const char* Environment_getExecutableLocation( const Environment* self );
-EXPORT	const char* Environment_getDirectoryContainingExecutable( const Environment* self );
-
-EXPORT	const char* Environment_getPath( const Environment* self );
-//EXPORT	const char* Environment_getOrigin( const IEnvironment* self );
-
-EXPORT	const char* Environment_GetEnvironmentValue( const char* variable );
-EXPORT	void        Environment_SetEnvironmentVariable( const char* key, const char* value, int overwrite );
-
-EXPORT  bool Environment_isLink( const char* path );
-EXPORT  char* Environment_readLink( const char* path );
-EXPORT	char Environment_getFileSeparator();
+EXPORT	IEnvironment* new_Environment( const char* argv_0 );
+EXPORT	IEnvironment* new_Environment_using( const char* argv_0, char fileSeparator );
 
 #ifdef __cplusplus
 }

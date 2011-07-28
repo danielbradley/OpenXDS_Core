@@ -15,11 +15,6 @@ namespace openxds {
 		namespace base {
 extern "C"
 {
-#else
-#ifndef BOOLEAN
-#define BOOLEAN
-	typedef int bool;
-#endif
 #endif
 
 EXPORT void System_Initialize( int argc, char** argv );
@@ -31,7 +26,7 @@ EXPORT	char* System_CurrentDirectory();
 EXPORT	char* System_CurrentVolume();
 EXPORT	char* System_Hostname();
 
-EXPORT	Environment* System_GetInitialEnvironment();
+EXPORT	IEnvironment* System_GetInitialEnvironment();
 
 #ifdef __cplusplus
 }

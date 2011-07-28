@@ -17,46 +17,34 @@
 		{
 	#endif
 
-	typedef struct _IProcess IProcess;
 
-	/*
-	 *  Lifecycle functions
-	 */
-EXPORT		IProcess* new_Process( const char* executable, const char** arguments );
-EXPORT		IProcess* free_Process( IProcess* self );
+struct _IProcess
+{
+	             IProcess*                    (*free)(       IProcess* self );
+	             int                         (*start)(       IProcess* self );
+	             int                       (*waitFor)(       IProcess* self );
 
-	/*
-	 *  Functions
-	 */
-EXPORT		int Process_start( IProcess* self );
-EXPORT		int Process_waitFor( IProcess* self );
+	             void                (*setSearchPath)(       IProcess* self, const char* aPath );
+	             void                   (*setUsePath)(       IProcess* self, bool aBoolean );
+	             void                (*setStandardIn)(       IProcess* self, const char* aPath );
+	             void               (*setStandardOut)(       IProcess* self, const char* aPath );
+	             void             (*setStandardError)(       IProcess* self, const char* aPath );
 
-	/*
-	 *  Mutators
-	 */
-EXPORT		void Process_setSearchPath( IProcess* self, const char* aPath );
-EXPORT		void Process_setUsePath( IProcess* self, int aBoolean );
-EXPORT		void Process_setStandardIn( IProcess* self, const char* location );
-EXPORT		void Process_setStandardOut( IProcess* self, const char* location );
-EXPORT		void Process_setStandardError( IProcess* self, const char* location );
+	             const char*         (*getExecutable)( const IProcess* self );
+	             const char**         (*getArguments)( const IProcess* self );
+	             unsigned int         (*getProcessID)( const IProcess* self );
+	             const char*         (*getSearchPath)( const IProcess* self );
+	             int                 (*getExitStatus)( const IProcess* self );
 
-	/*
-	 *  Accessors
-	 */
-EXPORT		const char*  Process_getExecutable( const IProcess* self );
-EXPORT		const char** Process_getArguments( const IProcess* self );
-EXPORT		unsigned int Process_getProcessID( const IProcess* self );
-EXPORT		const char*  Process_getSearchPath( const IProcess* self );
-EXPORT		int	     Process_getExitStatus( const IProcess* self );
+	             bool                  (*hasFinished)( const IProcess* self );
+	             bool            (*hasExitedNormally)( const IProcess* self );
 
-EXPORT		bool         Process_hasFinished( const IProcess* self );
-EXPORT		bool         Process_hasExitedNormally( const IProcess* self );
+	             unsigned int         (*getCurrentID)();
+	             unsigned int   (*getCurrentParentID)();
+};
 
-	/*
-	 *  Class methods
-	 */
-EXPORT		unsigned int Process_GetCurrentID();
-EXPORT		unsigned int Process_GetCurrentParentID();
+EXPORT	IProcess* new_Process( const char* executable, const char** arguments );
+
 
 	#ifdef __cplusplus
 		}

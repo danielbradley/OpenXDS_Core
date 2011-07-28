@@ -15,12 +15,12 @@ static const char* EMPTY_STRING = "";
 bool Environment_private_CheckExistance( const char* path, const char* filename );
 
 void
-Environment_SetEnvironmentVariable( const char* key, const char* value, int overwrite )
+Environment_setEnvironmentVariable( const char* key, const char* value, int overwrite )
 {
 	setenv( key, value, overwrite );
 }
 
-const char* Environment_GetEnvironmentValue( const char* variable )
+const char* Environment_getEnvironmentVariable( const char* variable )
 {
 	const char* value = getenv( variable );
 	if ( !value )

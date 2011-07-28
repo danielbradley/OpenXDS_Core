@@ -2,9 +2,10 @@
  *  Copyright (c) 2004-2010 Daniel Robert Bradley. All rights reserved.
  */
 
+#include "openxds.core.base/Time.private.h"
+
 #include "openxds.core.base/CharString.h"
 #include "openxds.core.base/CRuntime.h"
-#include "openxds.core.base/Time.h"
 
 #include <stdlib.h>
 
@@ -15,14 +16,31 @@
 
 struct _Time
 {
+	ITime super;
 	struct tm time;
 	time_t    sinceEpoch;
 	char*     textual;
 };
 
-Time* new_Time( unsigned long long secondsSinceEpoch )
+ITime* Time_Now()
+{
+	return new_Time( time( NULL ) );
+}
+
+Time* Time_copy( const Time* self )
+{
+	return (Time*) new_Time( Time_getSecondsSinceEpoch( self ) );
+}
+
+ITime* new_Time( unsigned long long secondsSinceEpoch )
 {
 	Time* self = CRuntime_calloc( 1, sizeof( Time ) );
+	self->super.free                 = (             ITime* (*)(       ITime* )) free_Time;
+	self->super.copy                 = (             ITime* (*)( const ITime* )) Time_copy;
+	self->super.now                  = (             ITime* (*)( const ITime* )) Time_Now;
+	self->super.getTextual           = (        const char* (*)( const ITime* )) Time_getTextual;
+	self->super.getSecondsSinceEpoch = ( unsigned long long (*)( const ITime* )) Time_getSecondsSinceEpoch;
+
 	time_t t = (time_t) secondsSinceEpoch;
 	localtime_r( &t, &self->time );
 	self->sinceEpoch = t;
@@ -33,18 +51,13 @@ Time* new_Time( unsigned long long secondsSinceEpoch )
 	//	This gets rid of the annoying newline
 	self->textual[CharString_getLength( self->textual ) - 1] = '\0';
 	
-	return self;
+	return (ITime*) self;
 }
 
 Time* free_Time( Time* self )
 {
 	free_CharString( self->textual );
 	return CRuntime_free( self );
-}
-
-Time* Time_copy( const Time* self )
-{
-	return new_Time( Time_getSecondsSinceEpoch( self ) );
 }
 
 const char* Time_getTextual( const Time* self )
@@ -55,9 +68,4 @@ const char* Time_getTextual( const Time* self )
 unsigned long long Time_getSecondsSinceEpoch( const Time* self )
 {
 	return self->sinceEpoch;
-}
-
-Time* Time_Now()
-{
-	return new_Time( time( NULL ) );
 }

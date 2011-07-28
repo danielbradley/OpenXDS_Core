@@ -16,31 +16,23 @@ extern "C"
 {
 #endif
 
-/*
- *  Lifecycle functions
- */
-EXPORT	Clock* new_Clock();
-EXPORT	void free_Clock( Clock* self );
 
-/*
- *  Functions
- */
-EXPORT	void               Clock_start( Clock* self );
-EXPORT	void               Clock_stop( Clock* self );
-EXPORT	unsigned long long Clock_getInterval( const Clock* self );
+struct _IClock
+{
+	            IClock*                       (*free)(       IClock* self );
+	              void                       (*start)(       IClock* self );
+	              void                        (*stop)(       IClock* self );
+	unsigned long long                 (*getInterval)( const IClock* self );
+	               int                (*getTimeAsInt)();
+	     unsigned long                 (*getUserTime)();
+	     unsigned long               (*getSystemTime)();
+	     unsigned long                   (*getUptime)();
+	unsigned long long   (*getMicroSecondsSinceEpoch)();
+	unsigned long long        (*getSecondsSinceEpoch)();
+	     unsigned long          (*getClockCyclesUsed)();
+};
 
-/*
- *  Class Methods
- */
-EXPORT	int           Clock_GetTimeAsInt();
-EXPORT	unsigned long Clock_GetUserTime();
-EXPORT	unsigned long Clock_GetSystemTime();
-EXPORT	unsigned long Clock_GetUptime();
-
-EXPORT	unsigned long long Clock_GetMicroSecondsSinceEpoch();
-EXPORT	unsigned long long Clock_GetSecondsSinceEpoch();
-
-EXPORT	unsigned long Clock_GetClockCyclesUsed(); 
+EXPORT	IClock* new_Clock();
 
 #ifdef __cplusplus
 }

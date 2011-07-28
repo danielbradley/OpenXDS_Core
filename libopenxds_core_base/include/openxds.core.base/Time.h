@@ -8,30 +8,30 @@
 #include "openxds.core/export.h"
 #include "openxds.core.base.h"
 
-#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace base {
-extern "C"
+	#ifdef __cplusplus
+	namespace openxds {
+		namespace core {
+			namespace base {
+	extern "C"
+	{
+	#endif
+
+typedef struct _ITime ITime;
+
+struct _ITime
 {
-#endif
+	ITime*                             (*free)(       ITime* self );
+	ITime*                             (*copy)( const ITime* self );
+	ITime*                              (*now)();
+	const char*                  (*getTextual)( const ITime* self );
+	unsigned long long (*getSecondsSinceEpoch)( const ITime* self );
+};
 
-typedef struct _Time Time;
+EXPORT	ITime* new_Time( unsigned long long );
+EXPORT	ITime* Time_Now();
 
-/*
- *  Lifecycle functions
- */
-EXPORT	Time*      new_Time( unsigned long long );
-EXPORT	Time*     free_Time( Time* self );
-
-EXPORT	Time*      Time_copy( const Time* self );
-EXPORT	const char* Time_getTextual( const Time* self );
-EXPORT  unsigned long long Time_getSecondsSinceEpoch( const Time* self );
-
-EXPORT	Time* Time_Now();
-
-#ifdef __cplusplus
-}
-};};};
-#endif
+	#ifdef __cplusplus
+	}
+	};};};
+	#endif
 #endif
