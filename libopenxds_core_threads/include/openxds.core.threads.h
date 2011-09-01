@@ -1,5 +1,10 @@
 /*
- *  Copyright (c) 2008-2010 Daniel Robert Bradley. All rights reserved.
+ *  Copyright (C) 2008-2011 Daniel Robert Bradley. All rights reserved.
+ *
+ *  This software is redistributable under the terms of the GNU LGPL
+ *  (Lesser General Public License).
+ *
+ *  I.S.Labs is a registered trademark of Daniel Robert Bradley
  */
 
 #ifndef OPENXDS_CORE_THREADS_H
@@ -11,10 +16,10 @@ namespace openxds {
 		namespace threads {
 	#endif
 
-	typedef struct _ConditionVariable ConditionVariable;
-	typedef struct _Mutex             Mutex;
-	typedef struct _Semaphore         Semaphore;
-	typedef struct _Thread            Thread;
+	typedef struct _IConditionVariable IConditionVariable;
+	typedef struct _IMutex             IMutex;
+	typedef struct _ISemaphore         ISemaphore;
+	typedef struct _IThread            IThread;
 	
 	#ifdef __cplusplus
 };};};

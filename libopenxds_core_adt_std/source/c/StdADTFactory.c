@@ -10,13 +10,10 @@
 #include "openxds.core.adt.std/StdValue.h"
 #include "openxds.core.adt.std/StdVector.h"
 #include "openxds.core.adt.std/StdSequence.h"
+#include "openxds.core.adt.std/StdTree.h"
 
-struct _StdADTFactory
-{
-	ADTFactory super;
-};
 
-StdADTFactory* new_StdADTFactory()
+ADTFactory* new_StdADTFactory()
 {
 	StdADTFactory* self = CRuntime_calloc( 1, sizeof( StdADTFactory ) );
 	self->super.free             = (ADTFactory*  (*)(ADTFactory*          )) free_StdADTFactory;
@@ -31,8 +28,9 @@ StdADTFactory* new_StdADTFactory()
 	self->super.createDictionary = (IDictionary* (*)(                     )) StdADTFactory_createDictionary;
 	self->super.createVector     = (IVector*     (*)(                     )) StdADTFactory_createVector;
 	self->super.createSequence   = (ISequence*   (*)(                     )) StdADTFactory_createSequence;
+	self->super.createTree       = (ITree*       (*)(                     )) StdADTFactory_createTree;
 	
-	return (StdADTFactory*) self;
+	return (ADTFactory*) self;
 }
 
 StdADTFactory* free_StdADTFactory( StdADTFactory* self )
@@ -99,4 +97,9 @@ IVector* StdADTFactory_createVector()
 ISequence* StdADTFactory_createSequence()
 {
 	return (ISequence*) new_StdSequence();
+}
+
+ITree* StdADTFactory_createTree()
+{
+	return (ITree*) new_StdTree();
 }

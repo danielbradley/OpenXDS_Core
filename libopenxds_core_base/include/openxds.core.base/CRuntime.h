@@ -26,9 +26,10 @@
 	#endif
 
 	#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace base {
+		namespace openxds {
+			namespace core {
+				namespace base {
+					extern "C" {
 	#endif
 	
 /*
@@ -50,6 +51,6 @@ EXPORT	void		CRuntime_SleepForMicroseconds( unsigned int microseconds );
 	#endif
 
 	#ifdef __cplusplus
-};};};
+		};};};};
 	#endif
 #endif

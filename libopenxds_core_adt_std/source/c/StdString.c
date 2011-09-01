@@ -151,14 +151,31 @@ const char* StdString_getChars( const StdString* self )
 
 bool StdString_contains( const StdString* self, const char* str )
 {
-	printf( "openxds::core::adt::std::StdString_contains unimplemented\n" );
-	abort();
+	if ( strstr( self->data, str ) )
+	{
+		return 1;
+	} else {
+		return 0;
+	}
 }
 
 bool StdString_startsWith( const StdString* self, const char* str )
 {
-	printf( "openxds::core::adt::std::StdString_startsWith unimplemented\n" );
-	abort();
+	bool success = 0;
+	if ( str )
+	{
+		int len = strlen( str );
+		if ( len <= self->length )
+		{
+			int i;
+			success = 1;
+			for ( i=0; i < len; i++ )
+			{
+				success &= (str[i] == self->data[i]);
+			}
+		}
+	}
+	return success;
 }
 
 bool StdString_endsWith( const StdString* self, const char* str )

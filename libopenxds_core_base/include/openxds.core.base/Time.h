@@ -9,11 +9,10 @@
 #include "openxds.core.base.h"
 
 	#ifdef __cplusplus
-	namespace openxds {
-		namespace core {
-			namespace base {
-	extern "C"
-	{
+		namespace openxds {
+			namespace core {
+				namespace base {
+					extern "C" {
 	#endif
 
 typedef struct _ITime ITime;
@@ -31,7 +30,6 @@ EXPORT	ITime* new_Time( unsigned long long );
 EXPORT	ITime* Time_Now();
 
 	#ifdef __cplusplus
-	}
-	};};};
+		};};};};
 	#endif
 #endif

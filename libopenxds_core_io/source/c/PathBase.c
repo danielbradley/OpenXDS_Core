@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2004-2009 Daniel Robert Bradley. All rights reserved.
+ *  Copyright (C) 2004-2011 Daniel Robert Bradley. All rights reserved.
  *
  *  This software is redistributable under the terms of the GNU LGPL
  *  (Lesser General Public License).
@@ -82,12 +82,13 @@ IPath* new_Path( const char* location )
 	self->super.getExtension           = (const char* (*) ( const IPath* )) Path_getExtension;
 	self->super.getAbsolute            = (const char* (*) ( const IPath* )) Path_getAbsolute;
 	self->super.getNativeFormat        = (const char* (*) ( const IPath* )) Path_getNativeFormat;
+	self->super.getType                = (      int   (*) ( const IPath* )) Path_getType;
 //	self->super.getURL                 = (const char* (*) ( const IPath* )) Path_getURL;
 
 	self->super.hasExtension           = (bool        (*) ( const IPath*, const char* ext )) Path_hasExtension;
 	self->super.isAbsolute             = (bool        (*) ( const IPath* )) Path_isAbsolute;
 
-	self->super.getFileSeparator       = (char        (*) ( const IPath* )) Path_getFileSeparator;
+	self->super.getFileSeparator       = (char        (*) ( const IPath* )) Path_GetFileSeparator;
 	self->super.condensePath           = (char*       (*) ( const char* location )) Path_condensePath;
 	self->super.convertToNative        = (char*       (*) ( const char* location )) Path_convertToNative;
 	
@@ -764,7 +765,7 @@ char* Path_extractExtension( const char* condensed )
 
 char* Path_toNative( const char* common )
 {
-	char c = Path_getFileSeparator();
+	char c = Path_GetFileSeparator();
 	
 	char* native = new_CharString( common );
 	CharString_replace( native, '/', c );

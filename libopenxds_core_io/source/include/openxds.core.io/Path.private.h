@@ -42,11 +42,11 @@ EXPORT	const char* Path_getExtension( const Path* self );
 EXPORT	const char* Path_getAbsolute( const Path* self );
 EXPORT	const char* Path_getURL( const Path* self );
 EXPORT	const char* Path_getNativeFormat( const Path* self );
+EXPORT	int         Path_getType( const Path* self );
 
 EXPORT	bool        Path_hasExtension( const Path* self, const char* extension );
 EXPORT	bool        Path_isAbsolute( const Path* self );
 
-EXPORT	char		Path_getFileSeparator();
 EXPORT	char*       Path_condensePath( const char* location );
 EXPORT	char*       Path_convertToNative( const char* location );
 

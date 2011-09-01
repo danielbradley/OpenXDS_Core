@@ -8,31 +8,27 @@
  */
 
 #include "openxds.core.base.h"
-#include "openxds.core.threads/Thread.h"
+#include "openxds.core.threads/Thread.private.h"
 
 #include <pthread.h>
 
-struct _Thread
-{
-	void*(*callback)(void*);
-	void* arg;
-	pthread_t      state;
-	pthread_attr_t attributes;
-	void*          ret;
-};
-
-Thread* new_Thread( void*(*startRoutine)(void*), void* argument )
+IThread* new_Thread( void*(*startRoutine)(void*), void* argument )
 {
 	Thread* self = CRuntime_calloc( 1, sizeof( Thread ) );
-	self->callback = startRoutine;
-	self->arg = argument;
+	self->super.free = (IThread* (*)( IThread* )) free_Thread;
+	self->super.run  = (   bool  (*)( IThread* )) Thread_run;
+	self->super.wait = (   bool  (*)( IThread* )) Thread_wait;
+
+	self->callback   = startRoutine;
+	self->arg        = argument;
 	pthread_attr_init( &self->attributes );
-	return self;
+
+	return (IThread*) self;
 }
 
-void free_Thread( Thread* self )
+Thread* free_Thread( Thread* self )
 {
-	CRuntime_free( self );
+	return CRuntime_free( self );
 }
 
 bool Thread_run( Thread* self )

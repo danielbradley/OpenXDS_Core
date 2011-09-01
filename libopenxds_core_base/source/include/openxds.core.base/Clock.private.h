@@ -29,19 +29,6 @@ EXPORT	void               Clock_start( Clock* self );
 EXPORT	void               Clock_stop( Clock* self );
 EXPORT	unsigned long long Clock_getInterval( const Clock* self );
 
-/*
- *  Class Methods
- */
-EXPORT	int           Clock_GetTimeAsInt();
-EXPORT	unsigned long Clock_GetUserTime();
-EXPORT	unsigned long Clock_GetSystemTime();
-EXPORT	unsigned long Clock_GetUptime();
-
-EXPORT	unsigned long long Clock_GetMicroSecondsSinceEpoch();
-EXPORT	unsigned long long Clock_GetSecondsSinceEpoch();
-
-EXPORT	unsigned long Clock_GetClockCyclesUsed(); 
-
 	#ifdef __cplusplus
 	}
 	};};};

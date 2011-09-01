@@ -7,10 +7,11 @@
 #include <openxds.core/types.h>
 
 	#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace adt {
-			namespace std {
+		namespace openxds {
+			namespace core {
+				namespace adt {
+					namespace std {
+						extern "C" {
 	#endif
 
 
@@ -33,6 +34,6 @@ EXPORT  int                    StdMap_size( const StdMap* self );
 EXPORT  bool                StdMap_isEmpty( const StdMap* self );
 
 	#ifdef __cplusplus
-};};};};
+		};};};};};
 	#endif
 #endif

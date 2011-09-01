@@ -13,32 +13,40 @@
 #include <openxds.core.adt/ADTFactory.h>
 
 	#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace adt {
-			namespace std {
+		namespace openxds {
+			namespace core {
+				namespace adt {
+					namespace std {
+						extern "C" {
 	#endif
 
-StdADTFactory*   new_StdADTFactory();
+struct _StdADTFactory
+{
+	ADTFactory super;
+};
+
+ADTFactory*   new_StdADTFactory();
+
 StdADTFactory*  free_StdADTFactory();
 
 IKey*               StdADTFactory_createKey( const char* key );
 
-IValue*           StdADTFactory_createValue( E* value );
+IValue*               StdADTFactory_createValue( E* value );
 IValue*           StdADTFactory_createValue_ref( const E* value );
-IValue*           StdADTFactory_createValue_IObject( IObject* value );
+IValue*       StdADTFactory_createValue_IObject( IObject* value );
 
-IEntry*           StdADTFactory_createEntry( const IKey* key, IValue* value );
+IEntry*               StdADTFactory_createEntry( const IKey* key, IValue* value );
 
-IStack*           StdADTFactory_createStack();
-IString*         StdADTFactory_createString( const char* str );
-IList*             StdADTFactory_createList();
-IMap*               StdADTFactory_createMap();
-IDictionary* StdADTFactory_createDictionary();
-IVector*         StdADTFactory_createVector();
-ISequence*     StdADTFactory_createSequence();
+IStack*               StdADTFactory_createStack();
+IString*             StdADTFactory_createString( const char* str );
+IList*                 StdADTFactory_createList();
+IMap*                   StdADTFactory_createMap();
+IDictionary*     StdADTFactory_createDictionary();
+IVector*             StdADTFactory_createVector();
+ISequence*         StdADTFactory_createSequence();
+ITree*                 StdADTFactory_createTree();
 
 	#ifdef __cplusplus
-};};};};
+		};};};};};
 	#endif
 #endif

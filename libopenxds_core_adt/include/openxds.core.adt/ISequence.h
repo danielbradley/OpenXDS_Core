@@ -19,7 +19,10 @@ namespace openxds {
 
 struct _ISequence
 {
-	ISequence*    (*free)( ISequence* self );
+	ISequence*                (*free)(       ISequence* self );
+	ISequence*             (*freeAll)(       ISequence* self );
+
+	void           (*setFreeIObjects)(       ISequence* self, bool flag );
 
 	// Deque
 	void                  (*addFirst)(       ISequence* self, E* e );
@@ -35,8 +38,8 @@ struct _ISequence
 
 	const IPosition*  (*insertBefore)(       ISequence* self, const IPosition* p, E* anElement );
 	const IPosition*   (*insertAfter)(       ISequence* self, const IPosition* p, E* anElement );
-	const E*               (*replace)(       ISequence* self, const IPosition* p, E* anElement );
-	const E*                (*remove)(       ISequence* self, const IPosition* p );
+	      E*               (*replace)(       ISequence* self, const IPosition* p, E* anElement );
+	      E*                (*remove)(       ISequence* self, const IPosition* p );
 
 	const IPosition*         (*first)( const ISequence* self );
 	const IPosition*          (*last)( const ISequence* self );

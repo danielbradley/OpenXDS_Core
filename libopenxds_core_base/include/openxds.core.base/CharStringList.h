@@ -7,18 +7,12 @@
 
 #include "openxds.core/export.h"
 
-#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace base {
-extern "C"
-{
-#else
-#ifndef BOOLEAN
-#define BOOLEAN
-	typedef int bool;
-#endif
-#endif
+	#ifdef __cplusplus
+		namespace openxds {
+			namespace core {
+				namespace base {
+					extern "C" {
+	#endif
 
 /*
  *  Lifecycle functions
@@ -39,8 +33,7 @@ EXPORT char* CharStringList_toCharString( const char** self );
  */
 EXPORT unsigned int CharStringList_getLength( const char** self );
 
-#ifdef __cplusplus
-}
-};};};
-#endif
+	#ifdef __cplusplus
+		};};};};
+	#endif
 #endif

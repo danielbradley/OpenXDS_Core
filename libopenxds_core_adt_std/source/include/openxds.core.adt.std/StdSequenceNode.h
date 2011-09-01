@@ -7,12 +7,36 @@
 
 #include <openxds.core.adt/IPosition.h>
 
-typedef struct _StdSequenceNode StdSequenceNode;
+	#ifdef __cplusplus
+		using namespace openxds::core;
 
-StdSequenceNode*  new_StdSequenceNode( E* anElement );
-StdSequenceNode* free_StdSequenceNode( StdSequenceNode* self );
+		namespace openxds {
+			namespace core {
+				namespace adt {
+					namespace std {
+						extern "C" {
+	#endif
 
-//	Implements openxds/core/adt/Position
-const E* StdSequenceNode_getElement( const StdSequenceNode* self );
+typedef struct _Node StdSequenceNode;
+
+StdSequenceNode*            new_StdSequenceNode(       E*               anElement, int index );
+StdSequenceNode*           free_StdSequenceNode(       StdSequenceNode* self      );
+E*               StdSequenceNode_replaceElement(       StdSequenceNode* self, E* anElement );
+
+const E*             StdSequenceNode_getElement( const StdSequenceNode* self      );
+int                    StdSequenceNode_getIndex( const StdSequenceNode* self      );
+
+typedef struct _Node Node;
+
+struct _Node
+{
+	IPosition super;
+	E*        e;
+	int       i;
+};
+
+	#ifdef __cplusplus
+		};};};};};
+	#endif
 
 #endif

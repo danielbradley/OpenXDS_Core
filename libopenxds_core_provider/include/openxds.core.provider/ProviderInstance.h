@@ -10,6 +10,8 @@
 #ifndef OPENXDS_CORE_PROVIDER_PROVIDERINSTANCE_H
 #define OPENXDS_CORE_PROVIDER_PROVIDERINSTANCE_H
 
+#include "openxds.core.provider.h"
+
 	#ifdef __cplusplus
 		namespace openxds {
 			namespace core {
@@ -17,8 +19,6 @@
 		extern "C"
 		{
 	#endif
-
-typedef struct _ProviderInstance ProviderInstance;
 
 struct _ProviderInstance
 {

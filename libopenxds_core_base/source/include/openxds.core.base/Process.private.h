@@ -50,12 +50,6 @@ EXPORT		int	     Process_getExitStatus( const Process* self );
 EXPORT		bool         Process_hasFinished( const Process* self );
 EXPORT		bool         Process_hasExitedNormally( const Process* self );
 
-	/*
-	 *  Class methods
-	 */
-EXPORT		unsigned int Process_GetCurrentID();
-EXPORT		unsigned int Process_GetCurrentParentID();
-
 
 	#ifdef __cplusplus
 	}

@@ -31,6 +31,7 @@ struct _ADTFactory
 	IDictionary*       (*createDictionary)();
 	IVector*               (*createVector)();
 	ISequence*           (*createSequence)();
+	ITree*                   (*createTree)();
 
 
 //	IQueue*                 (*createQueue)( ADTFactory* self );
@@ -45,8 +46,8 @@ struct _ADTFactory
 //	IValue*                 (*createValue)( ADTFactory* self );
 };
 
-EXPORT	ADTFactory* new_ADTFactory( const char* module_location );
-EXPORT	void*       free_ADTFactory( ADTFactory* factory );
+//EXPORT	ADTFactory* new_ADTFactory( const char* module_location );
+//EXPORT	void*       free_ADTFactory( ADTFactory* factory );
 
 	#ifdef __cplusplus
 };};};

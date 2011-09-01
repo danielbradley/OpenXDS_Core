@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2004-2009 Daniel Robert Bradley. All rights reserved.
+ *  Copyright (C) 2004-2011 Daniel Robert Bradley. All rights reserved.
  *
  *  This software is redistributable under the terms of the GNU LGPL
  *  (Lesser General Public License).
@@ -14,26 +14,28 @@
 #include <openxds.core.base.h>
 #include <openxds.core.threads.h>
 
-#ifdef __cplusplus
-	namespace openxds {
-		namespace core {
-			namespace threads {
-	extern "C" {
-#endif
+	#ifdef __cplusplus
+		namespace openxds {
+			namespace core {
+				namespace threads {
+		extern "C"
+		{
+	#endif
 
-EXPORT	ConditionVariable* new_ConditionVariable();
-EXPORT	void free_ConditionVariable( ConditionVariable* self );
+struct _IConditionVariable
+{
+	IConditionVariable*      (*free)( IConditionVariable* self );
+	bool                   (*signal)( IConditionVariable* self );
+	bool                (*broadcast)( IConditionVariable* self );
+	bool                     (*wait)( IConditionVariable* self, IMutex* aMutex );
+	bool                (*timedWait)( IConditionVariable* self, IMutex* aMutex );
+};
 
-EXPORT	bool ConditionVariable_wait( ConditionVariable* self, Mutex* aMutex );
-EXPORT	bool ConditionVariable_timedWait( ConditionVariable* self, Mutex* aMutex, int seconds );
-EXPORT	bool ConditionVariable_signal( ConditionVariable* self );
-EXPORT	bool ConditionVariable_broadcast( ConditionVariable* self );
+EXPORT	IConditionVariable* new_ConditionVariable();
 
-//EXPORT	IConditionVariable* ConditionVariable_copy( IConditionVariable* self );
 
-#ifdef __cplusplus
-}
-};};};
-#endif
-
+	#ifdef __cplusplus
+		}
+		};};};
+	#endif
 #endif

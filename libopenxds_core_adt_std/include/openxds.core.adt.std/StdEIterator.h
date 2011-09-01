@@ -12,10 +12,11 @@
 #include <openxds.core.adt.std.h>
 
 	#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace adt {
-			namespace std {
+		namespace openxds {
+			namespace core {
+				namespace adt {
+					namespace std {
+						extern "C" {
 	#endif
 
 
@@ -33,6 +34,6 @@ void      StdEIterator_addEntry( StdEIterator* self, const IEntry* e );
 
 
 	#ifdef __cplusplus
-};};};};
+		};};};};};
 	#endif
 #endif

@@ -12,9 +12,7 @@
 		namespace openxds {
 			namespace core {
 				namespace base {
-
-		extern "C"
-		{
+					extern "C" {
 	#endif
 
 
@@ -44,10 +42,11 @@ struct _IProcess
 };
 
 EXPORT	IProcess* new_Process( const char* executable, const char** arguments );
+EXPORT	unsigned int Process_GetCurrentID();
+EXPORT	unsigned int Process_GetCurrentParentID();
 
 
 	#ifdef __cplusplus
-		}
-		};};};
+		};};};};
 	#endif
 #endif

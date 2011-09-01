@@ -13,10 +13,11 @@
 #include <openxds.core.adt/IKey.h>
 
 	#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace adt {
-			namespace std {
+		namespace openxds {
+			namespace core {
+				namespace adt {
+					namespace std {
+						extern "C" {
 	#endif
 
 EXPORT	Key*       new_StdKey( const char* charString );
@@ -27,12 +28,13 @@ EXPORT	Key*     free_StdKey( Key* self );
 EXPORT	int                StdKey_compareTo( const Key* k, const Key* k2 );
 EXPORT	int                StdKey_compareToUsing( const Key* k, const Key* k2, const IComparitor* c );
 EXPORT	bool               StdKey_contentEquals( const Key* k, const Key* k2 );
+EXPORT	bool               StdKey_startsWith( const Key* k, const Key* k2 );
 EXPORT	unsigned int       StdKey_getHashValue( const Key* k );
 EXPORT	unsigned long long StdKey_getHashValue64( const Key* k );
 EXPORT	const char*        StdKey_getChars( const Key* k );
 EXPORT	Key*               StdKey_copy( const Key* k );
 
 	#ifdef __cplusplus
-};};};};
+		};};};};};
 	#endif
 #endif

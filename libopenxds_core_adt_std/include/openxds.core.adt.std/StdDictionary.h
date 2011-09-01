@@ -7,10 +7,11 @@
 #include <openxds.core/types.h>
 
 	#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace adt {
-			namespace std {
+		namespace openxds {
+			namespace core {
+				namespace adt {
+					namespace std {
+						extern "C" {
 	#endif
 
 
@@ -27,6 +28,7 @@ EXPORT	const IEntry*         StdDictionary_insert_IValue( StdDictionary* self, c
 EXPORT	void*                        StdDictionary_remove( StdDictionary* self, const IEntry* entry );
 
 EXPORT  const IEntry*                  StdDictionary_find( const StdDictionary* self, const IKey* key );
+EXPORT  const IEntry*            StdDictionary_startsWith( const StdDictionary* self, const IKey* key );
 EXPORT  IEIterator*                 StdDictionary_findAll( const StdDictionary* self, const IKey* key );
 
 EXPORT  IEIterator*                 StdDictionary_entries( const StdDictionary* self );
@@ -35,6 +37,6 @@ EXPORT  int                            StdDictionary_size( const StdDictionary* 
 EXPORT  bool                        StdDictionary_isEmpty( const StdDictionary* self );
 
 	#ifdef __cplusplus
-};};};};
+		};};};};};
 	#endif
 #endif

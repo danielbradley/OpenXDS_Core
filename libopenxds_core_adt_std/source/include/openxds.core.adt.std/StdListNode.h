@@ -7,8 +7,6 @@
 
 #include <openxds.core.adt/IPosition.h>
 
-typedef struct _ListNode ListNode;
-
 /**
  *  A ListNode is used to store some data item pointed to by a
  *  void pointer (void*).
@@ -21,6 +19,18 @@ typedef struct _ListNode ListNode;
  *
  *  node->setElement( node, NULL );
  */
+
+	#ifdef __cplusplus
+		using namespace openxds::core;
+
+		namespace openxds {
+			namespace core {
+				namespace adt {
+					namespace std {
+						extern "C" {
+	#endif
+
+typedef struct _ListNode ListNode;
 
 ListNode*       new_StdListNode( IObject* anElement );
 void*           free_StdListNode( ListNode* self );
@@ -37,5 +47,9 @@ void            StdListNode_setPrev( ListNode* self, const ListNode* aNode );
 
 const ListNode* StdListNode_getNext( const ListNode* self );
 const ListNode* StdListNode_getPrev( const ListNode* self );
+
+	#ifdef __cplusplus
+		};};};};};
+	#endif
 
 #endif

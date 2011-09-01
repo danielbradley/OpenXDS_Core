@@ -8,10 +8,11 @@
 #include <openxds.core/IObject.h>
 
 	#ifdef __cplusplus
-	namespace openxds {
-		namespace core {
-			namespace adt {
-				namespace std {
+		namespace openxds {
+			namespace core {
+				namespace adt {
+					namespace std {
+						extern "C" {
 	#endif
 
 EXPORT	StdString*              new_StdString( const char* str );
@@ -41,7 +42,6 @@ EXPORT	int               StdString_getLength( const StdString* self );
 EXPORT	int             StdString_indexOfNext( const StdString* self, int start, const char* delimiter );
 
 	#ifdef __cplusplus
-	};};};};
+		};};};};};
 	#endif
-
 #endif

@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2004-2009 Daniel Robert Bradley. All rights reserved.
+ *  Copyright (C) 2004-2011 Daniel Robert Bradley. All rights reserved.
  *
  *  This software is redistributable under the terms of the GNU LGPL
  *  (Lesser General Public License).
@@ -21,13 +21,14 @@
 	extern "C" {
 #endif
 
-EXPORT	Thread* new_Thread( void*(*callback)(void*), void* aRunnable );
-EXPORT	void free_Thread( Thread* self );
+struct _IThread
+{
+	IThread*               (*free)( IThread* self );
+	bool                    (*run)( IThread* self );
+	bool                   (*wait)( IThread* self );
+};
 
-EXPORT	bool Thread_run( Thread* self );
-EXPORT	bool Thread_wait( Thread* self );
-
-//EXPORT  int  Thread_status( const IThread* self );
+EXPORT	IThread* new_Thread( void*(*callback)(void*), void* aRunnable );
 
 #ifdef __cplusplus
 }

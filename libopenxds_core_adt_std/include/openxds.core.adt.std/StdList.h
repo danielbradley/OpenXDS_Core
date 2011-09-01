@@ -11,10 +11,11 @@
 #include <openxds.core.adt/IList.h>
 
 	#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace adt {
-			namespace std {
+		namespace openxds {
+			namespace core {
+				namespace adt {
+					namespace std {
+						extern "C" {
 	#endif
 
 EXPORT	StdList*                     new_StdList();
@@ -41,6 +42,6 @@ EXPORT	bool                     StdList_isEmpty( const StdList* self );
 EXPORT	IPIterator*              StdList_positions( const StdList* self );
 
 	#ifdef __cplusplus
-};};};};
+		};};};};};
 	#endif
 #endif

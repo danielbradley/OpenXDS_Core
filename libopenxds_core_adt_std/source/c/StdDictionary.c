@@ -34,6 +34,7 @@ StdDictionary* new_StdDictionary()
 	self->super.insertValue     = (const IEntry*      (*) (       IDictionary*, const IKey*, IValue*        ))    StdDictionary_insert_IValue;
 	self->super.remove          = (      void*        (*) (       IDictionary*, const IEntry*               ))    StdDictionary_remove;
 	self->super.find            = (const IEntry*      (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_find;
+	self->super.startsWith      = (const IEntry*      (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_startsWith;
 	
 	self->super.findAll         = (      IEIterator*  (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_findAll;
 	self->super.entries         = (      IEIterator*  (*) ( const IDictionary*                              ))    StdDictionary_entries;
@@ -123,6 +124,28 @@ const IEntry* StdDictionary_find( const StdDictionary* self, const IKey* key )
 		const IKey* k = e->getKey( e );
 		
 		if ( k->contentEquals( k, key ) )
+		{
+			ret = e;
+			break;
+		}
+	}
+	it->free( it );
+
+	return ret;
+}
+
+const IEntry* StdDictionary_startsWith( const StdDictionary* self, const IKey* key )
+{
+	const IEntry* ret = 0;
+
+	IPIterator* it = self->entries->positions( self->entries );
+	while ( it->hasNext( it ) )
+	{
+		const IPosition* p = it->next( it );
+		const IEntry* e = (const IEntry*) p->getElement( p );
+		const IKey* k = e->getKey( e );
+		
+		if ( k->startsWith( k, key ) )
 		{
 			ret = e;
 			break;

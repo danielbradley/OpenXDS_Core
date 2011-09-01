@@ -3,25 +3,17 @@
 #include <openxds.core.adt.std/StdSequence.h>
 #include <openxds.core.adt.std/StdADTFactory.h>
 #include <openxds.core.adt.std/StdPIterator.h>
+#include <openxds.core.adt.std/StdSequenceNode.h>
 #include <openxds.core.base/CRuntime.h>
 
-typedef struct _Node Node;
+#include <stdio.h>
 
 static void    shuffleUp( StdSequence* self, int rank );
 static void  shuffleDown( StdSequence* self, int rank );
 static void       expand( StdSequence* self );
-static void    checkRank( const StdSequence* self, int index );
-static void checkRankAdd( const StdSequence* self, int index );
+static bool    checkRank( const StdSequence* self, int index );
+static bool checkRankAdd( const StdSequence* self, int index );
 static bool       isFull( const StdSequence* self );
-
-static const E* Node_getElement( const Node* self );
-
-struct _Node
-{
-	IPosition super;
-	E*  e;
-	int i;
-};
 
 struct _StdSequence
 {
@@ -30,21 +22,27 @@ struct _StdSequence
 	int    N;
 	int    f;
 	int    b;
+	bool   freeIObjects;
 };
 
-Node* new_Node( E* anElement, int anIndex )
+static int toIndex( const StdSequence* self, int rank )
 {
-	Node* self = CRuntime_calloc( 1, sizeof( Node ) );
-	self->super.getElement = (const E* (*)( const IPosition* )) Node_getElement;
-	self->e = anElement;
-	self->i = anIndex;
-	return self;
+	return (self->f + rank) % self->N;
 }
 
-const E*
-Node_getElement( const Node* self )
+static int toRank( const StdSequence* self, int index )
 {
-	return self->e;
+	return (self->N + index - self->f) % self->N;
+}
+
+static int increment( const StdSequence* self, int index )
+{
+	return (index + 1) % self->N;
+}
+
+static int decrement( const StdSequence* self, int index )
+{
+	return (self->N + index - 1) % self->N;
 }
 
 StdSequence* new_StdSequence()
@@ -52,6 +50,9 @@ StdSequence* new_StdSequence()
 	StdSequence* self = CRuntime_calloc( 1, sizeof( StdSequence ) );
 	
 	self->super.free        = (ISequence* (*)( ISequence*     )) free_StdSequence;
+	self->super.freeAll     = (ISequence* (*)( ISequence*     )) freeAll_StdSequence;
+	
+	self->super.setFreeIObjects = (   void        (*)(       ISequence*, bool flag            )) StdSequence_setFreeIObjects;
 	
 	// Deque
 	self->super.addFirst     = (      void        (*)(       ISequence*, E*                   )) StdSequence_addFirst;
@@ -66,14 +67,14 @@ StdSequence* new_StdSequence()
 	self->super.insertLast   = (const IPosition*  (*)(       ISequence*, E*                   )) StdSequence_insertLast;
 	self->super.insertBefore = (const IPosition*  (*)(       ISequence*, const IPosition*, E* )) StdSequence_insertBefore;
 	self->super.insertAfter  = (const IPosition*  (*)(       ISequence*, const IPosition*, E* )) StdSequence_insertAfter;
-	self->super.replace      = (const E*          (*)(       ISequence*, const IPosition*, E* )) StdSequence_replace;
-	self->super.remove       = (const E*          (*)(       ISequence*, const IPosition*     )) StdSequence_remove;
+	self->super.replace      = (      E*          (*)(       ISequence*, const IPosition*, E* )) StdSequence_replace;
+	self->super.remove       = (      E*          (*)(       ISequence*, const IPosition*     )) StdSequence_remove;
 	self->super.first        = (const IPosition*  (*)( const ISequence*                       )) StdSequence_first;
 	self->super.last         = (const IPosition*  (*)( const ISequence*                       )) StdSequence_last;
 	self->super.prev         = (const IPosition*  (*)( const ISequence*, const IPosition*     )) StdSequence_previous;
 	self->super.previous     = (const IPosition*  (*)( const ISequence*, const IPosition*     )) StdSequence_previous;
 	self->super.next         = (const IPosition*  (*)( const ISequence*, const IPosition*     )) StdSequence_next;
-	self->super.positions    = (      IPIterator* (*)( const ISequence*                      )) StdSequence_positions;
+	self->super.positions    = (      IPIterator* (*)( const ISequence*                       )) StdSequence_positions;
 	
 	// Vector
 	self->super.add          = (      void        (*)(       ISequence*, int, E*              )) StdSequence_add;
@@ -93,6 +94,7 @@ StdSequence* new_StdSequence()
 	self->V = CRuntime_calloc( self->N, sizeof( Node* ) );
 	self->f = 0;
 	self->b = 0;
+	self->freeIObjects = 0;
 	
 	return self;
 }
@@ -106,12 +108,49 @@ StdSequence* free_StdSequence( StdSequence* self )
 		Node* v = self->V[i];
 		if ( v )
 		{
-			if ( v->e ) v->e = CRuntime_free( v->e );
+			if ( v->e )
+			{
+				if ( self->freeIObjects )
+				{
+					IObject* obj = (IObject*) v->e;
+					v->e = obj->free( obj );
+				}
+				else
+				{
+					v->e = CRuntime_free( v->e );
+				}
+			}
 			CRuntime_free( v );
 		}
 	}
 	CRuntime_free( self->V );
 	CRuntime_free( self );
+}
+
+StdSequence* freeAll_StdSequence( StdSequence* self )
+{
+	int i;
+	int N = self->N;
+	for ( i=0; i < N; i++ )
+	{
+		Node* v = self->V[i];
+		if ( v )
+		{
+			if ( v->e )
+			{
+				IObject* obj = (IObject*) v->e;
+				v->e = obj->free( obj );
+			}
+			CRuntime_free( v );
+		}
+	}
+	CRuntime_free( self->V );
+	CRuntime_free( self );
+}
+
+void StdSequence_setFreeIObjects( StdSequence* self, bool flag )
+{
+	self->freeIObjects = flag;
 }
 
 int StdSequence_size( const StdSequence* self )
@@ -124,14 +163,21 @@ int StdSequence_isEmpty( const StdSequence* self )
 	return (self->f == self->b);
 }
 
+//static int toRank( StdSequence* self, int index )
+//{
+//
+//}
+
 E* StdSequence_set( StdSequence* self, int r, E* e )
 {
 	E* ret = NULL;
-	checkRank( self, r );
 
-	int   i = (self->f + r) % self->N;
-	ret = self->V[i]->e;
-	self->V[i]->e = e;
+	if ( checkRank( self, r ) )
+	{
+		int   i = toIndex( self, r );// (self->f + r) % self->N;
+		ret = self->V[i]->e;
+		self->V[i]->e = e;
+	}
 	
 	return ret;
 }
@@ -140,9 +186,9 @@ IPosition* StdSequence_insertFirst( StdSequence* self, E* e )
 {
 	if ( isFull( self ) ) expand( self );
 	
-	self->f = (self->N + self->f - 1) % self->N;
+	self->f = decrement( self, self->f ); // (self->N + self->f - 1) % self->N;
 	
-	self->V[self->f] = new_Node( e, self->f );
+	self->V[self->f] = new_StdSequenceNode( e, self->f );
 	
 	return (IPosition*) self->V[self->f];
 }
@@ -153,10 +199,10 @@ IPosition* StdSequence_insertLast( StdSequence* self, E* e )
 	
 	if ( isFull( self ) ) expand( self );
 	
-	self->V[self->b] = new_Node( e, self->b );
+	self->V[self->b] = new_StdSequenceNode( e, self->b );
 	ret = (IPosition*) self->V[self->b];
 
-	self->b = (self->b + 1) % self->N;
+	self->b = increment( self, self->b ); // (self->b + 1) % self->N;
 	
 	return ret;
 }
@@ -166,7 +212,7 @@ E* StdSequence_removeFirst( StdSequence* self )
 	E* e = self->V[self->f]->e;
 	self->V[self->f] = CRuntime_free( self->V[self->f] );
 	
-	self->f = (self->f + 1) % self->N;
+	self->f = increment( self, self->f ); // (self->f + 1) % self->N;
 
 	return e;
 }
@@ -174,17 +220,14 @@ E* StdSequence_removeFirst( StdSequence* self )
 E* StdSequence_removeLast( StdSequence* self )
 {
 	int r = StdSequence_size( self ) - 1;
-	int i = (self->f + r) % self->N;
+	int i = toIndex( self, r );
 	
-	E* e = self->V[i]->e;
-	
-	self->V[i] = CRuntime_free( self->V[i] );
-	
-	self->b = i;
+	E* e       = StdSequenceNode_replaceElement( self->V[i], NULL );
+	self->V[i] = free_StdSequenceNode( self->V[i] );
+	self->b    = i;
 	
 	return e;
 }
-
 
 void StdSequence_add( StdSequence* self, int r, E* e )
 {
@@ -198,58 +241,61 @@ void StdSequence_add( StdSequence* self, int r, E* e )
 	}
 	else
 	{
+		int i = toIndex( self, r );
 		shuffleUp( self, r );
-		
-		Node* n = CRuntime_calloc( 1, sizeof( Node ) );
-		n->e = e;
-		n->i = (self->f + r) % self->N;
-
-		self->V[n->i] = n;
-		self->b = (self->b + 1) % self->N;
+		self->V[i] = new_StdSequenceNode( e, i );
+		self->b    = increment( self, self->b );
 	}
 }
 
 E* StdSequence_removeFrom( StdSequence* self, int r )
 {
 	E* ret = NULL;
-	checkRank( self, r );
-	
-	if ( 0 == r )
+	if ( checkRank( self, r ) )
 	{
-		ret = StdSequence_removeFirst( self );
-	}
-	else
-	{
-		int i = (self->f + r) % self->N;
-		E* e = self->V[i]->e;
-		CRuntime_free( self->V[i] );
-		
-		shuffleDown( self, r );
-		self->b = (self->N + self->b - 1) % self->N;
+		if ( 0 == r )
+		{
+			ret = StdSequence_removeFirst( self );
+		}
+		else
+		{
+			int i = toIndex( self, r );
+			ret   =  StdSequenceNode_replaceElement( self->V[i], NULL );
+			self->V[i] = free_StdSequenceNode( self->V[i] );
+			shuffleDown( self, r );
+			self->b = decrement( self, self->b );
+		}
 	}
 	return ret;
 }
 
 const E* StdSequence_get( const StdSequence* self, int r )
 {
-	checkRank( self, r );
-	
-	int i = (self->f + r) % self->N;
-	return self->V[i]->e;
+	const E* ret = NULL;
+	if ( checkRank( self, r ) )
+	{
+		int i = toIndex( self, r );
+		ret   = StdSequenceNode_getElement( self->V[i] );
+	}
+	return ret;
 }
 
 int StdSequence_rankOf( const StdSequence* self, const IPosition* p )
 {
-	Node* n = (Node*) p;
-	return (self->N + n->i - self->f) % self->N;
+	StdSequenceNode* n = (StdSequenceNode*) p;
+	int i   = StdSequenceNode_getIndex( n ); 
+	return toRank( self, i ); // (self->N + n->i - self->f) % self->N;
 }
 
 const IPosition* StdSequence_atRank( const StdSequence* self, int r )
 {
-	checkRank( self, r );
-
-	int i = (self->f + r) % self->N;
-	return (IPosition*) self->V[i];
+	const IPosition* p = NULL;
+	if ( checkRank( self, r ) )
+	{
+		int i = toIndex( self, r );
+		p = (const IPosition*) self->V[i];
+	}
+	return p;
 }
 
 const IPosition* StdSequence_insertBefore( StdSequence* self, const IPosition* p, E* e )
@@ -328,11 +374,11 @@ IPIterator* StdSequence_positions( const StdSequence* self )
 	StdPIterator* positions = new_StdPIterator();
 	
 	int n = StdSequence_size( self );
-	int i;
+	int r;
 	const IPosition* p = NULL;
-	for ( i=0; i < n; i++ )
+	for ( r=0; r < n; r++ )
 	{
-		p = StdSequence_next( self, p );
+		p = StdSequence_atRank( self, r );
 		StdPIterator_addPosition( positions, p );
 	}
 	return (IPIterator*) positions;
@@ -347,12 +393,11 @@ void shuffleUp( StdSequence* self, int rank )
 	int r;
 	for ( r=n-1; r >= rank; r-- )
 	{
-		int src  = (f + r) % N;
-		int dest = (f + r + 1) % N;
+		int src  = toIndex( self, r ); // (f + r) % N;
+		int dest = toIndex( self, r+1 ); //(f + r + 1) % N;
 		
 		self->V[dest] = self->V[src];
 		self->V[dest]->i = dest;
-
 		self->V[src] = NULL;
 	}
 }
@@ -364,10 +409,10 @@ void shuffleDown( StdSequence* self, int rank )
 	int N = self->N;
 	
 	int r;
-	for ( r=r; r < n-1; r++ )
+	for ( r=rank; r < n-1; r++ )
 	{
-		int dest = (f + r) % N;
-		int src  = (f + r + 1) % N;
+		int dest = toIndex( self, r );
+		int src  = toIndex( self, r+1 );
 		
 		self->V[dest] = self->V[src];
 		self->V[dest]->i = dest;
@@ -375,7 +420,6 @@ void shuffleDown( StdSequence* self, int rank )
 		self->V[src] = NULL;
 	}
 }
-
 
 void expand( StdSequence* self )
 {
@@ -387,8 +431,9 @@ void expand( StdSequence* self )
 	int r;
 	for ( r=0; r < n; r++ )
 	{
-		int i = (self->f + r) % N;
+		int i = toIndex( self, r );
 		V2[r] = self->V[i];
+		V2[r]->i = r;
 		self->V[i] = NULL;
 	}
 
@@ -399,18 +444,32 @@ void expand( StdSequence* self )
 	self->b = n;
 }
 
-void checkRank( const StdSequence* self, int r )
+bool checkRank( const StdSequence* self, int r )
 {
 	int n = StdSequence_size( self );
 
-	if ( (r < 0) || (n <= r ) ) abort();
+	if ( (r < 0) || (n <= r ) )
+	{
+//		fprintf( stderr, "StdSequence::checkRank: invalid rank." );
+//		abort();
+		return 0;
+	} else {
+		return 1;
+	}
 }
 
-void checkRankAdd( const StdSequence* self, int r )
+bool checkRankAdd( const StdSequence* self, int r )
 {
 	int n = StdSequence_size( self );
 
-	if ( (r < 0) || (n < r ) ) abort();
+	if ( (r < 0) || (n < r ) )
+	{
+//		fprintf( stderr, "StdSequence::checkRankAdd: invalid rank." );
+//		abort();
+		return 0;
+	} else {
+		return 1;
+	}
 }
 
 bool isFull( const StdSequence* self )

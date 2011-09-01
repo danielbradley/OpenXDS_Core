@@ -32,6 +32,7 @@ typedef struct _IDictionary          IDictionary;
 typedef struct _IVector              IVector;
 typedef struct _IDeque               IDeque;
 typedef struct _ISequence            ISequence;
+typedef struct _ITree                ITree;
 
 //typedef struct _ICompressionFunction ICompressionFunction;
 //typedef struct _IEdge                IEdge;

@@ -23,6 +23,7 @@ struct _IKey
 	int                     (*compareTo)( const IKey* k, const IKey* k2 );
 	int                (*compareToUsing)( const IKey* k, const IKey* k2, const IComparitor* c );
 	bool                (*contentEquals)( const IKey* k, const IKey* k2 );
+	bool                   (*startsWith)( const IKey* k, const IKey* k2 );
 	unsigned int         (*getHashValue)( const IKey* k );
 	unsigned long long (*getHashValue64)( const IKey* k );
 	const char*              (*getChars)( const IKey* k );

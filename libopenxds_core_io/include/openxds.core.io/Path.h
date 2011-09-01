@@ -56,6 +56,7 @@ struct _IPath
 	const char*           (*getAbsolute)( const IPath* self );
 	const char*                (*getURL)( const IPath* self );
 	const char*       (*getNativeFormat)( const IPath* self );
+	      int                 (*getType)( const IPath* self );
 
 	      bool           (*hasExtension)( const IPath* self, const char* ext );
 	      bool             (*isAbsolute)( const IPath* self );
@@ -67,6 +68,7 @@ struct _IPath
 
 EXPORT	IPath* new_Path( const char* location );
 EXPORT	IPath* Path_GetCurrentDirectory();
+EXPORT	char   Path_GetFileSeparator();
 
 #ifdef __cplusplus
 };

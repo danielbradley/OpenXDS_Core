@@ -9,13 +9,12 @@
 #include "openxds.core/types.h"
 #include "openxds.core.base.h"
 
-#ifdef __cplusplus
-	namespace openxds {
-		namespace core {
-			namespace base {
-	extern "C"
-	{
-#endif
+	#ifdef __cplusplus
+		namespace openxds {
+			namespace core {
+				namespace base {
+					extern "C" {
+	#endif
 
 struct _IInteger
 {
@@ -26,8 +25,7 @@ struct _IInteger
 
 EXPORT	IInteger* new_Integer( int aValue );
 
-#ifdef __cplusplus
-	}
-	};};};
-#endif
+	#ifdef __cplusplus
+		};};};};
+	#endif
 #endif

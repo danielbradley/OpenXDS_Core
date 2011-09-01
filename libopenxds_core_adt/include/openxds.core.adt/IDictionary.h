@@ -29,6 +29,7 @@ struct _IDictionary
 	E*                      (*remove)( IDictionary* self, const IEntry* entry );
 
 	const IEntry*             (*find)( const IDictionary* self, const IKey* key );
+	const IEntry*       (*startsWith)( const IDictionary* self, const IKey* key );
 	
 	IEIterator*            (*findAll)( const IDictionary* self, const IKey* key );
 	IEIterator*            (*entries)( const IDictionary* self );

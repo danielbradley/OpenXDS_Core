@@ -6,10 +6,11 @@
 #define OPENXDS_CORE_ADT_STD_H
 
 	#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace adt {
-			namespace std {
+		namespace openxds {
+			namespace core {
+				namespace adt {
+					namespace std {
+						extern "C" {
 	#endif
 
 typedef struct _StdADTFactory          StdADTFactory;
@@ -27,6 +28,7 @@ typedef struct _StdMap                 StdMap;
 typedef struct _StdDictionary          StdDictionary;
 typedef struct _StdVector              StdVector;
 typedef struct _StdSequence            StdSequence;
+typedef struct _StdTree                StdTree;
 
 //typedef struct _StdHashCode            StdHashCode;
 //typedef struct _StdHashFunction        StdHashFunction;
@@ -35,6 +37,6 @@ typedef struct _StdSequence            StdSequence;
 
 
 	#ifdef __cplusplus
-};};};};
+		};};};};};
 	#endif
 #endif

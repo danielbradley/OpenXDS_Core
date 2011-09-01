@@ -8,13 +8,12 @@
 #include "openxds.core/export.h"
 #include "openxds.core.base.h"
 
-#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace base {
-extern "C"
-{
-#endif
+	#ifdef __cplusplus
+		namespace openxds {
+			namespace core {
+				namespace base {
+					extern "C" {
+	#endif
 
 
 struct _IClock
@@ -32,10 +31,19 @@ struct _IClock
 	     unsigned long          (*getClockCyclesUsed)();
 };
 
-EXPORT	IClock* new_Clock();
+EXPORT	IClock*            new_Clock();
 
-#ifdef __cplusplus
-}
-};};};
-#endif
+EXPORT	int                Clock_GetTimeAsInt();
+EXPORT	unsigned long      Clock_GetUserTime();
+EXPORT	unsigned long      Clock_GetSystemTime();
+EXPORT	unsigned long      Clock_GetUptime();
+
+EXPORT	unsigned long long Clock_GetMicroSecondsSinceEpoch();
+EXPORT	unsigned long long Clock_GetSecondsSinceEpoch();
+
+EXPORT	unsigned long      Clock_GetClockCyclesUsed(); 
+
+	#ifdef __cplusplus
+		};};};};
+	#endif
 #endif

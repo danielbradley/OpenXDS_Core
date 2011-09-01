@@ -8,18 +8,12 @@
 #include "openxds.core/export.h"
 #include <stdarg.h>
 
-#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace base {
-extern "C"
-{
-#else
-#ifndef BOOLEAN
-#define BOOLEAN
-	typedef int bool;
-#endif
-#endif
+	#ifdef __cplusplus
+		namespace openxds {
+			namespace core {
+				namespace base {
+					extern "C" {
+	#endif
 
 /*
  *  Lifecycle functions
@@ -76,8 +70,7 @@ EXPORT int CharString_compare( const char* self, const char* other );
 EXPORT unsigned int CharString_getLength( const char* xxx );
 EXPORT unsigned int CharString_indexOfNext( const char* self, unsigned int start, char delimiter );
 
-#ifdef __cplusplus
-}
-};};};
-#endif
+	#ifdef __cplusplus
+		};};};};
+	#endif
 #endif

@@ -21,10 +21,11 @@
 
 
 	#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace adt {
-			namespace std {
+		namespace openxds {
+			namespace core {
+				namespace adt {
+					namespace std {
+						extern "C" {
 	#endif
 
 
@@ -39,7 +40,7 @@ EXPORT	const void*    StdValue_getValue( const StdValue* self );
 
 
 	#ifdef __cplusplus
-};};};};
+		};};};};};
 	#endif
 
 #endif

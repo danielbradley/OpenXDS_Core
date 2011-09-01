@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2004 Daniel Robert Bradley. All rights reserved.
+ *  Copyright (C) 2004-2011 Daniel Robert Bradley. All rights reserved.
  *
  *  This software is redistributable under the terms of the GNU LGPL
  *  (Lesser General Public License).
@@ -175,82 +175,6 @@ File_getPath( const File* self )
 {
 	return self->path;
 }
-
-/*
-int File_create( const IFile* self )
-{
-	int status;
-	if ( -1 != (status = _creat( Path_getNativeFormat( self->path ), _S_IREAD | _S_IWRITE )) )
-	{
-		close( status );
-		status = 1;
-	} else {
-		status = 0;
-	}
-	return status;	
-}
-*/
-
-/*
-int File_delete( const IFile* self )
-{
-	int status = 0;
-	if ( DeleteFile( Path_getNativeFormat( self->path ) ) )
-	{
-		status = 1;
-	}
-	return status;
-}
-*/
-
-/*
-int File_remove( const IFile* self )
-{
-	int status = 0;
-	if ( DeleteFile( Path_getNativeFormat( self->path ) ) )
-	{
-		status = 1;
-	}
-	return status;
-}
-*/
-
-/*
-bool File_copyTo( const IFile* self, const IPath* target, bool force )
-{
-	int status = 0;
-
-	BOOL bFailIfExists;
-	if ( force ) {
-		bFailIfExists = FALSE;
-	} else {
-		bFailIfExists = TRUE;
-	}
-
-	{
-	IDirectory* d = new_Directory_path( target );
-	if ( Directory_exists( d ) )
-	{
-		char* path = CharString_cat3( Path_getCommon( target ), "/", Path_getBasename( self->path ) );
-		IPath* full_target = new_Path( path );
-		
-		if ( CopyFile( Path_getNativeFormat( self->path ), Path_getNativeFormat( full_target ), bFailIfExists ) )
-		{
-			status = 1;
-		}
-		free_Path( full_target );
-		free( path );
-
-	} else {
-		if ( CopyFile( Path_getNativeFormat( self->path ), Path_getNativeFormat( target ), bFailIfExists ) )
-		{
-			status = 1;
-		}
-	}
-	}
-	return status;
-}
-*/
 
 bool File_exists( const File* self )
 {

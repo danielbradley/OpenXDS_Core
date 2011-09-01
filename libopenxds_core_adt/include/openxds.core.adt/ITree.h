@@ -1,0 +1,46 @@
+/*
+ *  Copyright (C) 2011 Daniel Robert Bradley. All rights reserved.
+ */
+
+#ifndef OPENXDS_CORE_ADT_ITREE_H
+#define OPENXDS_CORE_ADT_ITREE_H
+
+#include "openxds.core.adt.h"
+
+#include <openxds.core/IObject.h>
+
+	#ifdef __cplusplus
+		namespace openxds {
+			namespace core {
+				namespace adt {
+	#endif
+
+
+struct _ITree
+{
+	ITree*                    (*free)(       ITree* self );
+	ITree*                 (*freeAll)(       ITree* self );
+
+	const IPosition*       (*addRoot)(       ITree* self,                     E* value );
+	const IPosition*      (*addChild)(       ITree* self, const IPosition* p, E* value );
+	const IPosition*    (*addSubtree)(       ITree* self, const IPosition* p, ITree* t );
+	      E*               (*replace)(       ITree* self, const IPosition* p, E* value );
+	      E*                (*remove)(       ITree* self, const IPosition* p );
+	      ITree*      (*removeAsTree)(       ITree* self, const IPosition* p );
+
+	const IPosition*          (*root)( const ITree* self );
+	const IPosition*        (*parent)( const ITree* self, const IPosition* p );
+	      IPIterator*     (*children)( const ITree* self, const IPosition* p );
+	      bool              (*isRoot)( const ITree* self, const IPosition* p );
+	      bool          (*isInternal)( const ITree* self, const IPosition* p );
+	      bool          (*isExternal)( const ITree* self, const IPosition* p );
+		  bool           (*hasParent)( const ITree* self, const IPosition* p );
+	      bool             (*isEmpty)( const ITree* self );
+	      int                 (*size)( const ITree* self );
+};
+
+
+	#ifdef __cplusplus
+		};};};
+	#endif
+#endif

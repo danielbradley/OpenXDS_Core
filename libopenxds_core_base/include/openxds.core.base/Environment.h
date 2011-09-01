@@ -9,18 +9,12 @@
 #include "openxds.core.base.h"
 #include <stdarg.h>
 
-#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace base {
-extern "C"
-{
-#else
-#ifndef BOOLEAN
-#define BOOLEAN
-	typedef int bool;
-#endif
-#endif
+	#ifdef __cplusplus
+		namespace openxds {
+			namespace core {
+				namespace base {
+					extern "C" {
+	#endif
 
 struct _IEnvironment
 {
@@ -40,8 +34,9 @@ struct _IEnvironment
 EXPORT	IEnvironment* new_Environment( const char* argv_0 );
 EXPORT	IEnvironment* new_Environment_using( const char* argv_0, char fileSeparator );
 
-#ifdef __cplusplus
-}
-};};};
-#endif
+EXPORT	char          Environment_getFileSeparator();
+
+	#ifdef __cplusplus
+		};};};};
+	#endif
 #endif

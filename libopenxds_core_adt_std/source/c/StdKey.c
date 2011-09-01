@@ -5,6 +5,7 @@
 #include "openxds.core.adt.std/StdKey.h"
 
 #include <openxds.core.adt/IComparitor.h>
+#include <openxds.core.base/CharString.h>
 #include <openxds.core.base/CRuntime.h>
 
 #include <string.h>
@@ -26,6 +27,7 @@ Key* new_StdKey( const char* charString )
 	self->super.compareTo      = (int                (*)( const IKey*, const IKey*))                     StdKey_compareTo; 
 	self->super.compareToUsing = (int                (*)( const IKey*, const IKey*, const IComparitor*)) StdKey_compareToUsing; 
 	self->super.contentEquals  = (int                (*)( const IKey*, const IKey* ))                    StdKey_contentEquals; 
+	self->super.startsWith     = (int                (*)( const IKey*, const IKey* ))                    StdKey_startsWith; 
 	self->super.getHashValue   = (unsigned int       (*)( const IKey*))                                  StdKey_getHashValue;
 	self->super.getHashValue64 = (unsigned long long (*)( const IKey*))                                  StdKey_getHashValue64;
 	self->super.getChars       = (const char*        (*)( const IKey*))                                  StdKey_getChars;
@@ -61,6 +63,14 @@ int StdKey_compareToUsing( const Key* k, const Key* k2, const IComparitor* compa
 bool StdKey_contentEquals( const Key* k, const Key* k2 )
 {
 	return (0 == StdKey_compareTo( k, k2 ));
+}
+
+bool StdKey_startsWith( const Key* k, const Key* k2 )
+{
+	const char* k_str1 = StdKey_getChars( k );
+	const char* k_str2 = StdKey_getChars( k2 );
+	
+	return CharString_startsWith( k_str1, k_str2 );
 }
 
 unsigned int StdKey_getHashValue( const Key* k )

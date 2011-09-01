@@ -39,7 +39,7 @@ IClock* new_Clock()
 
 Clock* free_Clock( Clock* self )
 {
-	CRuntime_free( self );
+	return CRuntime_free( self );
 }
 
 void

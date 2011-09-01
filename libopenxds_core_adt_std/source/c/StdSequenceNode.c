@@ -5,14 +5,7 @@
 #include "openxds.core.adt.std/StdSequenceNode.h"
 #include "openxds.core.base/CRuntime.h"
 
-struct _StdSequenceNode
-{
-	IPosition super;
-	E*        e;
-	int       r;
-};
-
-StdSequenceNode* new_StdSequenceNode( E* anElement )
+StdSequenceNode* new_StdSequenceNode( E* anElement, int index )
 {
 	StdSequenceNode* self = CRuntime_calloc( 1, sizeof( StdSequenceNode ) );
 
@@ -21,18 +14,35 @@ StdSequenceNode* new_StdSequenceNode( E* anElement )
 	self->super.getElement = (const E*   (*)( const IPosition* )) StdSequenceNode_getElement;
 
 	self->e = anElement;
-	self->r = -1;
+	self->i = index;
 
 	return self;
 }
 
-StdSequenceNode* free_StdSequenceNode( StdSequenceNode* self )
+StdSequenceNode*
+free_StdSequenceNode( StdSequenceNode* self )
 {
 	if ( self->e ) CRuntime_free( self->e );
-	CRuntime_free( self );
+	return CRuntime_free( self );
 }
 
-const E* StdSequenceNode_getElement( const StdSequenceNode* self )
+E*
+StdSequenceNode_replaceElement( StdSequenceNode* self, E* anElement )
+{
+	E* tmp = self->e;
+	self->e = anElement;
+	return tmp;
+}
+
+const E*
+StdSequenceNode_getElement( const StdSequenceNode* self )
 {
 	return self->e;
 }
+
+int
+StdSequenceNode_getIndex( const StdSequenceNode* self )
+{
+	return self->i;
+}
+

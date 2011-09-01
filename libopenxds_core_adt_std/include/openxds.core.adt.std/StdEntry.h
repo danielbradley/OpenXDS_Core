@@ -11,10 +11,11 @@
 #include <openxds.core/types.h>
 
 	#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace adt {
-			namespace std {
+		namespace openxds {
+			namespace core {
+				namespace adt {
+					namespace std {
+						extern "C" {
 	#endif
 
 
@@ -28,6 +29,6 @@ EXPORT	const void*         StdEntry_getValue( const StdEntry* self );
 
 
 	#ifdef __cplusplus
-};};};};
+		};};};};};
 	#endif
 #endif

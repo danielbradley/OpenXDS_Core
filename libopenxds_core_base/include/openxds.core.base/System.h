@@ -9,13 +9,12 @@
 #include "openxds.core.base/Environment.h"
 #include <stdarg.h>
 
-#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace base {
-extern "C"
-{
-#endif
+	#ifdef __cplusplus
+		namespace openxds {
+			namespace core {
+				namespace base {
+					extern "C" {
+	#endif
 
 EXPORT void System_Initialize( int argc, char** argv );
 
@@ -28,8 +27,7 @@ EXPORT	char* System_Hostname();
 
 EXPORT	IEnvironment* System_GetInitialEnvironment();
 
-#ifdef __cplusplus
-}
-};};};
-#endif
+	#ifdef __cplusplus
+		};};};};
+	#endif
 #endif

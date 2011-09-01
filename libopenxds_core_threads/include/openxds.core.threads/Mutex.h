@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2004-2009 Daniel Robert Bradley. All rights reserved.
+ *  Copyright (C) 2004-2011 Daniel Robert Bradley. All rights reserved.
  *
  *  This software is redistributable under the terms of the GNU LGPL
  *  (Lesser General Public License).
@@ -14,25 +14,26 @@
 #include <openxds.core.base.h>
 #include <openxds.core.threads.h>
 
-#ifdef __cplusplus
-	namespace openxds {
-		namespace core {
-			namespace threads {
-	extern "C" {
-#endif
+	#ifdef __cplusplus
+		namespace openxds {
+			namespace core {
+				namespace threads {
+		extern "C" {
+	#endif
 
-EXPORT	Mutex* new_Mutex();
-EXPORT	void free_Mutex( Mutex* self );
+struct _IMutex
+{
+	IMutex*                (*free)( IMutex* self );
+	bool                   (*lock)( IMutex* self );
+	bool                (*tryLock)( IMutex* self );
+	bool                 (*unlock)( IMutex* self );
+	bool                (*isValid)( IMutex* self );
+};
 
-EXPORT	bool Mutex_lock( Mutex* self );
-EXPORT	bool Mutex_tryLock( Mutex* self );
-EXPORT	bool Mutex_unlock( Mutex* self );
+EXPORT	IMutex* new_Mutex();
 
-EXPORT	bool Mutex_isValid( Mutex* self );
-
-#ifdef __cplusplus
-}
-};};};
-#endif
-
+	#ifdef __cplusplus
+		}
+		};};};
+	#endif
 #endif

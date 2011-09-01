@@ -36,6 +36,19 @@ struct _Process
 	bool       exitedNormally;
 };
 
+/*
+ *	Class methods
+ */
+unsigned int Process_GetCurrentID()
+{
+	return getpid();
+}
+
+unsigned int Process_GetCurrentParentID()
+{
+	return getppid();
+}
+
 IProcess* new_Process( const char* executable, const char** arguments )
 {
 	Process* self = (Process*) CRuntime_calloc( 1, sizeof( Process ) );
@@ -228,15 +241,3 @@ bool	Process_hasExitedNormally( const Process* self )
 	return self->exitedNormally;
 }
 
-/*
- *	Class methods
- */
-unsigned int Process_GetCurrentID()
-{
-	return getpid();
-}
-
-unsigned int Process_GetCurrentParentID()
-{
-	return getppid();
-}

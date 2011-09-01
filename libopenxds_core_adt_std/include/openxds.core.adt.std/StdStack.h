@@ -13,10 +13,11 @@
 #include <openxds.core/IObject.h>
 
 	#ifdef __cplusplus
-namespace openxds {
-	namespace core {
-		namespace adt {
-			namespace std {
+		namespace openxds {
+			namespace core {
+				namespace adt {
+					namespace std {
+						extern "C" {
 	#endif
 
 
@@ -34,6 +35,6 @@ EXPORT	bool              StdStack_isEmpty( const StdStack* self );
 
 
 	#ifdef __cplusplus
-};};};};
+		};};};};};
 	#endif
 #endif

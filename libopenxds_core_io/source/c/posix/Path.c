@@ -10,7 +10,7 @@
 #include "openxds.core.io/Path.h"
 
 char
-Path_getFileSeparator()
+Path_GetFileSeparator()
 {
 	return '/';
 }
