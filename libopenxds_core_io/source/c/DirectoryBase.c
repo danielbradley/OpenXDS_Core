@@ -19,7 +19,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-static initialise( Directory* self )
+static void initialise( Directory* self )
 {
 	self->super.free              = (      IDirectory* (*)( IDirectory* ))                            free_Directory;
 	self->super.subdirectory      = (      IDirectory* (*)( const IDirectory*, const char* name ))    Directory_getPath; 

@@ -23,7 +23,7 @@
 EXPORT	Key*       new_StdKey( const char* charString );
 EXPORT	Key*     free_StdKey( Key* self );
 
-//	Implements openxds.core.adt/IKey
+/*	Implements openxds.core.adt/IKey */
 
 EXPORT	int                StdKey_compareTo( const Key* k, const Key* k2 );
 EXPORT	int                StdKey_compareToUsing( const Key* k, const Key* k2, const IComparitor* c );

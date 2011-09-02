@@ -30,9 +30,9 @@ const char* Environment_getEnvironmentVariable( const char* variable )
 	return value;
 }
 
-//----------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 //	private functions
-//----------------------------------------------------------------------------
+//--------------------------------------------------------------------------*/
 
 bool
 Environment_private_CheckExistance( const char* path, const char* filename )
@@ -65,8 +65,8 @@ bool Environment_isLink( const char* path )
 
 char* Environment_readLink( const char* path )
 {
-	int read = 0;
-	int size = 512; // Increased to 512 as OS X 10.5 does not seem to correctly error.
+	unsigned long read = 0;
+	int size = 512; /* Increased to 512 as OS X 10.5 does not seem to correctly error. */
 	char* ret = NULL;
 	char* tmp = calloc( size, sizeof(char) );
 	while ( -1 == (read = readlink( path, tmp, size - 1 )) )

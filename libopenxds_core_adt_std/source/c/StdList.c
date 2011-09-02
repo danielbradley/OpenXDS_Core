@@ -18,7 +18,7 @@ struct _StdList
 StdList* new_StdList()
 {
 	StdList* self = CRuntime_calloc( 1, sizeof( StdList ) );
-//	self->super.super.free   = (void*            (*)( IObject*))                              free_StdList;
+/*	self->super.super.free   = (void*            (*)( IObject*))                              free_StdList; */
 	self->super.free         = (IList*           (*)( IList*))                                free_StdList;
 	self->super.insertFirst  = (const IPosition* (*)( IList*, const void* ))                  StdList_insertFirst;
 	self->super.insertLast   = (const IPosition* (*)( IList*, const void* ))                  StdList_insertLast;
@@ -48,9 +48,8 @@ StdList* free_StdList( StdList* self )
 	for ( i=0; i < size; i++ )
 	{
 		const IPosition*  p = StdList_getFirst( self );
-		//const void* element =
 			StdList_remove( self, p );
-		// element is not deallocated because list is a list of references.
+		/* element is not deallocated because list is a list of references. */
 	}
 	free_StdLinkedList( self->list );
 	return CRuntime_free( self );

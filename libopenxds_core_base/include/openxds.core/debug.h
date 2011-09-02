@@ -19,19 +19,21 @@
  *	Do NOT include this file!
  */
 
-//#ifdef OPENXDS_DEBUG
-//#ifndef _WIN32
-//#define OPENXDS_USE_DEBUG_NEW_AND_DELETE
-//#endif
-//#endif
+/*
+#ifdef OPENXDS_DEBUG
+#ifndef _WIN32
+#define OPENXDS_USE_DEBUG_NEW_AND_DELETE
+#endif
+#endif
 
-//#ifndef OPENXDS_DEBUG
-//#define CRuntime_malloc	malloc
-//#define CRuntime_calloc	calloc
-//#define CRuntime_realloc	realloc
-//#define CRuntime_free		free
-//#define CRuntime_GetAllocationCount() 0
-//#define OPENXDS_BASE_PSA_DIRECT_MEMORY_ALLOCATION
-//#endif
+#ifndef OPENXDS_DEBUG
+#define CRuntime_malloc	malloc
+#define CRuntime_calloc	calloc
+#define CRuntime_realloc	realloc
+#define CRuntime_free		free
+#define CRuntime_GetAllocationCount() 0
+#define OPENXDS_BASE_PSA_DIRECT_MEMORY_ALLOCATION
+#endif
+*/
 
 #endif

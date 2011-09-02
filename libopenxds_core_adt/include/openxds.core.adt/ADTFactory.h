@@ -34,20 +34,20 @@ struct _ADTFactory
 	ITree*                   (*createTree)();
 
 
-//	IQueue*                 (*createQueue)( ADTFactory* self );
-//	IVector*               (*createVector)( ADTFactory* self );
-//	ISequence*           (*createSequence)( ADTFactory* self );
-//	IPriorityQueue* (*createPriorityQueue)( ADTFactory* self );
-//	IGraph*                 (*createGraph)( ADTFactory* self );
-//	ISearch*               (*createSearch)( ADTFactory* self );
-//
-//	ISort*                   (*createSort)( ADTFactory* self );
-//	IHashFunction*   (*createHashFunction)( ADTFactory* self );
-//	IValue*                 (*createValue)( ADTFactory* self );
+/*	IQueue*                 (*createQueue)( ADTFactory* self ); */
+/*	IVector*               (*createVector)( ADTFactory* self ); */
+/*	ISequence*           (*createSequence)( ADTFactory* self ); */
+/*	IPriorityQueue* (*createPriorityQueue)( ADTFactory* self ); */
+/*	IGraph*                 (*createGraph)( ADTFactory* self ); */
+/*	ISearch*               (*createSearch)( ADTFactory* self ); */
+
+/*	ISort*                   (*createSort)( ADTFactory* self ); */
+/*	IHashFunction*   (*createHashFunction)( ADTFactory* self ); */
+/*	IValue*                 (*createValue)( ADTFactory* self ); */
 };
 
-//EXPORT	ADTFactory* new_ADTFactory( const char* module_location );
-//EXPORT	void*       free_ADTFactory( ADTFactory* factory );
+/* EXPORT	ADTFactory* new_ADTFactory( const char* module_location ); */
+/* EXPORT	void*       free_ADTFactory( ADTFactory* factory ); */
 
 	#ifdef __cplusplus
 };};};

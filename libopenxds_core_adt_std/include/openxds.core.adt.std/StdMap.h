@@ -15,10 +15,10 @@
 	#endif
 
 
-EXPORT	StdMap*                 new_StdMap();
+EXPORT	StdMap*                 new_StdMap(void);
 EXPORT	StdMap*                free_StdMap( StdMap* self );
 
-//	Implements openxds.core.adt/IMap
+/*	Implements openxds.core.adt/IMap */
 
 EXPORT	void*                   StdMap_put(       StdMap* self, const IKey* key, void*       aValue );
 EXPORT	void*           StdMap_put_IObject(       StdMap* self, const IKey* key, IObject*    aValue );

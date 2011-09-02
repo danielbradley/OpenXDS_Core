@@ -15,10 +15,10 @@
 	#endif
 
 
-EXPORT	StdDictionary*      new_StdDictionary();
+EXPORT	StdDictionary*      new_StdDictionary(void);
 EXPORT	StdDictionary*     free_StdDictionary( StdDictionary* self );
 
-//	Implements openxds.core.adt/IMap
+/*	Implements openxds.core.adt/IMap */
 
 EXPORT	const IEntry*                StdDictionary_insert( StdDictionary* self, const IKey* key, void* aValue );
 EXPORT	const IEntry*            StdDictionary_insert_ref( StdDictionary* self, const IKey* key, const void* aValue );

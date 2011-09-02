@@ -25,9 +25,8 @@ struct _StdADTFactory
 	ADTFactory super;
 };
 
-ADTFactory*   new_StdADTFactory();
-
-StdADTFactory*  free_StdADTFactory();
+ADTFactory*      new_StdADTFactory(void);
+StdADTFactory*  free_StdADTFactory( StdADTFactory* self );
 
 IKey*               StdADTFactory_createKey( const char* key );
 
@@ -37,14 +36,14 @@ IValue*       StdADTFactory_createValue_IObject( IObject* value );
 
 IEntry*               StdADTFactory_createEntry( const IKey* key, IValue* value );
 
-IStack*               StdADTFactory_createStack();
+IStack*               StdADTFactory_createStack(void);
 IString*             StdADTFactory_createString( const char* str );
-IList*                 StdADTFactory_createList();
-IMap*                   StdADTFactory_createMap();
-IDictionary*     StdADTFactory_createDictionary();
-IVector*             StdADTFactory_createVector();
-ISequence*         StdADTFactory_createSequence();
-ITree*                 StdADTFactory_createTree();
+IList*                 StdADTFactory_createList(void);
+IMap*                   StdADTFactory_createMap(void);
+IDictionary*     StdADTFactory_createDictionary(void);
+IVector*             StdADTFactory_createVector(void);
+ISequence*         StdADTFactory_createSequence(void);
+ITree*                 StdADTFactory_createTree(void);
 
 	#ifdef __cplusplus
 		};};};};};

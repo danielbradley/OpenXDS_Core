@@ -23,7 +23,7 @@ IMutex* new_Mutex()
 	self->super.unlock  = (bool    (*)( IMutex* self )) Mutex_unlock;
 	self->super.isValid = (bool    (*)( IMutex* self )) Mutex_isValid;
 
-	self->valid = !pthread_mutex_init( &self->state, NULL );// &self->attributes );
+	self->valid = !pthread_mutex_init( &self->state, NULL );/* &self->attributes ); */
 	self->locked = 0;
 
 	return (IMutex*) self;
@@ -31,7 +31,7 @@ IMutex* new_Mutex()
 
 Mutex* free_Mutex( Mutex* self )
 {
-	CRuntime_free( self );
+	return CRuntime_free( self );
 }
 
 bool Mutex_lock( Mutex* self )
@@ -41,6 +41,7 @@ bool Mutex_lock( Mutex* self )
 		self->locked = 1;
 		return !pthread_mutex_lock( &self->state );
 	}
+	return 0;
 }
 
 bool Mutex_tryLock( Mutex* self )

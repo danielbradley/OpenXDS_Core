@@ -47,7 +47,7 @@ struct _Directory
 	openxds::adt::ISequence* fileList;
 #else
 	ISequence*               fileList;
-#endif;
+#endif
 
 };
 

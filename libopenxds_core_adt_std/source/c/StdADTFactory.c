@@ -12,7 +12,6 @@
 #include "openxds.core.adt.std/StdSequence.h"
 #include "openxds.core.adt.std/StdTree.h"
 
-
 ADTFactory* new_StdADTFactory()
 {
 	StdADTFactory* self = CRuntime_calloc( 1, sizeof( StdADTFactory ) );

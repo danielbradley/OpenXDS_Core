@@ -22,15 +22,15 @@
 
 typedef struct _Path Path;
 
-//
+/*
 //  Lifecycle functions
-//
+*/
 EXPORT	Path* free_Path( Path* self );
 EXPORT	Path* Path_copy( const Path* self );
 
-//
+/*
 //  Accessors
-//
+*/
 EXPORT	const char* Path_getCommon( const Path* self );
 EXPORT	const char* Path_getCondensed( const Path* self );
 EXPORT	const char* Path_getProtocol( const Path* self );

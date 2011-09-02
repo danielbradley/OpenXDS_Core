@@ -54,7 +54,7 @@ StdSequence* new_StdSequence()
 	
 	self->super.setFreeIObjects = (   void        (*)(       ISequence*, bool flag            )) StdSequence_setFreeIObjects;
 	
-	// Deque
+	/* Deque */
 	self->super.addFirst     = (      void        (*)(       ISequence*, E*                   )) StdSequence_addFirst;
 	self->super.addLast      = (      void        (*)(       ISequence*, E*                   )) StdSequence_addLast;
 	self->super.removeFirst  = (      E*          (*)(       ISequence*                       )) StdSequence_removeFirst;
@@ -62,7 +62,7 @@ StdSequence* new_StdSequence()
 	self->super.getFirst     = (const E*          (*)( const ISequence*                       )) StdSequence_getFirst;
 	self->super.getLast      = (const E*          (*)( const ISequence*                       )) StdSequence_getLast;
 
-	// List
+	/* List */
 	self->super.insertFirst  = (const IPosition*  (*)(       ISequence*, E*                   )) StdSequence_insertFirst;
 	self->super.insertLast   = (const IPosition*  (*)(       ISequence*, E*                   )) StdSequence_insertLast;
 	self->super.insertBefore = (const IPosition*  (*)(       ISequence*, const IPosition*, E* )) StdSequence_insertBefore;
@@ -76,17 +76,17 @@ StdSequence* new_StdSequence()
 	self->super.next         = (const IPosition*  (*)( const ISequence*, const IPosition*     )) StdSequence_next;
 	self->super.positions    = (      IPIterator* (*)( const ISequence*                       )) StdSequence_positions;
 	
-	// Vector
+	/* Vector */
 	self->super.add          = (      void        (*)(       ISequence*, int, E*              )) StdSequence_add;
 	self->super.set          = (      E*          (*)(       ISequence*, int, E*              )) StdSequence_set;
 	self->super.removeFrom   = (      E*          (*)(       ISequence*, int                  )) StdSequence_removeFrom;
 	self->super.get          = (const E*          (*)( const ISequence*, int                  )) StdSequence_get;
 	
-	// Bridging
+	/* Bridging */
 	self->super.rankOf       = (      int         (*)( const ISequence*, const IPosition*     )) StdSequence_rankOf;
 	self->super.atRank       = (const IPosition*  (*)( const ISequence*, int                  )) StdSequence_atRank;
 	
-	// Common
+	/* Common */
 	self->super.size         = (      int         (*)( const ISequence*                       )) StdSequence_size;
 	self->super.isEmpty      = (      bool        (*)( const ISequence*                       )) StdSequence_isEmpty;
 	
@@ -124,7 +124,7 @@ StdSequence* free_StdSequence( StdSequence* self )
 		}
 	}
 	CRuntime_free( self->V );
-	CRuntime_free( self );
+	return CRuntime_free( self );
 }
 
 StdSequence* freeAll_StdSequence( StdSequence* self )
@@ -145,7 +145,7 @@ StdSequence* freeAll_StdSequence( StdSequence* self )
 		}
 	}
 	CRuntime_free( self->V );
-	CRuntime_free( self );
+	return CRuntime_free( self );
 }
 
 void StdSequence_setFreeIObjects( StdSequence* self, bool flag )
@@ -163,10 +163,12 @@ int StdSequence_isEmpty( const StdSequence* self )
 	return (self->f == self->b);
 }
 
-//static int toRank( StdSequence* self, int index )
-//{
-//
-//}
+/*
+static int toRank( StdSequence* self, int index )
+{
+
+}
+*/
 
 E* StdSequence_set( StdSequence* self, int r, E* e )
 {
@@ -174,7 +176,7 @@ E* StdSequence_set( StdSequence* self, int r, E* e )
 
 	if ( checkRank( self, r ) )
 	{
-		int   i = toIndex( self, r );// (self->f + r) % self->N;
+		int   i = toIndex( self, r ); /* (self->f + r) % self->N; */
 		ret = self->V[i]->e;
 		self->V[i]->e = e;
 	}
@@ -186,7 +188,7 @@ IPosition* StdSequence_insertFirst( StdSequence* self, E* e )
 {
 	if ( isFull( self ) ) expand( self );
 	
-	self->f = decrement( self, self->f ); // (self->N + self->f - 1) % self->N;
+	self->f = decrement( self, self->f ); /* (self->N + self->f - 1) % self->N; */
 	
 	self->V[self->f] = new_StdSequenceNode( e, self->f );
 	
@@ -202,7 +204,7 @@ IPosition* StdSequence_insertLast( StdSequence* self, E* e )
 	self->V[self->b] = new_StdSequenceNode( e, self->b );
 	ret = (IPosition*) self->V[self->b];
 
-	self->b = increment( self, self->b ); // (self->b + 1) % self->N;
+	self->b = increment( self, self->b ); /* (self->b + 1) % self->N; */
 	
 	return ret;
 }
@@ -212,7 +214,7 @@ E* StdSequence_removeFirst( StdSequence* self )
 	E* e = self->V[self->f]->e;
 	self->V[self->f] = CRuntime_free( self->V[self->f] );
 	
-	self->f = increment( self, self->f ); // (self->f + 1) % self->N;
+	self->f = increment( self, self->f ); /* (self->f + 1) % self->N; */
 
 	return e;
 }
@@ -284,7 +286,7 @@ int StdSequence_rankOf( const StdSequence* self, const IPosition* p )
 {
 	StdSequenceNode* n = (StdSequenceNode*) p;
 	int i   = StdSequenceNode_getIndex( n ); 
-	return toRank( self, i ); // (self->N + n->i - self->f) % self->N;
+	return toRank( self, i ); /* (self->N + n->i - self->f) % self->N; */
 }
 
 const IPosition* StdSequence_atRank( const StdSequence* self, int r )
@@ -387,14 +389,12 @@ IPIterator* StdSequence_positions( const StdSequence* self )
 void shuffleUp( StdSequence* self, int rank )
 {
 	int n = StdSequence_size( self );
-	int f = self->f;
-	int N = self->N;
 	
 	int r;
 	for ( r=n-1; r >= rank; r-- )
 	{
-		int src  = toIndex( self, r ); // (f + r) % N;
-		int dest = toIndex( self, r+1 ); //(f + r + 1) % N;
+		int src  = toIndex( self, r ); /* (f + r) % N; */
+		int dest = toIndex( self, r+1 ); /*(f + r + 1) % N; */
 		
 		self->V[dest] = self->V[src];
 		self->V[dest]->i = dest;
@@ -405,9 +405,7 @@ void shuffleUp( StdSequence* self, int rank )
 void shuffleDown( StdSequence* self, int rank )
 {
 	int n = StdSequence_size( self );
-	int f = self->f;
-	int N = self->N;
-	
+
 	int r;
 	for ( r=rank; r < n-1; r++ )
 	{
@@ -450,8 +448,8 @@ bool checkRank( const StdSequence* self, int r )
 
 	if ( (r < 0) || (n <= r ) )
 	{
-//		fprintf( stderr, "StdSequence::checkRank: invalid rank." );
-//		abort();
+/*		fprintf( stderr, "StdSequence::checkRank: invalid rank." ); */
+/*		abort(); */
 		return 0;
 	} else {
 		return 1;
@@ -464,8 +462,8 @@ bool checkRankAdd( const StdSequence* self, int r )
 
 	if ( (r < 0) || (n < r ) )
 	{
-//		fprintf( stderr, "StdSequence::checkRankAdd: invalid rank." );
-//		abort();
+/*		fprintf( stderr, "StdSequence::checkRankAdd: invalid rank." ); */
+/*		abort(); */
 		return 0;
 	} else {
 		return 1;

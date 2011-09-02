@@ -12,8 +12,6 @@
 #include <stdio.h>
 #include <sys/stat.h>
 
-static const char* EMPTY_STRING = "";
-
 struct _Environment
 {
 	IEnvironment super;
@@ -67,9 +65,10 @@ Environment_initialise( Environment* self, const char* argv_0, char fileSeparato
 		{
 			if ( 0 == CharString_compare( exe_dirname, "." ) )
 			{
-				//	If dirname( argv[0] ) is . either the executable was run
+				/*	If dirname( argv[0] ) is . either the executable was run
 				//	from the current directory, or via the $PATH.
-
+				*/
+				
 				if ( CharString_startsWith( argv_0, "." ) )
 				{
 					self->directoryContainingExecutable = System_CurrentDirectory();
@@ -79,7 +78,9 @@ Environment_initialise( Environment* self, const char* argv_0, char fileSeparato
 				
 				if ( NULL == self->directoryContainingExecutable )
 				{
+					/*
 					//	Could not find executable on path!, assuming it is because program
+					*/
 					fprintf( stdout, "Could not find executable directory! assuming current directory!\n" );
 					self->directoryContainingExecutable = System_CurrentDirectory();
 				}
@@ -103,8 +104,10 @@ Environment_initialise( Environment* self, const char* argv_0, char fileSeparato
 
 		self->executableLocation = CharString_cat3( self->directoryContainingExecutable, ifs, self->executableName );
 
+		/*
 		//	Now need to determine if exe location is link if so find where it points
 		//	and reset
+		*/
 		
 		while ( Environment_isLink( self->executableLocation ) )
 		{
@@ -159,7 +162,7 @@ Environment_searchPathFor( const Environment* self, const char* file )
 				if ( Environment_private_CheckExistance( p, file ) )
 				{
 					dir = p;
-					i = length; // exit loop
+					i = length; /* exit loop */
 				} else {
 					free_CharString( p );
 					last = i+1;

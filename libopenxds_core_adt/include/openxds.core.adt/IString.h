@@ -18,22 +18,22 @@ struct _IString
 {
 	IString*             (*free)( IString* self );
 
-	//	Allocating functions
+	/*	Allocating functions */
 	IString*             (*copy)( const IString* self );
 	IString*        (*substring)( const IString* self, int start, int length );
 	IString* (*removeWhitespace)( const IString* self );
 	IString*          (*between)( const IString* self, const char* prefix, const char* postfix );
 	IString*            (*token)( const IString* self, int start, const char* delimiter );
 
-	//	Path related helper allocation fuctions
+	/*	Path related helper allocation fuctions */
 	IString*         (*basename)( const IString* self, char ifs );
 	IString*          (*dirname)( const IString* self, char ifs );
 
-	//	Accessor functions
+	/*	Accessor functions */
 	char            (*charAt)( const IString* self, int i );
 	const char*   (*getChars)( const IString* self );
 	
-	//	Boolean functions
+	/*	Boolean functions */
 	bool          (*contains)( const IString* self, const char* str );
 	bool        (*startsWith)( const IString* self, const char* str );
 	bool          (*endsWith)( const IString* self, const char* str );

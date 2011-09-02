@@ -26,7 +26,7 @@ IClock* new_Clock()
 	self->super.start                     = (               void  (*)(       IClock* )) Clock_start;
 	self->super.stop                      = (               void  (*)(       IClock* )) Clock_stop;
 	self->super.getInterval               = ( unsigned long long  (*)( const IClock* )) Clock_getInterval;
-	self->super.getTimeAsInt              = (                int  (*)())                Clock_GetTimeAsInt;
+	self->super.getTimeAsInt              = (               long  (*)())                Clock_GetTimeAsInt;
 	self->super.getMicroSecondsSinceEpoch = ( unsigned long long  (*)())                Clock_GetMicroSecondsSinceEpoch;
 	self->super.getSecondsSinceEpoch      = ( unsigned long long  (*)())                Clock_GetSecondsSinceEpoch;
 	self->super.getClockCyclesUsed        = ( unsigned long       (*)())                Clock_GetClockCyclesUsed;
@@ -80,7 +80,7 @@ Clock_getInterval( const Clock* self )
 /*
  *  Class Methods
  */
-int Clock_GetTimeAsInt()
+long Clock_GetTimeAsInt()
 {
 	return time( NULL );
 }

@@ -14,7 +14,7 @@
 						extern "C" {
 	#endif
 
-EXPORT	      StdTree*             new_StdTree();
+EXPORT	      StdTree*             new_StdTree(void);
 
 EXPORT	      StdTree*            free_StdTree(       StdTree* self );
 EXPORT	      StdTree*         freeAll_StdTree(       StdTree* self );

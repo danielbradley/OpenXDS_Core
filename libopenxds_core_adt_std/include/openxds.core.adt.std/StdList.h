@@ -18,7 +18,7 @@
 						extern "C" {
 	#endif
 
-EXPORT	StdList*                     new_StdList();
+EXPORT	StdList*                     new_StdList(void);
 EXPORT	StdList*                    free_StdList( StdList* self );
 
 EXPORT	const IPosition*     StdList_insertFirst( StdList* self, const void* anElement );

@@ -22,7 +22,7 @@ struct _IClock
 	              void                       (*start)(       IClock* self );
 	              void                        (*stop)(       IClock* self );
 	unsigned long long                 (*getInterval)( const IClock* self );
-	               int                (*getTimeAsInt)();
+	              long                (*getTimeAsInt)();
 	     unsigned long                 (*getUserTime)();
 	     unsigned long               (*getSystemTime)();
 	     unsigned long                   (*getUptime)();
@@ -33,7 +33,7 @@ struct _IClock
 
 EXPORT	IClock*            new_Clock();
 
-EXPORT	int                Clock_GetTimeAsInt();
+EXPORT	long               Clock_GetTimeAsInt();
 EXPORT	unsigned long      Clock_GetUserTime();
 EXPORT	unsigned long      Clock_GetSystemTime();
 EXPORT	unsigned long      Clock_GetUptime();

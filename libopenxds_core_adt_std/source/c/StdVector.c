@@ -19,7 +19,6 @@ static void enlarge( StdVector* self )
 {
 	IValue** V = self->V;
 	int      f = self->f;
-    int      b = self->b;
 	int      N = self->N;
 	int      n = StdVector_size( self );
 
@@ -77,7 +76,7 @@ StdVector* free_StdVector( StdVector* self )
 		if ( NULL != V[i] ) V[i]->free( V[i] );
 	}
 	CRuntime_free( self->V );
-	CRuntime_free( self );
+	return CRuntime_free( self );
 }
 
 bool StdVector_isEmpty( const StdVector* self )
@@ -90,7 +89,7 @@ int StdVector_size( const StdVector* self )
 	return (self->N - self->f + self->b) % self->N;
 }
 
-bool isFull( const StdVector* self )
+static bool isFull( const StdVector* self )
 {
 	return ( StdVector_size( self ) == (self->N - 1) );
 }
@@ -100,7 +99,6 @@ E* StdVector_set( StdVector* self, int r, const E* element )
 	E* ret = NULL;
 
 	int      f = self->f;
-	int      b = self->b;
 	int      N = self->N;
 	IValue** V = self->V;
 	
@@ -116,7 +114,6 @@ E* StdVector_set( StdVector* self, int r, const E* element )
 const E* StdVector_get( const StdVector* self, int r )
 {
 	int      f = self->f;
-    int      b = self->b;
 	int      N = self->N;
 	IValue** V = self->V;
 	
@@ -126,7 +123,7 @@ const E* StdVector_get( const StdVector* self, int r )
 	return V[i]->getValue( V[i] );
 }
 
-void addValue( StdVector* self, int r, IValue* v )
+static void addValue( StdVector* self, int r, IValue* v )
 {
 	int n = StdVector_size( self );
 	

@@ -20,15 +20,15 @@ void CTest_PrintResult( const char* id, bool result )
 int CTest_TestFunction( const char* id, bool(*function)() )
 {
 	int status;
-	int mem = CRuntime_GetAllocationCount();
+	unsigned long mem = CRuntime_GetAllocationCount();
 	status = function();
 	mem = CRuntime_GetAllocationCount() - mem;
 	
 	if ( status )
 	{
-		fprintf( stdout, "<test result=\"passed\" mem=\"%i\" id=\"%s\"/>\n", mem, id );
+		fprintf( stdout, "<test result=\"passed\" mem=\"%li\" id=\"%s\"/>\n", mem, id );
 	} else {
-		fprintf( stdout, "<test result=\"FAILED\" mem=\"%i\" id=\"%s\"/>\n", mem, id );
+		fprintf( stdout, "<test result=\"FAILED\" mem=\"%li\" id=\"%s\"/>\n", mem, id );
 	}
 	return status;
 }

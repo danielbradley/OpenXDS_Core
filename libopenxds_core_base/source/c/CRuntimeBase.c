@@ -50,7 +50,7 @@ void* CRuntime_recalloc_type( void* ptr, size_t oldSize, size_t newSize, size_t 
 	
 	if ( new_mem )
 	{
-		unsigned int max = oldSize * type;
+		unsigned long max = oldSize * type;
 		unsigned int i;
 		for ( i=0; i < max; i++ )
 		{

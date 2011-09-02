@@ -31,7 +31,7 @@ struct _IConditionVariable
 	bool                (*timedWait)( IConditionVariable* self, IMutex* aMutex );
 };
 
-EXPORT	IConditionVariable* new_ConditionVariable();
+EXPORT	IConditionVariable* new_ConditionVariable(void);
 
 
 	#ifdef __cplusplus

@@ -6,10 +6,12 @@
 #include <openxds.core.adt/IList.h>
 #include <openxds.core.adt/IPosition.h>
 
-const char* libopenxds_core_adt_version()
-{
-	return "2.0.0";
-}
+//const char* libopenxds_core_adt_version();
+//
+//const char* libopenxds_core_adt_version()
+//{
+//	return "2.0.0";
+//}
 
 static const char* GetLibraryName()
 {

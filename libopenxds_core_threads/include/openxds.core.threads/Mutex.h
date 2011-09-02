@@ -30,7 +30,7 @@ struct _IMutex
 	bool                (*isValid)( IMutex* self );
 };
 
-EXPORT	IMutex* new_Mutex();
+EXPORT	IMutex* new_Mutex(void);
 
 	#ifdef __cplusplus
 		}

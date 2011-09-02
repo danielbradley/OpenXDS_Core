@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include <sys/stat.h>
 
-static initialise( File* self )
+static void initialise( File* self )
 {
 	self->super.free                = (       IFile* (*)(       IFile* ))                     free_File;
 	self->super.open                = (         int  (*)(       IFile*, const char* access )) File_open;
@@ -66,11 +66,11 @@ new_File_path( const IPath* path )
 void
 free_File( File* self )
 {
-	if ( self->path ) free_Path( self->path );
+	if ( self->path ) self->path->free( self->path );
 	if ( self->stream && self->closeOnFree ) File_close( self );
-	if ( self->times.lastAccess ) free_Time( self->times.lastAccess );
-	if ( self->times.lastModification ) free_Time( self->times.lastModification );
-	if ( self->times.lastChange ) free_Time( self->times.lastChange );
+	if ( self->times.lastAccess )       self->times.lastAccess->free( self->times.lastAccess );
+	if ( self->times.lastModification ) self->times.lastModification->free( self->times.lastModification );
+	if ( self->times.lastChange )       self->times.lastChange->free( self->times.lastChange );
 	CRuntime_free( self );
 }
 
@@ -153,10 +153,10 @@ File_readCharacters( File* self )
 	return buffer;
 }
 
-unsigned int
-File_read( const File* self, byte* buffer, unsigned int bufferSize )
+unsigned long
+File_read( const File* self, byte* buffer, unsigned long bufferSize )
 {
-	unsigned int read = fread( buffer, 1, bufferSize, self->stream );
+	unsigned long read = fread( buffer, 1, bufferSize, self->stream );
 	if ( feof( self->stream ) )
 	{
 		((File*)self)->eof = 1;
@@ -164,8 +164,8 @@ File_read( const File* self, byte* buffer, unsigned int bufferSize )
 	return read;
 }
 
-unsigned int
-File_write( File* self, const byte* buffer, unsigned int bufferSize )
+unsigned long
+File_write( File* self, const byte* buffer, unsigned long bufferSize )
 {
 	return fwrite( buffer, bufferSize, 1, self->stream );
 }
@@ -259,7 +259,7 @@ IFile* File_GetFileForStandardDescriptor( flags stream )
 	File* self = CRuntime_calloc( 1, sizeof( File ) );
 	initialise( self );
 
-	self->path = new_Path( NameForDescriptor( stream ) );
+	self->path = new_Path( NameForDescriptor( (int) stream ) );
 	self->closeOnFree = 0;
 	
 	switch( stream )

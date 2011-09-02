@@ -16,7 +16,7 @@
 	#endif
 
 EXPORT	StdString*              new_StdString( const char* str );
-EXPORT	StdString* new_StdString_start_length( const char* str, int start, int length );
+EXPORT	StdString* new_StdString_start_length( const char* str, long start, long length );
 
 EXPORT	StdString*             free_StdString( StdString* self );
 
@@ -38,7 +38,7 @@ EXPORT	bool               StdString_endsWith( const StdString* self, const char*
 EXPORT	bool                StdString_matches( const StdString* self, const char* str );
 
 EXPORT	int                 StdString_compare( const StdString* self, const char* str );
-EXPORT	int               StdString_getLength( const StdString* self );
+EXPORT	long              StdString_getLength( const StdString* self );
 EXPORT	int             StdString_indexOfNext( const StdString* self, int start, const char* delimiter );
 
 	#ifdef __cplusplus

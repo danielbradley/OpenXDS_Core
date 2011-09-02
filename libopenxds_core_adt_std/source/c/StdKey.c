@@ -33,7 +33,7 @@ Key* new_StdKey( const char* charString )
 	self->super.getChars       = (const char*        (*)( const IKey*))                                  StdKey_getChars;
 	self->super.copy           = (IKey*              (*)( const IKey*))                                  StdKey_copy;
 
-	int len = strlen( charString );
+	long len = strlen( charString );
 	self->value = CRuntime_calloc( len + 1, sizeof( char ) );
 	self->value = strncpy( self->value, charString, len );
 	

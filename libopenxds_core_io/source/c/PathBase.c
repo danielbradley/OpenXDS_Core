@@ -17,6 +17,7 @@
 
 #include <strings.h>
 #include <unistd.h>
+#include <ctype.h>
 
 static void Path_initialise( Path* self, const char* location );
 static void new_Path_UNC( Path* self, const char* location );
@@ -50,8 +51,9 @@ struct _Path
 
 	char* native;
 
-//	char* unc;
+/*	char* unc;
 //	char* url;
+*/
 	int   type;
 };
 
@@ -83,7 +85,7 @@ IPath* new_Path( const char* location )
 	self->super.getAbsolute            = (const char* (*) ( const IPath* )) Path_getAbsolute;
 	self->super.getNativeFormat        = (const char* (*) ( const IPath* )) Path_getNativeFormat;
 	self->super.getType                = (      int   (*) ( const IPath* )) Path_getType;
-//	self->super.getURL                 = (const char* (*) ( const IPath* )) Path_getURL;
+/*	self->super.getURL                 = (const char* (*) ( const IPath* )) Path_getURL; */
 
 	self->super.hasExtension           = (bool        (*) ( const IPath*, const char* ext )) Path_hasExtension;
 	self->super.isAbsolute             = (bool        (*) ( const IPath* )) Path_isAbsolute;
@@ -110,29 +112,33 @@ Path* free_Path( Path* self )
 	self->dirname   = free_CharString( self->dirname );
 	self->extension = free_CharString( self->extension );
 	self->native    = free_CharString( self->native );
-//	self->unc       = free_CharString( self->unc );
+/*	self->unc       = free_CharString( self->unc );
 //	self->url       = free_CharString( self->url );
-
+*/
 	return (Path*) CRuntime_free( self );
 }
 
 void
 Path_initialise( Path* self, const char* location )
 {
+	/*
 	//	URL		://		file://HOSTNAME/C:/home/Johnny/documents		/HOSTNAME/home/
 	//	POSIX			/home/Johnny/documents				Johnny\documents
 
 	//	UNC		\\		\\\C\home\Johnny\documents
 	//	WINDOWS	:		C:\home\Johnny\documents			C:Johnny\documents
-
+	*/
+	
 	if ( CharString_contains( location, "://" ) )
 	{
 		new_Path_URL( self, location );
 	}
+/*
 //	else if ( CharString_contains( location, "\\\\" ) || CharString_contains( location, "//" ) )
 //	{
 //		return new_Path_UNC( location );
 //	}
+*/
 	else
 	{
 		new_Path_WinPOSIX( self, location );
@@ -151,8 +157,10 @@ Path_initialise( Path* self, const char* location )
 void
 new_Path_URL( Path* self, const char* location )
 {
+	/*
 	//	URL				file://hostname/C:/home/Johnny/documents		/HOSTNAME/home/
-
+	*/
+	
 	unsigned int pci;
 	unsigned int hsi;
 	unsigned int vci;
@@ -160,57 +168,65 @@ new_Path_URL( Path* self, const char* location )
 
 	self->type = OPENXDS_CORE_IO_TYPE_NONE;
 
+	/*
 	//	Here we remove whitespace - removed spaces at start and end,
 	//	and replaced newlines with null terminators.
+	*/
 	{
-		self->original = CharString_removeWhitespace( location );						// 2
+		self->original = CharString_removeWhitespace( location );						/* 2 */
 	}
 
+	/*
 	//	Extract protocol from before '://'
+	*/
 	{
 		pci = CharString_indexOfNext( self->original, 0, ':' );
 		if ( ('/' == self->original[pci+1]) && ('/' == self->original[pci+2]) )
 		{
-			self->protocol = CharString_substring( self->original, 0, pci-1 );				// 3
+			self->protocol = CharString_substring( self->original, 0, pci-1 );				/* 3 */
 		} else {
 			self->protocol = new_CharString("");
 		}
 		pci += 3;
 	}
 
+	/*
 	//	Extract the hostname, if specified.
+	*/
 	{
 		hsi = CharString_indexOfNext( self->original, pci, '/' );
 
 		if ( pci < (hsi-1) )
 		{
-			self->hostname = CharString_substring( self->original, pci, hsi - 1 );				// 4
+			self->hostname = CharString_substring( self->original, pci, hsi - 1 );				/* 4 */
 		} else {
-			self->hostname = new_CharString( "" );												// 4
+			self->hostname = new_CharString( "" );												/* 4 */
 		}
 		hsi++;
 	}
 
+	/*
 	//	Extract windows drive label, if specified.
+	*/
 
 	vci = CharString_indexOfNext( self->original, hsi, ':' );
 	psi = CharString_indexOfNext( self->original, hsi, '/' );
 
 	if ( vci < psi )
 	{
-		Path_setVolume( self, CharString_substring( self->original, hsi, vci ) );			// 5
+		Path_setVolume( self, CharString_substring( self->original, hsi, vci ) );			/* 5 */
 		self->common    = new_CharString( (const char*) &self->original[psi] );
-		self->condensed = Path_condensePath( self->common );					// 6
-		self->absolute  = CharString_cat2( self->volume, self->condensed );				// 7
+		self->condensed = Path_condensePath( self->common );					/* 6 */
+		self->absolute  = CharString_cat2( self->volume, self->condensed );				/* 7 */
 	} else {
-		Path_setVolume( self, new_CharString( "" ) );							// 5
+		Path_setVolume( self, new_CharString( "" ) );							/* 5 */
 		self->common    = new_CharString( (const char*) &self->original[hsi-1] );
-		self->condensed = Path_condensePath( self->common );					// 6
+		self->condensed = Path_condensePath( self->common );					/* 6 */
 		if ( CharString_getLength( self->volume ) )
 		{
-			self->absolute = CharString_cat2( self->volume, self->condensed );			// 7
+			self->absolute = CharString_cat2( self->volume, self->condensed );			/* 7 */
 		} else {
-			self->absolute = new_CharString( self->condensed );					// 7
+			self->absolute = new_CharString( self->condensed );					/* 7 */
 		}
 	}
 }
@@ -261,12 +277,15 @@ new_Path_WinPOSIX( Path* self, const char* location )
 		free_CharString( tmp );
 	}
 
+	/*
 	//if ( CharString_contains( self->absolute, "/.." ) )
 	//{
 	//	self->type = OPENOCL_IO_PSA_TYPE_FS_DIRECTORY_SUPER;
 	//}
+	*/
 }
 
+/*
 //IPath* new_Path_UNC( const char* location )
 //{
 //	//	UNC				\\\C\home\Johnny\documents
@@ -314,11 +333,15 @@ new_Path_WinPOSIX( Path* self, const char* location )
 //
 //	return self;
 //}
+*/
 
+/*
 ////-----------------------------------------------------------------------------
 ////	const functions
 ////-----------------------------------------------------------------------------
+*/
 
+/*
 //bool Path_isAbsolute( const IPath* self )
 //{
 //	int absolute = 0;
@@ -426,7 +449,6 @@ new_Path_WinPOSIX( Path* self, const char* location )
 //	return relative;
 //}
 //
-///*
 //const char* Path_getNativeFormat( const IPath* self )
 //{
 //	if ( NULL == self->native )
@@ -437,8 +459,7 @@ new_Path_WinPOSIX( Path* self, const char* location )
 //	}
 //	return self->native;
 //}
-//*/
-//
+*/
 
 
 void
@@ -464,13 +485,17 @@ char* Path_condensePath( const char* location )
 	{
 		CharString_replace( path, '\\', '/' );
 
+		/*
 		//	Add each directory onto a stack removing '.' and also
 		//	parent if '..' is encountred.
-
+		*/
+		
 		ISequence* seq = collapseIntoSequence( (const char*) path );
 		{
+			/*
 			//	Extract directories from sequence and form into path
-		
+			*/
+			
 			canonical_path = ( '/' == path[0] ) ? new_CharString( "/" ) : new_CharString( "" );
 			
 			while ( ! seq->isEmpty( seq ) )
@@ -509,7 +534,7 @@ char* Path_condensePath( const char* location )
 			{
 			case '\0':
 				loop = 0;
-				// Intentional fall through
+				/* Intentional fall through */
 			case '/':
 				if ( (now != last) && (now != (last + 1) ) )
 				{
@@ -535,7 +560,7 @@ char* Path_condensePath( const char* location )
 					}
 				}
 				last = now;
-				// Intentional fall through
+				/* Intentional fall through */
 			default:
 				now++;
 			}
@@ -605,6 +630,7 @@ Path_getAbsolute( const Path* self )
 	return self->absolute;
 }
 
+/*
 //const char*
 //Path_getUNC( const Path* self )
 //{
@@ -616,6 +642,7 @@ Path_getAbsolute( const Path* self )
 //{
 //	return self->url;
 //}
+*/
 
 const char*
 Path_getNativeFormat( const Path* self )
@@ -635,17 +662,21 @@ Path_isAbsolute( const Path* self )
 	return ('/' == self->original[0]);
 }
 
+/*
 bool
 Path_isLink( const Path* self )
 {
 	return 0;
 }
+*/
 
+/*
 bool
 Path_exists( const Path* self )
 {
 	return 0;
 }
+*/
 
 bool
 Path_getType( const Path* self )
@@ -653,6 +684,7 @@ Path_getType( const Path* self )
 	return self->type;
 }
 
+/*
 char*
 Path_relativeTo( const Path* self, const char* location )
 {}
@@ -676,10 +708,13 @@ Path_revertCurrentDirectory( const char* location )
 void
 Path_clearDirectoryHistory()
 {}
+*/
 
 char*
 Path_convertToNative( const char* location )
-{}
+{
+	return "";
+}
 
 char* Path_extractBasename( const char* common )
 {
@@ -713,20 +748,20 @@ char* Path_extractDirname( const char* common )
 	char* tmp = CharString_copy( common );
 	{
 
-		//
+		/*
 		//	First remove any trailing /'s
-		//
+		*/
 
-		unsigned int length = strlen(tmp);
+		unsigned long length = strlen(tmp);
 		while ( (length > 1) && (ifs == tmp[length - 1]) )
 		{
 			tmp[length - 1] = '\0';
 			length--;
 		}
 
-		//
+		/*
 		//	Next remove everything including the / that is reached
-		//
+		*/
 		while ( (length > 1) && (ifs != tmp[length - 1]) )
 		{
 			tmp[length - 1] = '\0';
@@ -745,7 +780,7 @@ char* Path_extractExtension( const char* condensed )
 {
 	char* ext = NULL;
 
-	int len = strlen( condensed );
+	int len = (int) strlen( condensed );
 	int i   = len;
 
 	while ( (i >= 0) && ('.' != condensed[i]) )

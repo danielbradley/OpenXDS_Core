@@ -15,7 +15,7 @@ namespace openxds {
 
 typedef struct _ADTFactory  ADTFactory;
 
-//typedef struct _IArray               IArray;
+/* typedef struct _IArray               IArray; */
 typedef struct _IComparitor          IComparitor;
 typedef struct _IIterator            IIterator;
 typedef struct _IEIterator           IEIterator;
@@ -34,16 +34,16 @@ typedef struct _IDeque               IDeque;
 typedef struct _ISequence            ISequence;
 typedef struct _ITree                ITree;
 
-//typedef struct _ICompressionFunction ICompressionFunction;
-//typedef struct _IEdge                IEdge;
-//typedef struct _IGraph               IGraph;
-//typedef struct _IHashCode            IHashCode;
-//typedef struct _IHashFunction        IHashFunction;
-//typedef struct _IPriorityQueue       IPriorityQueue;
-//typedef struct _IQueue               IQueue;
-//typedef struct _ISearch              ISearch;
-//typedef struct _ISort                ISort;
-//typedef struct _IVertex              IVertex;
+/* typedef struct _ICompressionFunction ICompressionFunction; */
+/* typedef struct _IEdge                IEdge; */
+/* typedef struct _IGraph               IGraph; */
+/* typedef struct _IHashCode            IHashCode; */
+/* typedef struct _IHashFunction        IHashFunction; */
+/* typedef struct _IPriorityQueue       IPriorityQueue; */
+/* typedef struct _IQueue               IQueue; */
+/* typedef struct _ISearch              ISearch; */
+/* typedef struct _ISort                ISort; */
+/* typedef struct _IVertex              IVertex; */
 
 	#ifdef __cplusplus
 };};};

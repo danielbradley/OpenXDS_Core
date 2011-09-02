@@ -51,7 +51,7 @@ void* freeAll_StdTreeNode( TreeNode* self )
 	return CRuntime_free( self );
 }
 
-//	IPosition
+/*	IPosition */
 const IObject* StdTreeNode_getElement( const TreeNode* self )
 {
 	return self->element;

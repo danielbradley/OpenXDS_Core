@@ -18,7 +18,7 @@
 	#endif
 
 
-StdSequence*              new_StdSequence();
+StdSequence*              new_StdSequence(void);
 StdSequence*             free_StdSequence(       StdSequence* self );
 StdSequence*          freeAll_StdSequence(       StdSequence* self );
 

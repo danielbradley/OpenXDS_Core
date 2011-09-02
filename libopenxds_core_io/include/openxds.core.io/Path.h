@@ -67,8 +67,8 @@ struct _IPath
 };
 
 EXPORT	IPath* new_Path( const char* location );
-EXPORT	IPath* Path_GetCurrentDirectory();
-EXPORT	char   Path_GetFileSeparator();
+EXPORT	IPath* Path_GetCurrentDirectory(void);
+EXPORT	char   Path_GetFileSeparator(void);
 
 #ifdef __cplusplus
 };

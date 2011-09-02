@@ -1,0 +1,341 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		65A57B2F1410BA6700B22EFA /* ConditionVariable.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B151410BA6700B22EFA /* ConditionVariable.h */; };
+		65A57B301410BA6700B22EFA /* Mutex.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B161410BA6700B22EFA /* Mutex.h */; };
+		65A57B311410BA6700B22EFA /* Semaphore.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B171410BA6700B22EFA /* Semaphore.h */; };
+		65A57B321410BA6700B22EFA /* Thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B181410BA6700B22EFA /* Thread.h */; };
+		65A57B331410BA6700B22EFA /* openxds.core.threads.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B191410BA6700B22EFA /* openxds.core.threads.h */; };
+		65A57B341410BA6700B22EFA /* Mutex.c in Sources */ = {isa = PBXBuildFile; fileRef = 65A57B1E1410BA6700B22EFA /* Mutex.c */; };
+		65A57B361410BA6700B22EFA /* ConditionVariable.c in Sources */ = {isa = PBXBuildFile; fileRef = 65A57B221410BA6700B22EFA /* ConditionVariable.c */; };
+		65A57B371410BA6700B22EFA /* Thread.c in Sources */ = {isa = PBXBuildFile; fileRef = 65A57B231410BA6700B22EFA /* Thread.c */; };
+		65A57B3B1410BA6700B22EFA /* ConditionVariable.private.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B2A1410BA6700B22EFA /* ConditionVariable.private.h */; };
+		65A57B3C1410BA6700B22EFA /* Mutex.private.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B2B1410BA6700B22EFA /* Mutex.private.h */; };
+		65A57B3D1410BA6700B22EFA /* Thread.private.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B2C1410BA6700B22EFA /* Thread.private.h */; };
+		65A57B3F1410BADF00B22EFA /* libopenxds_core_base.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A57B3E1410BADF00B22EFA /* libopenxds_core_base.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		65A57B0A1410B9F400B22EFA /* libopenxds_core_threads.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libopenxds_core_threads.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		65A57B121410BA6700B22EFA /* libopenxds_core_base.link */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libopenxds_core_base.link; sourceTree = "<group>"; };
+		65A57B151410BA6700B22EFA /* ConditionVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConditionVariable.h; sourceTree = "<group>"; };
+		65A57B161410BA6700B22EFA /* Mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mutex.h; sourceTree = "<group>"; };
+		65A57B171410BA6700B22EFA /* Semaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Semaphore.h; sourceTree = "<group>"; };
+		65A57B181410BA6700B22EFA /* Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thread.h; sourceTree = "<group>"; };
+		65A57B191410BA6700B22EFA /* openxds.core.threads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openxds.core.threads.h; sourceTree = "<group>"; };
+		65A57B1C1410BA6700B22EFA /* Semaphore.cx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Semaphore.cx; sourceTree = "<group>"; };
+		65A57B1E1410BA6700B22EFA /* Mutex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Mutex.c; sourceTree = "<group>"; };
+		65A57B221410BA6700B22EFA /* ConditionVariable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ConditionVariable.c; sourceTree = "<group>"; };
+		65A57B231410BA6700B22EFA /* Thread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Thread.c; sourceTree = "<group>"; };
+		65A57B2A1410BA6700B22EFA /* ConditionVariable.private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConditionVariable.private.h; sourceTree = "<group>"; };
+		65A57B2B1410BA6700B22EFA /* Mutex.private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mutex.private.h; sourceTree = "<group>"; };
+		65A57B2C1410BA6700B22EFA /* Thread.private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thread.private.h; sourceTree = "<group>"; };
+		65A57B2E1410BA6700B22EFA /* libpthread.so.link */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libpthread.so.link; sourceTree = "<group>"; };
+		65A57B3E1410BADF00B22EFA /* libopenxds_core_base.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopenxds_core_base.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/OpenXDS_Core-ddngyhwizqcklfcpdoxvjkawmgzn/Build/Products/Debug/libopenxds_core_base.dylib"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		65A57B071410B9F400B22EFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65A57B3F1410BADF00B22EFA /* libopenxds_core_base.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		65A57AFF1410B9F400B22EFA = {
+			isa = PBXGroup;
+			children = (
+				65A57B3E1410BADF00B22EFA /* libopenxds_core_base.dylib */,
+				65A57B111410BA6700B22EFA /* dep */,
+				65A57B131410BA6700B22EFA /* include */,
+				65A57B1A1410BA6700B22EFA /* source */,
+				65A57B0B1410B9F400B22EFA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		65A57B0B1410B9F400B22EFA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65A57B0A1410B9F400B22EFA /* libopenxds_core_threads.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		65A57B111410BA6700B22EFA /* dep */ = {
+			isa = PBXGroup;
+			children = (
+				65A57B121410BA6700B22EFA /* libopenxds_core_base.link */,
+			);
+			path = dep;
+			sourceTree = "<group>";
+		};
+		65A57B131410BA6700B22EFA /* include */ = {
+			isa = PBXGroup;
+			children = (
+				65A57B141410BA6700B22EFA /* openxds.core.threads */,
+				65A57B191410BA6700B22EFA /* openxds.core.threads.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		65A57B141410BA6700B22EFA /* openxds.core.threads */ = {
+			isa = PBXGroup;
+			children = (
+				65A57B151410BA6700B22EFA /* ConditionVariable.h */,
+				65A57B161410BA6700B22EFA /* Mutex.h */,
+				65A57B171410BA6700B22EFA /* Semaphore.h */,
+				65A57B181410BA6700B22EFA /* Thread.h */,
+			);
+			path = openxds.core.threads;
+			sourceTree = "<group>";
+		};
+		65A57B1A1410BA6700B22EFA /* source */ = {
+			isa = PBXGroup;
+			children = (
+				65A57B1B1410BA6700B22EFA /* c */,
+				65A57B281410BA6700B22EFA /* include */,
+				65A57B2D1410BA6700B22EFA /* lib */,
+			);
+			path = source;
+			sourceTree = "<group>";
+		};
+		65A57B1B1410BA6700B22EFA /* c */ = {
+			isa = PBXGroup;
+			children = (
+				65A57B1C1410BA6700B22EFA /* Semaphore.cx */,
+				65A57B1D1410BA6700B22EFA /* darwin */,
+				65A57B211410BA6700B22EFA /* posix */,
+			);
+			path = c;
+			sourceTree = "<group>";
+		};
+		65A57B1D1410BA6700B22EFA /* darwin */ = {
+			isa = PBXGroup;
+			children = (
+				65A57B1E1410BA6700B22EFA /* Mutex.c */,
+			);
+			path = darwin;
+			sourceTree = "<group>";
+		};
+		65A57B211410BA6700B22EFA /* posix */ = {
+			isa = PBXGroup;
+			children = (
+				65A57B221410BA6700B22EFA /* ConditionVariable.c */,
+				65A57B231410BA6700B22EFA /* Thread.c */,
+			);
+			path = posix;
+			sourceTree = "<group>";
+		};
+		65A57B281410BA6700B22EFA /* include */ = {
+			isa = PBXGroup;
+			children = (
+				65A57B291410BA6700B22EFA /* openxds.core.threads */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		65A57B291410BA6700B22EFA /* openxds.core.threads */ = {
+			isa = PBXGroup;
+			children = (
+				65A57B2A1410BA6700B22EFA /* ConditionVariable.private.h */,
+				65A57B2B1410BA6700B22EFA /* Mutex.private.h */,
+				65A57B2C1410BA6700B22EFA /* Thread.private.h */,
+			);
+			path = openxds.core.threads;
+			sourceTree = "<group>";
+		};
+		65A57B2D1410BA6700B22EFA /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				65A57B2E1410BA6700B22EFA /* libpthread.so.link */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		65A57B081410B9F400B22EFA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65A57B2F1410BA6700B22EFA /* ConditionVariable.h in Headers */,
+				65A57B301410BA6700B22EFA /* Mutex.h in Headers */,
+				65A57B311410BA6700B22EFA /* Semaphore.h in Headers */,
+				65A57B321410BA6700B22EFA /* Thread.h in Headers */,
+				65A57B331410BA6700B22EFA /* openxds.core.threads.h in Headers */,
+				65A57B3B1410BA6700B22EFA /* ConditionVariable.private.h in Headers */,
+				65A57B3C1410BA6700B22EFA /* Mutex.private.h in Headers */,
+				65A57B3D1410BA6700B22EFA /* Thread.private.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		65A57B091410B9F400B22EFA /* libopenxds_core_threads */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65A57B0E1410B9F400B22EFA /* Build configuration list for PBXNativeTarget "libopenxds_core_threads" */;
+			buildPhases = (
+				65A57B061410B9F400B22EFA /* Sources */,
+				65A57B071410B9F400B22EFA /* Frameworks */,
+				65A57B081410B9F400B22EFA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libopenxds_core_threads;
+			productName = libopenxds_core_threads;
+			productReference = 65A57B0A1410B9F400B22EFA /* libopenxds_core_threads.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		65A57B011410B9F400B22EFA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 65A57B041410B9F400B22EFA /* Build configuration list for PBXProject "libopenxds_core_threads" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 65A57AFF1410B9F400B22EFA;
+			productRefGroup = 65A57B0B1410B9F400B22EFA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				65A57B091410B9F400B22EFA /* libopenxds_core_threads */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		65A57B061410B9F400B22EFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65A57B341410BA6700B22EFA /* Mutex.c in Sources */,
+				65A57B361410BA6700B22EFA /* ConditionVariable.c in Sources */,
+				65A57B371410BA6700B22EFA /* Thread.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		65A57B0C1410B9F400B22EFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../libopenxds_core_base/include,
+					source/include,
+					include,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		65A57B0D1410B9F400B22EFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../libopenxds_core_base/include,
+					source/include,
+					include,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		65A57B0F1410B9F400B22EFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/OpenXDS_Core-ddngyhwizqcklfcpdoxvjkawmgzn/Build/Products/Debug\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		65A57B101410B9F400B22EFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/OpenXDS_Core-ddngyhwizqcklfcpdoxvjkawmgzn/Build/Products/Debug\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		65A57B041410B9F400B22EFA /* Build configuration list for PBXProject "libopenxds_core_threads" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65A57B0C1410B9F400B22EFA /* Debug */,
+				65A57B0D1410B9F400B22EFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65A57B0E1410B9F400B22EFA /* Build configuration list for PBXNativeTarget "libopenxds_core_threads" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65A57B0F1410B9F400B22EFA /* Debug */,
+				65A57B101410B9F400B22EFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 65A57B011410B9F400B22EFA /* Project object */;
+}

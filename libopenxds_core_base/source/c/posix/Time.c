@@ -8,17 +8,16 @@
 #include "openxds.core.base/CRuntime.h"
 
 #include <stdlib.h>
+#include <time.h>			/** times()    **/
+#include <sys/times.h>		/** struct tms **/
+#include <sys/time.h>		/** struct timeval timezone **/
 
-#ifndef __USE_POSIX
-#define __USE_POSIX
-#endif
-#include <time.h>		/** times()    **/
+#include <stdlib.h>
 
 struct _Time
 {
 	ITime super;
-	struct tm time;
-	time_t    sinceEpoch;
+	size_t    sinceEpoch;
 	char*     textual;
 };
 
@@ -42,13 +41,11 @@ ITime* new_Time( unsigned long long secondsSinceEpoch )
 	self->super.getSecondsSinceEpoch = ( unsigned long long (*)( const ITime* )) Time_getSecondsSinceEpoch;
 
 	time_t t = (time_t) secondsSinceEpoch;
-	localtime_r( &t, &self->time );
 	self->sinceEpoch = t;
-	
 	self->textual = new_CharString_format_args( "%64s", "" );
 	ctime_r( &t, self->textual );
 
-	//	This gets rid of the annoying newline
+	/*	This gets rid of the annoying newline */
 	self->textual[CharString_getLength( self->textual ) - 1] = '\0';
 	
 	return (ITime*) self;

@@ -30,10 +30,10 @@ typedef struct _StdVector              StdVector;
 typedef struct _StdSequence            StdSequence;
 typedef struct _StdTree                StdTree;
 
-//typedef struct _StdHashCode            StdHashCode;
-//typedef struct _StdHashFunction        StdHashFunction;
-//typedef struct _StdHashTable           StdHashTable;
-//typedef struct _StdCompressionFunction StdCompressionFunction;
+/* typedef struct _StdHashCode            StdHashCode; */
+/* typedef struct _StdHashFunction        StdHashFunction; */
+/* typedef struct _StdHashTable           StdHashTable; */
+/* typedef struct _StdCompressionFunction StdCompressionFunction; */
 
 
 	#ifdef __cplusplus

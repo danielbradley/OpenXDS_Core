@@ -24,7 +24,7 @@ struct _ISequence
 
 	void           (*setFreeIObjects)(       ISequence* self, bool flag );
 
-	// Deque
+	/* Deque */
 	void                  (*addFirst)(       ISequence* self, E* e );
 	void                   (*addLast)(       ISequence* self, E* e );
 	E*                 (*removeFirst)(       ISequence* self );
@@ -32,7 +32,7 @@ struct _ISequence
 	const E*              (*getFirst)( const ISequence* self );
 	const E*               (*getLast)( const ISequence* self );
 
-	// List
+	/* List */
 	const IPosition*   (*insertFirst)(       ISequence* self, E* anElement );
 	const IPosition*    (*insertLast)(       ISequence* self, E* anElement );
 
@@ -49,17 +49,17 @@ struct _ISequence
 	const IPosition*          (*next)( const ISequence* self, const IPosition* p );
 	      IPIterator*    (*positions)( const ISequence* self );
 
-	// Vector
+	/* Vector */
 	void                       (*add)(       ISequence* self, int rank, E* anElement );
 	E*                         (*set)(       ISequence* self, int rank, E* anElement );
 	E*                  (*removeFrom)(       ISequence* self, int rank );
 	const E*                   (*get)( const ISequence* self, int rank );
 
-	// Bridging
+	/* Bridging */
 	int                     (*rankOf)( const ISequence* self, const IPosition* p );
 	const IPosition*        (*atRank)( const ISequence* self, int rank );
 
-	// Common
+	/* Common */
 	int                       (*size)( const ISequence* self );
 	bool                   (*isEmpty)( const ISequence* self );
 };

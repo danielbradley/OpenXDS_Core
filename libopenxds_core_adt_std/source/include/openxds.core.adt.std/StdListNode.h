@@ -35,10 +35,10 @@ typedef struct _ListNode ListNode;
 ListNode*       new_StdListNode( IObject* anElement );
 void*           free_StdListNode( ListNode* self );
 
-//	Implements openxds/core/adt/Position
+/*	Implements openxds/core/adt/Position */
 const IObject*  StdListNode_getElement( const ListNode* self );
 
-//	Class methods
+/*	Class methods */
 
 IObject*        StdListNode_setElement( ListNode* self, IObject* anElement );
 

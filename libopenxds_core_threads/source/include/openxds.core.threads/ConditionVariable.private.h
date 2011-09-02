@@ -25,7 +25,7 @@ EXPORT	bool          ConditionVariable_timedWait( ConditionVariable* self, IMute
 EXPORT	bool             ConditionVariable_signal( ConditionVariable* self );
 EXPORT	bool          ConditionVariable_broadcast( ConditionVariable* self );
 
-//EXPORT	IConditionVariable* ConditionVariable_copy( IConditionVariable* self );
+/* EXPORT	IConditionVariable* ConditionVariable_copy( IConditionVariable* self ); */
 
 struct _ConditionVariable
 {

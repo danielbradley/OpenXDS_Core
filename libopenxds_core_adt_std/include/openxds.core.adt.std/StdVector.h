@@ -21,7 +21,7 @@
 	#endif
 
 
-StdVector*       new_StdVector();
+StdVector*       new_StdVector(void);
 StdVector*      free_StdVector( StdVector* self );
 
 void	         StdVector_add(       StdVector* self, int rank,       E*       anElement );

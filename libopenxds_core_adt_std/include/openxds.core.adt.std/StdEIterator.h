@@ -20,16 +20,16 @@
 	#endif
 
 
-StdEIterator*  new_StdEIterator();
+StdEIterator*  new_StdEIterator(void);
 StdEIterator* free_StdEIterator( StdEIterator* self );
 
-//	Implements openxds/core/adt/IPosition
+/*	Implements openxds/core/adt/IPosition */
 void         StdEIterator_reset( StdEIterator* self );
 const IEntry* StdEIterator_next( StdEIterator* self );
 
 bool       StdEIterator_hasNext( const StdEIterator* self );
 
-//	For population
+/*	For population */
 void      StdEIterator_addEntry( StdEIterator* self, const IEntry* e );
 
 

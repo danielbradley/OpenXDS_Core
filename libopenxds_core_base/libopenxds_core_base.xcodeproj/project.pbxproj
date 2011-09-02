@@ -1,0 +1,395 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		65DDE6C7140F5ECE005FB15E /* IObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE697140F5ECE005FB15E /* IObject.h */; };
+		65DDE6C8140F5ECE005FB15E /* debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE698140F5ECE005FB15E /* debug.h */; };
+		65DDE6C9140F5ECE005FB15E /* export.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE699140F5ECE005FB15E /* export.h */; };
+		65DDE6CA140F5ECE005FB15E /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE69A140F5ECE005FB15E /* types.h */; };
+		65DDE6CB140F5ECE005FB15E /* CRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE69C140F5ECE005FB15E /* CRuntime.h */; };
+		65DDE6CC140F5ECE005FB15E /* CTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE69D140F5ECE005FB15E /* CTest.h */; };
+		65DDE6CD140F5ECE005FB15E /* CharString.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE69E140F5ECE005FB15E /* CharString.h */; };
+		65DDE6CE140F5ECE005FB15E /* CharStringList.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE69F140F5ECE005FB15E /* CharStringList.h */; };
+		65DDE6CF140F5ECE005FB15E /* Clock.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A0140F5ECE005FB15E /* Clock.h */; };
+		65DDE6D0140F5ECE005FB15E /* Environment.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A1140F5ECE005FB15E /* Environment.h */; };
+		65DDE6D1140F5ECE005FB15E /* Integer.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A2140F5ECE005FB15E /* Integer.h */; };
+		65DDE6D2140F5ECE005FB15E /* Process.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A3140F5ECE005FB15E /* Process.h */; };
+		65DDE6D3140F5ECE005FB15E /* System.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A4140F5ECE005FB15E /* System.h */; };
+		65DDE6D4140F5ECE005FB15E /* Time.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A5140F5ECE005FB15E /* Time.h */; };
+		65DDE6D5140F5ECE005FB15E /* openxds.core.base.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A6140F5ECE005FB15E /* openxds.core.base.h */; };
+		65DDE6D6140F5ECE005FB15E /* openxds.core.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A7140F5ECE005FB15E /* openxds.core.h */; };
+		65DDE6D7140F5ECE005FB15E /* CRuntimeBase.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6AA140F5ECE005FB15E /* CRuntimeBase.c */; };
+		65DDE6D8140F5ECE005FB15E /* CTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6AB140F5ECE005FB15E /* CTest.c */; };
+		65DDE6D9140F5ECE005FB15E /* CharStringBase.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6AC140F5ECE005FB15E /* CharStringBase.c */; };
+		65DDE6DA140F5ECE005FB15E /* CharStringList.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6AD140F5ECE005FB15E /* CharStringList.c */; };
+		65DDE6DB140F5ECE005FB15E /* EnvironmentBase.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6AE140F5ECE005FB15E /* EnvironmentBase.c */; };
+		65DDE6DC140F5ECE005FB15E /* Integer.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6AF140F5ECE005FB15E /* Integer.c */; };
+		65DDE6DD140F5ECE005FB15E /* CRuntime.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6B1140F5ECE005FB15E /* CRuntime.c */; };
+		65DDE6DE140F5ECE005FB15E /* CharString.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6B2140F5ECE005FB15E /* CharString.c */; };
+		65DDE6DF140F5ECE005FB15E /* Clock.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6B3140F5ECE005FB15E /* Clock.c */; };
+		65DDE6E0140F5ECE005FB15E /* Environment.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6B4140F5ECE005FB15E /* Environment.c */; };
+		65DDE6E1140F5ECE005FB15E /* Process.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6B5140F5ECE005FB15E /* Process.c */; };
+		65DDE6E2140F5ECE005FB15E /* System.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6B6140F5ECE005FB15E /* System.c */; };
+		65DDE6E3140F5ECE005FB15E /* Time.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6B7140F5ECE005FB15E /* Time.c */; };
+		65DDE6EB140F5ECE005FB15E /* Clock.private.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6C2140F5ECE005FB15E /* Clock.private.h */; };
+		65DDE6EC140F5ECE005FB15E /* Environment.private.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6C3140F5ECE005FB15E /* Environment.private.h */; };
+		65DDE6ED140F5ECE005FB15E /* Integer.private.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6C4140F5ECE005FB15E /* Integer.private.h */; };
+		65DDE6EE140F5ECE005FB15E /* Process.private.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6C5140F5ECE005FB15E /* Process.private.h */; };
+		65DDE6EF140F5ECE005FB15E /* Time.private.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6C6140F5ECE005FB15E /* Time.private.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		65DDE68E140F5E21005FB15E /* libopenxds_core_base.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libopenxds_core_base.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		65DDE697140F5ECE005FB15E /* IObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IObject.h; sourceTree = "<group>"; };
+		65DDE698140F5ECE005FB15E /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
+		65DDE699140F5ECE005FB15E /* export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = export.h; sourceTree = "<group>"; };
+		65DDE69A140F5ECE005FB15E /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		65DDE69C140F5ECE005FB15E /* CRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRuntime.h; sourceTree = "<group>"; };
+		65DDE69D140F5ECE005FB15E /* CTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTest.h; sourceTree = "<group>"; };
+		65DDE69E140F5ECE005FB15E /* CharString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharString.h; sourceTree = "<group>"; };
+		65DDE69F140F5ECE005FB15E /* CharStringList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharStringList.h; sourceTree = "<group>"; };
+		65DDE6A0140F5ECE005FB15E /* Clock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clock.h; sourceTree = "<group>"; };
+		65DDE6A1140F5ECE005FB15E /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
+		65DDE6A2140F5ECE005FB15E /* Integer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Integer.h; sourceTree = "<group>"; };
+		65DDE6A3140F5ECE005FB15E /* Process.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Process.h; sourceTree = "<group>"; };
+		65DDE6A4140F5ECE005FB15E /* System.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = System.h; sourceTree = "<group>"; };
+		65DDE6A5140F5ECE005FB15E /* Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Time.h; sourceTree = "<group>"; };
+		65DDE6A6140F5ECE005FB15E /* openxds.core.base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openxds.core.base.h; sourceTree = "<group>"; };
+		65DDE6A7140F5ECE005FB15E /* openxds.core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openxds.core.h; sourceTree = "<group>"; };
+		65DDE6AA140F5ECE005FB15E /* CRuntimeBase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CRuntimeBase.c; sourceTree = "<group>"; };
+		65DDE6AB140F5ECE005FB15E /* CTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CTest.c; sourceTree = "<group>"; };
+		65DDE6AC140F5ECE005FB15E /* CharStringBase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CharStringBase.c; sourceTree = "<group>"; };
+		65DDE6AD140F5ECE005FB15E /* CharStringList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CharStringList.c; sourceTree = "<group>"; };
+		65DDE6AE140F5ECE005FB15E /* EnvironmentBase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = EnvironmentBase.c; sourceTree = "<group>"; };
+		65DDE6AF140F5ECE005FB15E /* Integer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Integer.c; sourceTree = "<group>"; };
+		65DDE6B1140F5ECE005FB15E /* CRuntime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CRuntime.c; sourceTree = "<group>"; };
+		65DDE6B2140F5ECE005FB15E /* CharString.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CharString.c; sourceTree = "<group>"; };
+		65DDE6B3140F5ECE005FB15E /* Clock.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Clock.c; sourceTree = "<group>"; };
+		65DDE6B4140F5ECE005FB15E /* Environment.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Environment.c; sourceTree = "<group>"; };
+		65DDE6B5140F5ECE005FB15E /* Process.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Process.c; sourceTree = "<group>"; };
+		65DDE6B6140F5ECE005FB15E /* System.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = System.c; sourceTree = "<group>"; };
+		65DDE6B7140F5ECE005FB15E /* Time.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Time.c; sourceTree = "<group>"; };
+		65DDE6C2140F5ECE005FB15E /* Clock.private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clock.private.h; sourceTree = "<group>"; };
+		65DDE6C3140F5ECE005FB15E /* Environment.private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.private.h; sourceTree = "<group>"; };
+		65DDE6C4140F5ECE005FB15E /* Integer.private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Integer.private.h; sourceTree = "<group>"; };
+		65DDE6C5140F5ECE005FB15E /* Process.private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Process.private.h; sourceTree = "<group>"; };
+		65DDE6C6140F5ECE005FB15E /* Time.private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Time.private.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		65DDE68B140F5E21005FB15E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		65DDE683140F5E21005FB15E = {
+			isa = PBXGroup;
+			children = (
+				65DDE695140F5ECE005FB15E /* include */,
+				65DDE6A8140F5ECE005FB15E /* source */,
+				65DDE68F140F5E21005FB15E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		65DDE68F140F5E21005FB15E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65DDE68E140F5E21005FB15E /* libopenxds_core_base.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		65DDE695140F5ECE005FB15E /* include */ = {
+			isa = PBXGroup;
+			children = (
+				65DDE696140F5ECE005FB15E /* openxds.core */,
+				65DDE69B140F5ECE005FB15E /* openxds.core.base */,
+				65DDE6A6140F5ECE005FB15E /* openxds.core.base.h */,
+				65DDE6A7140F5ECE005FB15E /* openxds.core.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		65DDE696140F5ECE005FB15E /* openxds.core */ = {
+			isa = PBXGroup;
+			children = (
+				65DDE697140F5ECE005FB15E /* IObject.h */,
+				65DDE698140F5ECE005FB15E /* debug.h */,
+				65DDE699140F5ECE005FB15E /* export.h */,
+				65DDE69A140F5ECE005FB15E /* types.h */,
+			);
+			path = openxds.core;
+			sourceTree = "<group>";
+		};
+		65DDE69B140F5ECE005FB15E /* openxds.core.base */ = {
+			isa = PBXGroup;
+			children = (
+				65DDE69C140F5ECE005FB15E /* CRuntime.h */,
+				65DDE69D140F5ECE005FB15E /* CTest.h */,
+				65DDE69E140F5ECE005FB15E /* CharString.h */,
+				65DDE69F140F5ECE005FB15E /* CharStringList.h */,
+				65DDE6A0140F5ECE005FB15E /* Clock.h */,
+				65DDE6A1140F5ECE005FB15E /* Environment.h */,
+				65DDE6A2140F5ECE005FB15E /* Integer.h */,
+				65DDE6A3140F5ECE005FB15E /* Process.h */,
+				65DDE6A4140F5ECE005FB15E /* System.h */,
+				65DDE6A5140F5ECE005FB15E /* Time.h */,
+			);
+			path = openxds.core.base;
+			sourceTree = "<group>";
+		};
+		65DDE6A8140F5ECE005FB15E /* source */ = {
+			isa = PBXGroup;
+			children = (
+				65DDE6A9140F5ECE005FB15E /* c */,
+				65DDE6C0140F5ECE005FB15E /* include */,
+			);
+			path = source;
+			sourceTree = "<group>";
+		};
+		65DDE6A9140F5ECE005FB15E /* c */ = {
+			isa = PBXGroup;
+			children = (
+				65DDE6AA140F5ECE005FB15E /* CRuntimeBase.c */,
+				65DDE6AB140F5ECE005FB15E /* CTest.c */,
+				65DDE6AC140F5ECE005FB15E /* CharStringBase.c */,
+				65DDE6AD140F5ECE005FB15E /* CharStringList.c */,
+				65DDE6AE140F5ECE005FB15E /* EnvironmentBase.c */,
+				65DDE6AF140F5ECE005FB15E /* Integer.c */,
+				65DDE6B0140F5ECE005FB15E /* posix */,
+			);
+			path = c;
+			sourceTree = "<group>";
+		};
+		65DDE6B0140F5ECE005FB15E /* posix */ = {
+			isa = PBXGroup;
+			children = (
+				65DDE6B1140F5ECE005FB15E /* CRuntime.c */,
+				65DDE6B2140F5ECE005FB15E /* CharString.c */,
+				65DDE6B3140F5ECE005FB15E /* Clock.c */,
+				65DDE6B4140F5ECE005FB15E /* Environment.c */,
+				65DDE6B5140F5ECE005FB15E /* Process.c */,
+				65DDE6B6140F5ECE005FB15E /* System.c */,
+				65DDE6B7140F5ECE005FB15E /* Time.c */,
+			);
+			path = posix;
+			sourceTree = "<group>";
+		};
+		65DDE6C0140F5ECE005FB15E /* include */ = {
+			isa = PBXGroup;
+			children = (
+				65DDE6C1140F5ECE005FB15E /* openxds.core.base */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		65DDE6C1140F5ECE005FB15E /* openxds.core.base */ = {
+			isa = PBXGroup;
+			children = (
+				65DDE6C2140F5ECE005FB15E /* Clock.private.h */,
+				65DDE6C3140F5ECE005FB15E /* Environment.private.h */,
+				65DDE6C4140F5ECE005FB15E /* Integer.private.h */,
+				65DDE6C5140F5ECE005FB15E /* Process.private.h */,
+				65DDE6C6140F5ECE005FB15E /* Time.private.h */,
+			);
+			path = openxds.core.base;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		65DDE68C140F5E21005FB15E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65DDE6C7140F5ECE005FB15E /* IObject.h in Headers */,
+				65DDE6C8140F5ECE005FB15E /* debug.h in Headers */,
+				65DDE6C9140F5ECE005FB15E /* export.h in Headers */,
+				65DDE6CA140F5ECE005FB15E /* types.h in Headers */,
+				65DDE6CB140F5ECE005FB15E /* CRuntime.h in Headers */,
+				65DDE6CC140F5ECE005FB15E /* CTest.h in Headers */,
+				65DDE6CD140F5ECE005FB15E /* CharString.h in Headers */,
+				65DDE6CE140F5ECE005FB15E /* CharStringList.h in Headers */,
+				65DDE6CF140F5ECE005FB15E /* Clock.h in Headers */,
+				65DDE6D0140F5ECE005FB15E /* Environment.h in Headers */,
+				65DDE6D1140F5ECE005FB15E /* Integer.h in Headers */,
+				65DDE6D2140F5ECE005FB15E /* Process.h in Headers */,
+				65DDE6D3140F5ECE005FB15E /* System.h in Headers */,
+				65DDE6D4140F5ECE005FB15E /* Time.h in Headers */,
+				65DDE6D5140F5ECE005FB15E /* openxds.core.base.h in Headers */,
+				65DDE6D6140F5ECE005FB15E /* openxds.core.h in Headers */,
+				65DDE6EB140F5ECE005FB15E /* Clock.private.h in Headers */,
+				65DDE6EC140F5ECE005FB15E /* Environment.private.h in Headers */,
+				65DDE6ED140F5ECE005FB15E /* Integer.private.h in Headers */,
+				65DDE6EE140F5ECE005FB15E /* Process.private.h in Headers */,
+				65DDE6EF140F5ECE005FB15E /* Time.private.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		65DDE68D140F5E21005FB15E /* libopenxds_core_base */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65DDE692140F5E21005FB15E /* Build configuration list for PBXNativeTarget "libopenxds_core_base" */;
+			buildPhases = (
+				65DDE68A140F5E21005FB15E /* Sources */,
+				65DDE68B140F5E21005FB15E /* Frameworks */,
+				65DDE68C140F5E21005FB15E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libopenxds_core_base;
+			productName = libopenxds_core_base;
+			productReference = 65DDE68E140F5E21005FB15E /* libopenxds_core_base.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		65DDE685140F5E21005FB15E /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 65DDE688140F5E21005FB15E /* Build configuration list for PBXProject "libopenxds_core_base" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 65DDE683140F5E21005FB15E;
+			productRefGroup = 65DDE68F140F5E21005FB15E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				65DDE68D140F5E21005FB15E /* libopenxds_core_base */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		65DDE68A140F5E21005FB15E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65DDE6D7140F5ECE005FB15E /* CRuntimeBase.c in Sources */,
+				65DDE6D8140F5ECE005FB15E /* CTest.c in Sources */,
+				65DDE6D9140F5ECE005FB15E /* CharStringBase.c in Sources */,
+				65DDE6DA140F5ECE005FB15E /* CharStringList.c in Sources */,
+				65DDE6DB140F5ECE005FB15E /* EnvironmentBase.c in Sources */,
+				65DDE6DC140F5ECE005FB15E /* Integer.c in Sources */,
+				65DDE6DD140F5ECE005FB15E /* CRuntime.c in Sources */,
+				65DDE6DE140F5ECE005FB15E /* CharString.c in Sources */,
+				65DDE6DF140F5ECE005FB15E /* Clock.c in Sources */,
+				65DDE6E0140F5ECE005FB15E /* Environment.c in Sources */,
+				65DDE6E1140F5ECE005FB15E /* Process.c in Sources */,
+				65DDE6E2140F5ECE005FB15E /* System.c in Sources */,
+				65DDE6E3140F5ECE005FB15E /* Time.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		65DDE690140F5E21005FB15E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = ansi;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					include,
+					source/include,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "include source/include";
+			};
+			name = Debug;
+		};
+		65DDE691140F5E21005FB15E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = ansi;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					include,
+					source/include,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "include source/include";
+			};
+			name = Release;
+		};
+		65DDE693140F5E21005FB15E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				EXECUTABLE_PREFIX = "";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		65DDE694140F5E21005FB15E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_PREFIX = "";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		65DDE688140F5E21005FB15E /* Build configuration list for PBXProject "libopenxds_core_base" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65DDE690140F5E21005FB15E /* Debug */,
+				65DDE691140F5E21005FB15E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65DDE692140F5E21005FB15E /* Build configuration list for PBXNativeTarget "libopenxds_core_base" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65DDE693140F5E21005FB15E /* Debug */,
+				65DDE694140F5E21005FB15E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 65DDE685140F5E21005FB15E /* Project object */;
+}

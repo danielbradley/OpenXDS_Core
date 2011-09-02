@@ -9,7 +9,6 @@
 #include <openxds.core/types.h>
 
 #include <openxds.core.adt/IPIterator.h>
-//#include <openxds.core.adt/IList.h>
 #include <openxds.core.adt.std.h>
 
 	#ifdef __cplusplus
@@ -21,15 +20,15 @@
 	#endif
 
 
-StdPIterator*       new_StdPIterator();
+StdPIterator*       new_StdPIterator(void);
 StdPIterator*      free_StdPIterator( StdPIterator* self );
 
-//	Implements openxds/core/adt/IPosition
+/*	Implements openxds/core/adt/IPosition */
 void              StdPIterator_reset( StdPIterator* self );
 bool            StdPIterator_hasNext( const StdPIterator* self );
 const IPosition*   StdPIterator_next( StdPIterator* self );
 
-//	For population
+/*	For population */
 void StdPIterator_addPosition( StdPIterator* self, const IPosition* p );
 
 

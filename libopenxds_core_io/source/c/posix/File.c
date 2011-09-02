@@ -62,23 +62,24 @@ int File_copyTo( const File* self, const IPath* targetPath, int force )
 {
 	bool status = 0;
 
-	char* target = NULL;
-	File* target_file = NULL;
+/*
+	char*  target = NULL;
+	IFile* target_file = NULL;
 	IDirectory* target_dir = new_Directory_path( targetPath );
-	if ( Directory_exists( target_dir ) )
+	if ( target_dir->exists( target_dir ) )
 	{
 		target = CharString_cat3( targetPath->getCommon( targetPath ), "/", self->path->getBasename( self->path ) );
 	} else {
 		target = CharString_copy( targetPath->getCommon( targetPath ) );
 	}
 
-	target_file = (File*) new_File( target );
+	target_file = (IFile*) new_File( target );
 	if ( !File_exists( target_file ) || force )
 	{
 		if ( File_open( target_file, "w" ) )
 		{
 			byte buffer[256];
-			int read;
+			unsigned long read;
 		
 			while ( (read = File_read( self, buffer, 256 )) )
 			{
@@ -91,10 +92,10 @@ int File_copyTo( const File* self, const IPath* targetPath, int force )
 			}
 		}
 		File_close( target_file );
-	}		
-	free_Directory( target_dir );
-	free_File( target_file );
+	}
+	target_dir->free( target_dir );
+	target_file->free( target_file );
 	free_CharString( target );	
-
+*/
 	return status;
 }

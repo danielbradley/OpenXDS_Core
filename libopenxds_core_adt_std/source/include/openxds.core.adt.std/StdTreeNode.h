@@ -21,11 +21,12 @@ typedef struct _TreeNode TreeNode;
 
 TreeNode*              new_StdTreeNode(       TreeNode* parent, IObject* anElement );
 void*                 free_StdTreeNode(       TreeNode* self );
+void*              freeAll_StdTreeNode(       TreeNode* self );
 
-//	Implements openxds/core/adt/Position
+/*	Implements openxds/core/adt/Position */
 const IObject*  StdTreeNode_getElement( const TreeNode* self );
 
-//	Methods
+/*	Methods */
 
 TreeNode*           StdTreeNode_getParent(       TreeNode* self );
 IObject*           StdTreeNode_setElement(       TreeNode* self, IObject* anElement );

@@ -25,6 +25,8 @@ static StdValue* createStdValue()
 	self->super.free         = (void*       (*)( IValue*        )) free_StdValue;
 	self->super.replaceValue = (void*       (*)( IValue*, void* )) StdValue_replaceValue;
 	self->super.getValue     = (const void* (*)( const IValue*  )) StdValue_getValue;
+
+	return self;
 }
 
 StdValue* new_StdValue( void* value )
@@ -32,8 +34,8 @@ StdValue* new_StdValue( void* value )
 	StdValue* self = createStdValue();
 
 	self->val = value;
-	self->freeWithCRuntime = 1; // true
-	self->freeAsIObject    = 0; // false
+	self->freeWithCRuntime = 1; /* true */
+	self->freeAsIObject    = 0; /* false */
 
 	return self;
 }
@@ -43,8 +45,8 @@ StdValue* new_StdValue_ref( const void* value )
 	StdValue* self = createStdValue();
 
 	self->val = (void*) value;
-	self->freeWithCRuntime = 0; // false
-	self->freeAsIObject    = 0; // false
+	self->freeWithCRuntime = 0; /* false */
+	self->freeAsIObject    = 0; /* false */
 	
 	return self;
 }
@@ -54,8 +56,8 @@ StdValue* new_StdValue_IObject( IObject* object )
 	StdValue* self = createStdValue();
 
 	self->val = (void*) object;
-	self->freeWithCRuntime = 0; // true
-	self->freeAsIObject    = 1; // false
+	self->freeWithCRuntime = 0; /* true */
+	self->freeAsIObject    = 1; /* false */
 
 	return self;
 }
@@ -65,8 +67,8 @@ StdValue* new_StdValue_IObject_ref( const IObject* object )
 	StdValue* self = createStdValue();
 
 	self->val = (void*) object;
-	self->freeWithCRuntime = 0; // true
-	self->freeAsIObject    = 0; // false
+	self->freeWithCRuntime = 0; /* true */
+	self->freeAsIObject    = 0; /* false */
 
 	return self;
 }

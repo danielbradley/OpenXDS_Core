@@ -15,7 +15,7 @@ struct _StdString
 {
 	IString     super;
 	char*       data;
-	int         length;
+	long         length;
 };
 
 static StdString* construct_StdString()
@@ -54,7 +54,7 @@ StdString* new_StdString( const char* str )
 	return self;
 }
 
-StdString* new_StdString_start_length( const char* str, int start, int length )
+StdString* new_StdString_start_length( const char* str, long start, long length )
 {
 	int i;
 	StdString* self = construct_StdString();
@@ -92,9 +92,9 @@ StdString* StdString_substring( const StdString* self, int start, int length )
 
 StdString* StdString_removeWhitespace( const StdString* self )
 {
-	int first;
-	int last;
-	int len;
+	long first;
+	long last;
+	long len;
 	
 	for ( first=0; first < self->length; first++ )
 	{
@@ -164,7 +164,7 @@ bool StdString_startsWith( const StdString* self, const char* str )
 	bool success = 0;
 	if ( str )
 	{
-		int len = strlen( str );
+		long len = strlen( str );
 		if ( len <= self->length )
 		{
 			int i;
@@ -195,7 +195,7 @@ int StdString_compare( const StdString* self, const char* str )
 	return strcmp( self->data, str );
 }
 
-int StdString_getLength( const StdString* self )
+long StdString_getLength( const StdString* self )
 {
 	return self->length;
 }

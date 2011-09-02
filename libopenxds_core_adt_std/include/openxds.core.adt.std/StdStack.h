@@ -21,10 +21,10 @@
 	#endif
 
 
-EXPORT	StdStack*             new_StdStack();
+EXPORT	StdStack*             new_StdStack(void);
 EXPORT	StdStack*            free_StdStack(       StdStack* self );
 
-//	Implements openxds/core/adt/Stack
+/*	Implements openxds/core/adt/Stack */
 EXPORT	void                 StdStack_push(       StdStack* self, E* anElement );
 EXPORT	void           StdStack_pushObject(       StdStack* self, IObject* anElement );
 EXPORT	E*                    StdStack_pop(       StdStack* self );

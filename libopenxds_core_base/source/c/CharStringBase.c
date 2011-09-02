@@ -36,7 +36,7 @@ char* new_CharString( const char* charString )
 char* new_CharString_delimiter( const char** tokens, const char delimiter )
 {
 	char delim[2] = {delimiter,0};
-	//delim[0] = delimiter;
+	/* delim[0] = delimiter; */
 
 	char* str = CharString_copy( "" );
 	char* tmp = CharString_copy( "" );
@@ -95,9 +95,11 @@ char* CharString_between( const char* aString, const char* prefix, const char* s
 	{
 		start = start + prefix_len;
 		
+		/*
 		//str = (char*) CRuntime_calloc( strlen( start ), sizeof( char ) );
 		//str = strcpy( str, start );
-
+		*/
+		
 		if ( ('\0' != *start) && (0 != strcmp( "\0", suffix )) && (0 != strcmp( "", suffix ) ) )
 		{
 			char* end = strstr( copy, suffix );
@@ -135,7 +137,7 @@ char* CharString_copy( const char* aString )
 
 char* CharString_removeWhitespace( const char* aString )
 {
-	unsigned int len;
+	unsigned long len;
 	char* tmp = CharString_copy( aString );
 	char* buffer = tmp;
 	char* ret;
@@ -222,8 +224,10 @@ char* CharString_dirname( const char* path )
 
 char* CharString_basename_using( const char* path, char fs )
 {
+	/*
 	//fprintf( stdout, "String_basename( %s )\n", path );
-
+	*/
+	
 	char* bname = NULL;
 	char ifs[2] = {fs,0};
 	{
@@ -235,7 +239,9 @@ char* CharString_basename_using( const char* path, char fs )
 
 		while ( NULL != token )
 		{
+			/*
 			//fprintf( stdout, "\t%s\n", token );
+			*/
 			last = token;
 			token = (const char*) strtok( NULL, ifs );
 		}
@@ -258,11 +264,11 @@ char* CharString_dirname_using( const char* path, char ifs )
 		{
 		        char* tmp = CharString_copy( path );
 
-			//
+			/*
 			//	First remove any trailing /'s
-			//
+			*/
 
-			unsigned int length = strlen(tmp);
+			unsigned long length = strlen(tmp);
 			while ( (length > 1) && (ifs == tmp[length - 1]) )
 			{
 				tmp[length - 1] = '\0';
@@ -338,18 +344,19 @@ int CharString_endsWith( const char* this, const char* token )
 {
 	int itDoes = 0;
 
-	unsigned int this_len = strlen( this );
-	unsigned int token_len = strlen( token );
+	unsigned long this_len = strlen( this );
+	unsigned long token_len = strlen( token );
 
 	if ( token_len <= this_len )
 	{
-		//	0123456789X1234		012	this_len = 15	token_len = 3
+		/*	0123456789X1234		012	this_len = 15	token_len = 3
 		//	libsomething.so		.so	
 		//	123456789X12345		123
+		*/
 
-		unsigned int stop = this_len - token_len;
-		unsigned int this_posn = this_len;
-		unsigned int token_posn = token_len;
+		unsigned long stop = this_len - token_len;
+		unsigned long this_posn = this_len;
+		unsigned long token_posn = token_len;
 		
 		itDoes = 1;
 		while ( this_posn >= stop )

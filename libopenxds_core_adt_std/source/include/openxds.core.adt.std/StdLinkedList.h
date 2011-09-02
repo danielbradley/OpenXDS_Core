@@ -7,7 +7,7 @@
 
 typedef struct _LinkedList LinkedList;
 
-LinkedList*   new_StdLinkedList();
+LinkedList*   new_StdLinkedList(void);
 void*        free_StdLinkedList( LinkedList* self );
 const ListNode*  StdLinkedList_addFirst( LinkedList* self, ListNode* aListNode );
 const ListNode*   StdLinkedList_addLast( LinkedList* self, ListNode* aListNode );
@@ -19,4 +19,4 @@ const ListNode*   StdLinkedList_getLast( LinkedList* self );
 const ListNode* StdLinkedList_getBefore( LinkedList* self, const ListNode* aListNode );
 const ListNode*  StdLinkedList_getAfter( LinkedList* self, const ListNode* aListNode );
 int               StdLinkedList_getSize( LinkedList* self );
-bool              StdLinkedList_isEmpty();
+bool              StdLinkedList_isEmpty( LinkedList* self );
