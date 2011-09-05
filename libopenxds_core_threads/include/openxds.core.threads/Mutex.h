@@ -10,8 +10,8 @@
 #ifndef OPENXDS_CORE_THREADS_MUTEX_H
 #define OPENXDS_CORE_THREADS_MUTEX_H
 
-#include <openxds.core/export.h>
 #include <openxds.core.base.h>
+#include <openxds.core/export.h>
 #include <openxds.core.threads.h>
 
 	#ifdef __cplusplus

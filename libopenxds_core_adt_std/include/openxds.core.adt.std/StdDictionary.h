@@ -1,8 +1,8 @@
 #ifndef OPENXDS_CORE_ADT_STD_STDDICTIONARY_H
 #define OPENXDS_CORE_ADT_STD_STDDICTIONARY_H
 
-#include "openxds.core.adt.h"
 #include "openxds.core.adt.std.h"
+#include <openxds.core.adt.h>
 #include <openxds.core/export.h>
 #include <openxds.core/types.h>
 

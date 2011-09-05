@@ -4,8 +4,8 @@
 
 #include "openxds.core.base/Integer.private.h"
 
-#include <openxds.core/IObject.h>
-#include <openxds.core.base/CRuntime.h>
+#include "openxds.core/IObject.h"
+#include "openxds.core.base/CRuntime.h"
 
 struct _Integer
 {

@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		65A57B651410BC9800B22EFA /* Provider.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B551410BC9700B22EFA /* Provider.h */; };
-		65A57B661410BC9800B22EFA /* ProviderInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B561410BC9700B22EFA /* ProviderInstance.h */; };
-		65A57B671410BC9800B22EFA /* exportlite.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B571410BC9700B22EFA /* exportlite.h */; };
-		65A57B681410BC9800B22EFA /* openxds.core.provider.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B581410BC9700B22EFA /* openxds.core.provider.h */; };
+		65A57B651410BC9800B22EFA /* Provider.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B551410BC9700B22EFA /* Provider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57B661410BC9800B22EFA /* ProviderInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B561410BC9700B22EFA /* ProviderInstance.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57B671410BC9800B22EFA /* exportlite.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B571410BC9700B22EFA /* exportlite.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57B681410BC9800B22EFA /* openxds.core.provider.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B581410BC9700B22EFA /* openxds.core.provider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65A57B691410BC9800B22EFA /* Provider.c in Sources */ = {isa = PBXBuildFile; fileRef = 65A57B5D1410BC9700B22EFA /* Provider.c */; };
 		65A57B6B1410BC9800B22EFA /* Provider.private.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57B621410BC9700B22EFA /* Provider.private.h */; };
 /* End PBXBuildFile section */
@@ -146,10 +146,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A57B681410BC9800B22EFA /* openxds.core.provider.h in Headers */,
+				65A57B671410BC9800B22EFA /* exportlite.h in Headers */,
 				65A57B651410BC9800B22EFA /* Provider.h in Headers */,
 				65A57B661410BC9800B22EFA /* ProviderInstance.h in Headers */,
-				65A57B671410BC9800B22EFA /* exportlite.h in Headers */,
-				65A57B681410BC9800B22EFA /* openxds.core.provider.h in Headers */,
 				65A57B6B1410BC9800B22EFA /* Provider.private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

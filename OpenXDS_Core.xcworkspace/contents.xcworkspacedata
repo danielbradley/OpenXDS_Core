@@ -8,13 +8,13 @@
       location = "group:libopenxds_core_base/libopenxds_core_base.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:libopenxds_core_threads/libopenxds_core_threads.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:libopenxds_core_adt/libopenxds_core_adt.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:libopenxds_core_adt_std/libopenxds_core_adt_std.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:libopenxds_core_threads/libopenxds_core_threads.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:libopenxds_core_io/libopenxds_core_io.xcodeproj">

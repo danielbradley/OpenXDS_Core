@@ -6,8 +6,8 @@
 #define OPENXDS_CORE_BASE_INTEGER_PRIVATE_H
 
 #include "openxds.core.base/Integer.h"
+#include "openxds.core/export.h"
 
-#include <openxds.core/export.h>
 #include <stdarg.h>
 
 	#ifdef __cplusplus

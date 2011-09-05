@@ -5,12 +5,13 @@
 #ifndef OPENXDS_CORE_ADT_STD_STDADTFACTORY_H
 #define OPENXDS_CORE_ADT_STD_STDADTFACTORY_H
 
+#include "openxds.core.adt.std.h"
+
 #include <openxds.core/export.h>
 #include <openxds.core/types.h>
 
-#include <openxds.core.adt.h>
-#include <openxds.core.adt.std.h>
 #include <openxds.core.adt/ADTFactory.h>
+#include <openxds.core.adt.h>
 
 	#ifdef __cplusplus
 		namespace openxds {

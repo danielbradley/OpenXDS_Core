@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		65A57A811410A8FA00B22EFA /* StdADTFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A561410A8FA00B22EFA /* StdADTFactory.h */; };
-		65A57A821410A8FA00B22EFA /* StdDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A571410A8FA00B22EFA /* StdDictionary.h */; };
-		65A57A831410A8FA00B22EFA /* StdEIterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A581410A8FA00B22EFA /* StdEIterator.h */; };
-		65A57A841410A8FA00B22EFA /* StdEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A591410A8FA00B22EFA /* StdEntry.h */; };
-		65A57A851410A8FA00B22EFA /* StdIterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A5A1410A8FA00B22EFA /* StdIterator.h */; };
-		65A57A861410A8FA00B22EFA /* StdKey.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A5B1410A8FA00B22EFA /* StdKey.h */; };
-		65A57A871410A8FA00B22EFA /* StdList.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A5C1410A8FA00B22EFA /* StdList.h */; };
-		65A57A881410A8FA00B22EFA /* StdMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A5D1410A8FA00B22EFA /* StdMap.h */; };
-		65A57A891410A8FA00B22EFA /* StdPIterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A5E1410A8FA00B22EFA /* StdPIterator.h */; };
-		65A57A8A1410A8FA00B22EFA /* StdSequence.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A5F1410A8FA00B22EFA /* StdSequence.h */; };
-		65A57A8B1410A8FA00B22EFA /* StdStack.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A601410A8FA00B22EFA /* StdStack.h */; };
-		65A57A8C1410A8FA00B22EFA /* StdString.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A611410A8FA00B22EFA /* StdString.h */; };
-		65A57A8D1410A8FA00B22EFA /* StdTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A621410A8FA00B22EFA /* StdTree.h */; };
-		65A57A8E1410A8FA00B22EFA /* StdValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A631410A8FA00B22EFA /* StdValue.h */; };
-		65A57A8F1410A8FA00B22EFA /* StdVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A641410A8FA00B22EFA /* StdVector.h */; };
-		65A57A901410A8FA00B22EFA /* openxds.core.adt.std.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A651410A8FA00B22EFA /* openxds.core.adt.std.h */; };
+		65A57A811410A8FA00B22EFA /* StdADTFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A561410A8FA00B22EFA /* StdADTFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57A821410A8FA00B22EFA /* StdDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A571410A8FA00B22EFA /* StdDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57A831410A8FA00B22EFA /* StdEIterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A581410A8FA00B22EFA /* StdEIterator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57A841410A8FA00B22EFA /* StdEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A591410A8FA00B22EFA /* StdEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57A851410A8FA00B22EFA /* StdIterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A5A1410A8FA00B22EFA /* StdIterator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57A861410A8FA00B22EFA /* StdKey.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A5B1410A8FA00B22EFA /* StdKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57A871410A8FA00B22EFA /* StdList.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A5C1410A8FA00B22EFA /* StdList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57A881410A8FA00B22EFA /* StdMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A5D1410A8FA00B22EFA /* StdMap.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57A891410A8FA00B22EFA /* StdPIterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A5E1410A8FA00B22EFA /* StdPIterator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57A8A1410A8FA00B22EFA /* StdSequence.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A5F1410A8FA00B22EFA /* StdSequence.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57A8B1410A8FA00B22EFA /* StdStack.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A601410A8FA00B22EFA /* StdStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57A8C1410A8FA00B22EFA /* StdString.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A611410A8FA00B22EFA /* StdString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57A8D1410A8FA00B22EFA /* StdTree.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A621410A8FA00B22EFA /* StdTree.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57A8E1410A8FA00B22EFA /* StdValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A631410A8FA00B22EFA /* StdValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57A8F1410A8FA00B22EFA /* StdVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A641410A8FA00B22EFA /* StdVector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57A901410A8FA00B22EFA /* openxds.core.adt.std.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A651410A8FA00B22EFA /* openxds.core.adt.std.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65A57A911410A8FA00B22EFA /* StdADTFactory.c in Sources */ = {isa = PBXBuildFile; fileRef = 65A57A681410A8FA00B22EFA /* StdADTFactory.c */; };
 		65A57A921410A8FA00B22EFA /* StdDictionary.c in Sources */ = {isa = PBXBuildFile; fileRef = 65A57A691410A8FA00B22EFA /* StdDictionary.c */; };
 		65A57A931410A8FA00B22EFA /* StdEIterator.c in Sources */ = {isa = PBXBuildFile; fileRef = 65A57A6A1410A8FA00B22EFA /* StdEIterator.c */; };
@@ -42,10 +42,10 @@
 		65A57AA11410A8FA00B22EFA /* StdTreeNode.c in Sources */ = {isa = PBXBuildFile; fileRef = 65A57A781410A8FA00B22EFA /* StdTreeNode.c */; };
 		65A57AA21410A8FA00B22EFA /* StdValue.c in Sources */ = {isa = PBXBuildFile; fileRef = 65A57A791410A8FA00B22EFA /* StdValue.c */; };
 		65A57AA31410A8FA00B22EFA /* StdVector.c in Sources */ = {isa = PBXBuildFile; fileRef = 65A57A7A1410A8FA00B22EFA /* StdVector.c */; };
-		65A57AA41410A8FA00B22EFA /* StdLinkedList.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A7D1410A8FA00B22EFA /* StdLinkedList.h */; };
-		65A57AA51410A8FA00B22EFA /* StdListNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A7E1410A8FA00B22EFA /* StdListNode.h */; };
-		65A57AA61410A8FA00B22EFA /* StdSequenceNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A7F1410A8FA00B22EFA /* StdSequenceNode.h */; };
-		65A57AA71410A8FA00B22EFA /* StdTreeNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A801410A8FA00B22EFA /* StdTreeNode.h */; };
+		65A57AA41410A8FA00B22EFA /* StdLinkedList.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A7D1410A8FA00B22EFA /* StdLinkedList.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		65A57AA51410A8FA00B22EFA /* StdListNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A7E1410A8FA00B22EFA /* StdListNode.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		65A57AA61410A8FA00B22EFA /* StdSequenceNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A7F1410A8FA00B22EFA /* StdSequenceNode.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		65A57AA71410A8FA00B22EFA /* StdTreeNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57A801410A8FA00B22EFA /* StdTreeNode.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		65A57ABB1410B15700B22EFA /* libopenxds_core_adt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A57AB91410B15600B22EFA /* libopenxds_core_adt.dylib */; };
 		65A57ABC1410B15700B22EFA /* libopenxds_core_base.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A57ABA1410B15700B22EFA /* libopenxds_core_base.dylib */; };
 /* End PBXBuildFile section */
@@ -93,8 +93,6 @@
 		65A57A7E1410A8FA00B22EFA /* StdListNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdListNode.h; sourceTree = "<group>"; };
 		65A57A7F1410A8FA00B22EFA /* StdSequenceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdSequenceNode.h; sourceTree = "<group>"; };
 		65A57A801410A8FA00B22EFA /* StdTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdTreeNode.h; sourceTree = "<group>"; };
-		65A57AA81410A97200B22EFA /* libopenxds_core_adt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopenxds_core_adt.dylib; path = ../libopenxds_core_adt/build/Release/libopenxds_core_adt.dylib; sourceTree = "<group>"; };
-		65A57AA91410A97200B22EFA /* libopenxds_core_base.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopenxds_core_base.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/OpenXDS_Core-ddngyhwizqcklfcpdoxvjkawmgzn/Build/Products/Debug/libopenxds_core_base.dylib"; sourceTree = "<group>"; };
 		65A57AB91410B15600B22EFA /* libopenxds_core_adt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopenxds_core_adt.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/OpenXDS_Core-ddngyhwizqcklfcpdoxvjkawmgzn/Build/Products/Debug/libopenxds_core_adt.dylib"; sourceTree = "<group>"; };
 		65A57ABA1410B15700B22EFA /* libopenxds_core_base.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopenxds_core_base.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/OpenXDS_Core-ddngyhwizqcklfcpdoxvjkawmgzn/Build/Products/Debug/libopenxds_core_base.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,10 +113,8 @@
 		65A57A3F1410A8C500B22EFA = {
 			isa = PBXGroup;
 			children = (
-				65A57AB91410B15600B22EFA /* libopenxds_core_adt.dylib */,
 				65A57ABA1410B15700B22EFA /* libopenxds_core_base.dylib */,
-				65A57AA81410A97200B22EFA /* libopenxds_core_adt.dylib */,
-				65A57AA91410A97200B22EFA /* libopenxds_core_base.dylib */,
+				65A57AB91410B15600B22EFA /* libopenxds_core_adt.dylib */,
 				65A57A511410A8FA00B22EFA /* dep */,
 				65A57A541410A8FA00B22EFA /* include */,
 				65A57A661410A8FA00B22EFA /* source */,
@@ -350,15 +346,11 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					../libopenxds_core_base/include,
-					../libopenxds_core_adt/include,
-					source/include,
-					include,
-				);
+				HEADER_SEARCH_PATHS = "../../../OpenXDS_Core/0.x/libopenxds_core_provider/include\n../../../OpenXDS_Core/0.x/libopenxds_core_base/include\n../../../OpenXDS_Core/0.x/libopenxds_core_threads/include\n../../../OpenXDS_Core/0.x/libopenxds_core_adt/include";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "source/include include";
 			};
 			name = Debug;
 		};
@@ -376,14 +368,10 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					../libopenxds_core_base/include,
-					../libopenxds_core_adt/include,
-					source/include,
-					include,
-				);
+				HEADER_SEARCH_PATHS = "../../../OpenXDS_Core/0.x/libopenxds_core_provider/include\n../../../OpenXDS_Core/0.x/libopenxds_core_base/include\n../../../OpenXDS_Core/0.x/libopenxds_core_threads/include\n../../../OpenXDS_Core/0.x/libopenxds_core_adt/include";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "source/include include";
 			};
 			name = Release;
 		};
@@ -391,10 +379,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = "";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/OpenXDS_Core-ddngyhwizqcklfcpdoxvjkawmgzn/Build/Products/Debug\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -403,10 +388,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = "";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/OpenXDS_Core-ddngyhwizqcklfcpdoxvjkawmgzn/Build/Products/Debug\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

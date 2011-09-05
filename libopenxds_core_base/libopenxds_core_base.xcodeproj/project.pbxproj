@@ -7,22 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		65DDE6C7140F5ECE005FB15E /* IObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE697140F5ECE005FB15E /* IObject.h */; };
-		65DDE6C8140F5ECE005FB15E /* debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE698140F5ECE005FB15E /* debug.h */; };
-		65DDE6C9140F5ECE005FB15E /* export.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE699140F5ECE005FB15E /* export.h */; };
-		65DDE6CA140F5ECE005FB15E /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE69A140F5ECE005FB15E /* types.h */; };
-		65DDE6CB140F5ECE005FB15E /* CRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE69C140F5ECE005FB15E /* CRuntime.h */; };
-		65DDE6CC140F5ECE005FB15E /* CTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE69D140F5ECE005FB15E /* CTest.h */; };
-		65DDE6CD140F5ECE005FB15E /* CharString.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE69E140F5ECE005FB15E /* CharString.h */; };
-		65DDE6CE140F5ECE005FB15E /* CharStringList.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE69F140F5ECE005FB15E /* CharStringList.h */; };
-		65DDE6CF140F5ECE005FB15E /* Clock.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A0140F5ECE005FB15E /* Clock.h */; };
-		65DDE6D0140F5ECE005FB15E /* Environment.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A1140F5ECE005FB15E /* Environment.h */; };
-		65DDE6D1140F5ECE005FB15E /* Integer.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A2140F5ECE005FB15E /* Integer.h */; };
-		65DDE6D2140F5ECE005FB15E /* Process.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A3140F5ECE005FB15E /* Process.h */; };
-		65DDE6D3140F5ECE005FB15E /* System.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A4140F5ECE005FB15E /* System.h */; };
-		65DDE6D4140F5ECE005FB15E /* Time.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A5140F5ECE005FB15E /* Time.h */; };
-		65DDE6D5140F5ECE005FB15E /* openxds.core.base.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A6140F5ECE005FB15E /* openxds.core.base.h */; };
-		65DDE6D6140F5ECE005FB15E /* openxds.core.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A7140F5ECE005FB15E /* openxds.core.h */; };
+		65345F371411D8AA0070D495 /* Math.c in Sources */ = {isa = PBXBuildFile; fileRef = 65345F361411D8AA0070D495 /* Math.c */; };
+		65345F391411D8BD0070D495 /* Math.h in Headers */ = {isa = PBXBuildFile; fileRef = 65345F381411D8BD0070D495 /* Math.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DB087014124063004B1E7E /* openxds.core.export.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DB086F14124063004B1E7E /* openxds.core.export.h */; };
+		65DDE6C7140F5ECE005FB15E /* IObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE697140F5ECE005FB15E /* IObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DDE6C8140F5ECE005FB15E /* debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE698140F5ECE005FB15E /* debug.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DDE6C9140F5ECE005FB15E /* export.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE699140F5ECE005FB15E /* export.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DDE6CA140F5ECE005FB15E /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE69A140F5ECE005FB15E /* types.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DDE6CB140F5ECE005FB15E /* CRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE69C140F5ECE005FB15E /* CRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DDE6CC140F5ECE005FB15E /* CTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE69D140F5ECE005FB15E /* CTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DDE6CD140F5ECE005FB15E /* CharString.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE69E140F5ECE005FB15E /* CharString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DDE6CE140F5ECE005FB15E /* CharStringList.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE69F140F5ECE005FB15E /* CharStringList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DDE6CF140F5ECE005FB15E /* Clock.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A0140F5ECE005FB15E /* Clock.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DDE6D0140F5ECE005FB15E /* Environment.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A1140F5ECE005FB15E /* Environment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DDE6D1140F5ECE005FB15E /* Integer.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A2140F5ECE005FB15E /* Integer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DDE6D2140F5ECE005FB15E /* Process.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A3140F5ECE005FB15E /* Process.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DDE6D3140F5ECE005FB15E /* System.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A4140F5ECE005FB15E /* System.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DDE6D4140F5ECE005FB15E /* Time.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A5140F5ECE005FB15E /* Time.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DDE6D5140F5ECE005FB15E /* openxds.core.base.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A6140F5ECE005FB15E /* openxds.core.base.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65DDE6D6140F5ECE005FB15E /* openxds.core.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DDE6A7140F5ECE005FB15E /* openxds.core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65DDE6D7140F5ECE005FB15E /* CRuntimeBase.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6AA140F5ECE005FB15E /* CRuntimeBase.c */; };
 		65DDE6D8140F5ECE005FB15E /* CTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6AB140F5ECE005FB15E /* CTest.c */; };
 		65DDE6D9140F5ECE005FB15E /* CharStringBase.c in Sources */ = {isa = PBXBuildFile; fileRef = 65DDE6AC140F5ECE005FB15E /* CharStringBase.c */; };
@@ -44,6 +47,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		65345F361411D8AA0070D495 /* Math.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Math.c; sourceTree = "<group>"; };
+		65345F381411D8BD0070D495 /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
+		65DB086F14124063004B1E7E /* openxds.core.export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openxds.core.export.h; sourceTree = "<group>"; };
 		65DDE68E140F5E21005FB15E /* libopenxds_core_base.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libopenxds_core_base.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		65DDE697140F5ECE005FB15E /* IObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IObject.h; sourceTree = "<group>"; };
 		65DDE698140F5ECE005FB15E /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
@@ -115,6 +121,7 @@
 				65DDE696140F5ECE005FB15E /* openxds.core */,
 				65DDE69B140F5ECE005FB15E /* openxds.core.base */,
 				65DDE6A6140F5ECE005FB15E /* openxds.core.base.h */,
+				65DB086F14124063004B1E7E /* openxds.core.export.h */,
 				65DDE6A7140F5ECE005FB15E /* openxds.core.h */,
 			);
 			path = include;
@@ -141,6 +148,7 @@
 				65DDE6A0140F5ECE005FB15E /* Clock.h */,
 				65DDE6A1140F5ECE005FB15E /* Environment.h */,
 				65DDE6A2140F5ECE005FB15E /* Integer.h */,
+				65345F381411D8BD0070D495 /* Math.h */,
 				65DDE6A3140F5ECE005FB15E /* Process.h */,
 				65DDE6A4140F5ECE005FB15E /* System.h */,
 				65DDE6A5140F5ECE005FB15E /* Time.h */,
@@ -166,6 +174,7 @@
 				65DDE6AD140F5ECE005FB15E /* CharStringList.c */,
 				65DDE6AE140F5ECE005FB15E /* EnvironmentBase.c */,
 				65DDE6AF140F5ECE005FB15E /* Integer.c */,
+				65345F361411D8AA0070D495 /* Math.c */,
 				65DDE6B0140F5ECE005FB15E /* posix */,
 			);
 			path = c;
@@ -223,6 +232,7 @@
 				65DDE6CF140F5ECE005FB15E /* Clock.h in Headers */,
 				65DDE6D0140F5ECE005FB15E /* Environment.h in Headers */,
 				65DDE6D1140F5ECE005FB15E /* Integer.h in Headers */,
+				65345F391411D8BD0070D495 /* Math.h in Headers */,
 				65DDE6D2140F5ECE005FB15E /* Process.h in Headers */,
 				65DDE6D3140F5ECE005FB15E /* System.h in Headers */,
 				65DDE6D4140F5ECE005FB15E /* Time.h in Headers */,
@@ -233,6 +243,7 @@
 				65DDE6ED140F5ECE005FB15E /* Integer.private.h in Headers */,
 				65DDE6EE140F5ECE005FB15E /* Process.private.h in Headers */,
 				65DDE6EF140F5ECE005FB15E /* Time.private.h in Headers */,
+				65DB087014124063004B1E7E /* openxds.core.export.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +272,9 @@
 /* Begin PBXProject section */
 		65DDE685140F5E21005FB15E /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0410;
+			};
 			buildConfigurationList = 65DDE688140F5E21005FB15E /* Build configuration list for PBXProject "libopenxds_core_base" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -296,6 +310,7 @@
 				65DDE6E1140F5ECE005FB15E /* Process.c in Sources */,
 				65DDE6E2140F5ECE005FB15E /* System.c in Sources */,
 				65DDE6E3140F5ECE005FB15E /* Time.c in Sources */,
+				65345F371411D8AA0070D495 /* Math.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,17 +322,15 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = ansi;
+				GCC_ENABLE_BUILTIN_FUNCTIONS = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = 4.2;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					include,
-					source/include,
-				);
+				HEADER_SEARCH_PATHS = ../../../OpenXDS_Core/0.x/libopenxds_core_provider/include;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -330,14 +343,12 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = ansi;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_ENABLE_BUILTIN_FUNCTIONS = NO;
+				GCC_VERSION = 4.2;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					include,
-					source/include,
-				);
+				HEADER_SEARCH_PATHS = ../../../OpenXDS_Core/0.x/libopenxds_core_provider/include;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "include source/include";
@@ -350,9 +361,15 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = "";
+				GCC_C_LANGUAGE_STANDARD = ansi;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_BUILTIN_FUNCTIONS = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_SYMBOL_SEPARATION = YES;
+				GCC_FAST_MATH = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
@@ -363,8 +380,15 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXECUTABLE_PREFIX = "";
+				GCC_C_LANGUAGE_STANDARD = ansi;
+				GCC_ENABLE_BUILTIN_FUNCTIONS = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_SYMBOL_SEPARATION = YES;
+				GCC_FAST_MATH = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};

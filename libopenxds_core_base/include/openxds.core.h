@@ -5,6 +5,7 @@
 #ifndef OPENXDS_CORE_H
 #define OPENXDS_CORE_H
 
+#include "openxds.core/export.h"
 #include "openxds.core/types.h"
 
 	#ifdef __cplusplus

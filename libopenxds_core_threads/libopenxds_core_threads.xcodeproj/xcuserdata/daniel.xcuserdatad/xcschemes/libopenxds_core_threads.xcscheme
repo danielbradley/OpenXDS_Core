@@ -19,6 +19,20 @@
                ReferencedContainer = "container:libopenxds_core_threads.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "65DDE68D140F5E21005FB15E"
+               BuildableName = "libopenxds_core_base.dylib"
+               BlueprintName = "libopenxds_core_base"
+               ReferencedContainer = "container:../libopenxds_core_base/libopenxds_core_base.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

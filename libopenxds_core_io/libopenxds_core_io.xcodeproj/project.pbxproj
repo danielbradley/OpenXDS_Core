@@ -10,11 +10,11 @@
 		65A57BB31410E57600B22EFA /* libopenxds_core_adt_std.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A57BB01410E57600B22EFA /* libopenxds_core_adt_std.dylib */; };
 		65A57BB41410E57600B22EFA /* libopenxds_core_adt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A57BB11410E57600B22EFA /* libopenxds_core_adt.dylib */; };
 		65A57BB51410E57600B22EFA /* libopenxds_core_base.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A57BB21410E57600B22EFA /* libopenxds_core_base.dylib */; };
-		65A57BD01410E61C00B22EFA /* Directory.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57BBC1410E61C00B22EFA /* Directory.h */; };
-		65A57BD11410E61C00B22EFA /* File.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57BBD1410E61C00B22EFA /* File.h */; };
-		65A57BD21410E61C00B22EFA /* Link.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57BBE1410E61C00B22EFA /* Link.h */; };
-		65A57BD31410E61C00B22EFA /* Path.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57BBF1410E61C00B22EFA /* Path.h */; };
-		65A57BD41410E61C00B22EFA /* openxds.core.io.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57BC01410E61C00B22EFA /* openxds.core.io.h */; };
+		65A57BD01410E61C00B22EFA /* Directory.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57BBC1410E61C00B22EFA /* Directory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57BD11410E61C00B22EFA /* File.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57BBD1410E61C00B22EFA /* File.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57BD21410E61C00B22EFA /* Link.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57BBE1410E61C00B22EFA /* Link.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57BD31410E61C00B22EFA /* Path.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57BBF1410E61C00B22EFA /* Path.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65A57BD41410E61C00B22EFA /* openxds.core.io.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A57BC01410E61C00B22EFA /* openxds.core.io.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65A57BD51410E61C00B22EFA /* DirectoryBase.c in Sources */ = {isa = PBXBuildFile; fileRef = 65A57BC31410E61C00B22EFA /* DirectoryBase.c */; };
 		65A57BD61410E61C00B22EFA /* FileBase.c in Sources */ = {isa = PBXBuildFile; fileRef = 65A57BC41410E61C00B22EFA /* FileBase.c */; };
 		65A57BD71410E61C00B22EFA /* PathBase.c in Sources */ = {isa = PBXBuildFile; fileRef = 65A57BC61410E61C00B22EFA /* PathBase.c */; };
@@ -71,9 +71,9 @@
 				65A57BB61410E61C00B22EFA /* dep */,
 				65A57BBA1410E61C00B22EFA /* include */,
 				65A57BC11410E61C00B22EFA /* source */,
-				65A57BB01410E57600B22EFA /* libopenxds_core_adt_std.dylib */,
-				65A57BB11410E57600B22EFA /* libopenxds_core_adt.dylib */,
 				65A57BB21410E57600B22EFA /* libopenxds_core_base.dylib */,
+				65A57BB11410E57600B22EFA /* libopenxds_core_adt.dylib */,
+				65A57BB01410E57600B22EFA /* libopenxds_core_adt_std.dylib */,
 				65A57BAA1410E4FE00B22EFA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -262,11 +262,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					../libopenxds_core_base/include,
-					../libopenxds_core_adt/include,
-					../libopenxds_core_adt_std/include,
-				);
+				HEADER_SEARCH_PATHS = "../../../OpenXDS_Core/0.x/libopenxds_core_provider/include\n../../../OpenXDS_Core/0.x/libopenxds_core_base/include\n../../../OpenXDS_Core/0.x/libopenxds_core_threads/include\n../../../OpenXDS_Core/0.x/libopenxds_core_adt/include\n../../../OpenXDS_Core/0.x/libopenxds_core_adt_std/include";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -288,11 +284,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					../libopenxds_core_base/include,
-					../libopenxds_core_adt/include,
-					../libopenxds_core_adt_std/include,
-				);
+				HEADER_SEARCH_PATHS = "../../../OpenXDS_Core/0.x/libopenxds_core_provider/include\n../../../OpenXDS_Core/0.x/libopenxds_core_base/include\n../../../OpenXDS_Core/0.x/libopenxds_core_threads/include\n../../../OpenXDS_Core/0.x/libopenxds_core_adt/include\n../../../OpenXDS_Core/0.x/libopenxds_core_adt_std/include";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "source/include include";
@@ -303,10 +295,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = "";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/OpenXDS_Core-ddngyhwizqcklfcpdoxvjkawmgzn/Build/Products/Debug\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -315,10 +304,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = "";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/OpenXDS_Core-ddngyhwizqcklfcpdoxvjkawmgzn/Build/Products/Debug\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -342,6 +328,7 @@
 				65A57BAF1410E4FE00B22EFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

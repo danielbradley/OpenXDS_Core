@@ -1,0 +1,246 @@
+-	openxds::base::Math
+--	D. Bradley
+
+OpenXDS Core provides a math wrapper around the C math functions.
+This is due to certain undiagosed incompatiblities when trying to access C++ math libraries.
+
+!
+~include/openxds.core.base/Math.h~
+#ifndef OPENXDS_CORE_BASE_MATH_H
+#define OPENXDS_CORE_BASE_MATH_H
+~
+!
+
+.	OpenXDS Core header files
+
+~include/openxds.core.base/Math.h~
+#include "openxds.core.h"
+~
+
+.	Function prototypes
+
+..		constrainBetween
+
+~include/openxds.core.base/Math.h~
+EXPORT	long Math_constrainBetween( long aNumber, long lower, long upper );
+~
+
+..		isAlmostEqual
+
+~include/openxds.core.base/Math.h~
+EXPORT	bool Math_isAlmostEqual( double a, double b );
+~
+
+..		isBetween
+
+~include/openxds.core.base/Math.h~
+EXPORT	bool Math_isBetween( long aNumber, long lower, long upper );
+~
+
+..		floor
+
+~include/openxds.core.base/Math.h~
+EXPORT	double Math_floor( double aValue );
+~
+
+..		min
+
+~include/openxds.core.base/Math.h~
+EXPORT	long Math_min( long a, long b );
+~
+
+..		max
+
+~include/openxds.core.base/Math.h~
+EXPORT	long Math_max( long a, long b );
+~
+
+..		pi
+
+~include/openxds.core.base/Math.h~
+EXPORT	double Math_pi(void);
+~
+
+..		sizeOfRange
+
+~include/openxds.core.base/Math.h~
+EXPORT	long Math_sizeOfRange( double first, double last, double increment );
+~
+
+..		squareroot
+
+~include/openxds.core.base/Math.h~
+EXPORT	double Math_squareroot( double aValue );
+~
+
+..		toPower
+
+The default function takes two double parameters, and raises /base/ to the power of /power/.
+Alternate  functions are available for *long double* and *float* types.
+
+~include/openxds.core.base/Math.h~
+EXPORT	double      Math_toPower( double base, double power );
+EXPORT	long double Math_toPower_long_double( long double base, long double power );
+EXPORT	float       Math_toPower_float( float base, float power );
+~
+
+!
+~include/openxds.core.base/Math.h~
+#endif
+~
+!
+
+.	Implementation
+
+..		Includes
+
+In C math functions are included from:
+
+~source/c/Math.c~
+#include "openxds.core.base/Math.h"
+#include <math.h>
+~
+
+..		constrainBetween
+
+~source/c/Math.c~
+long
+Math_constrainBetween( long aNumber, long lower, long upper )
+{
+	if ( aNumber < lower )
+	{
+		aNumber = lower;
+	}
+	else if ( upper < aNumber )
+	{
+		aNumber = upper;
+	}
+	return aNumber;
+}
+~
+
+..		isAlmostEqual
+
+~source/c/Math.c~
+bool
+Math_isAlmostEqual( double a, double b )
+{
+	return ( (a == b) || (0.00001 > fabs( a - b )) );
+}
+~
+
+..		isBetween
+
+~source/c/Math.c~
+bool Math_isBetween( long aNumber, long lower, long upper )
+{
+	return ((lower < aNumber) && (aNumber < upper ));
+}
+~
+
+..		floor
+
+~source/c/Math.c~
+double
+Math_floor( double aValue )
+{
+	int anInteger = (int) aValue;
+	double aDouble = (double) anInteger;
+	if ( aDouble > aValue )
+	{
+		anInteger -= 1;
+		aDouble = (double) anInteger;
+	}
+	return aDouble;
+}
+~
+
+..		min
+
+~source/c/Math.c~
+long
+Math_min( long a, long b )
+{
+	return (a < b) ? a : b;
+}
+~
+
+..		max
+
+~source/c/Math.c~
+long
+Math_max( long a, long b )
+{
+	return (a > b) ? a : b;
+}
+~
+
+..		pi
+
+~source/c/Math.c~
+double
+Math_pi()
+{
+	return 3.14159265;
+}
+~
+
+..		sizeOfRange
+
+~source/c/Math.c~
+long
+Math_sizeOfRange( double first, double last, double increment )
+{
+	int size = 0;
+	double i;
+
+	if ( Math_isAlmostEqual( first, last ) )
+	{
+		size++;
+	}
+	else
+	{
+		for ( i=first; i < last; i += increment )
+		{
+			size++;
+		}
+		if ( Math_isAlmostEqual( i, last ) )
+		{
+			size++;
+		}
+	}
+	return size;
+}
+~
+
+..		squareroot
+
+~source/c/Math.c~
+double
+Math_squareroot( double aValue )
+{
+	return sqrt( aValue );
+}
+~
+
+..		toPower
+
+~source/c/Math.c~
+double
+Math_toPower( double base, double power )
+{
+	return pow( base, power );
+}
+
+long double
+Math_toPower_long_double( long double base, long double power )
+{
+	return powl( base, power );
+}
+
+float
+Math_toPower_float( float base, float power )
+{
+	return powf( base, power );
+}
+~

@@ -6,8 +6,8 @@
 #define OPENXDS_CORE_BASE_ENVIRONMENT_PRIVATE_H
 
 #include "openxds.core.base/Environment.h"
+#include "openxds.core/export.h"
 
-#include <openxds.core/export.h>
 #include <stdarg.h>
 
 #ifdef __cplusplus
