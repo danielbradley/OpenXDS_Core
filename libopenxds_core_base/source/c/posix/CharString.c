@@ -15,11 +15,13 @@
  */
 char* new_CharString_format_valist( const char* format, va_list args )
 {
-	unsigned int written;
-	unsigned int size = 128;
+	int written;
+	int size = 10;
 	char* self = CRuntime_calloc( size, sizeof( char ) );
 
 	written = vsnprintf( self, size, format, args );
+	va_end(args);
+
 	if ( written >= size )
 	{
 		CRuntime_free( self );

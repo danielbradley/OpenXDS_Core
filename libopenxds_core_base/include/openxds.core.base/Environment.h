@@ -35,6 +35,7 @@ EXPORT	IEnvironment* new_Environment( const char* argv_0 );
 EXPORT	IEnvironment* new_Environment_using( const char* argv_0, char fileSeparator );
 
 EXPORT	char          Environment_getFileSeparator();
+EXPORT	const char*   Environment_getEnvironmentVariable( const char* variable );
 
 	#ifdef __cplusplus
 		};};};};

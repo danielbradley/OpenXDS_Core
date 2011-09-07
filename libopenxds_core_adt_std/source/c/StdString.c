@@ -178,10 +178,38 @@ bool StdString_startsWith( const StdString* self, const char* str )
 	return success;
 }
 
-bool StdString_endsWith( const StdString* self, const char* str )
+bool StdString_endsWith( const StdString* self, const char* token )
 {
-	printf( "openxds::core::adt::std::StdString_endsWith unimplemented\n" );
-	abort();
+	int itDoes = 0;
+	const char* this = self->data;
+
+	unsigned long this_len = strlen( this );
+	unsigned long token_len = strlen( token );
+
+	if ( token_len <= this_len )
+	{
+		/*	0123456789X1234		012	this_len = 15	token_len = 3
+		//	libsomething.so		.so	
+		//	123456789X12345		123
+		*/
+
+		unsigned long stop = this_len - token_len;
+		unsigned long this_posn = this_len;
+		unsigned long token_posn = token_len;
+		
+		itDoes = 1;
+		while ( this_posn >= stop )
+		{
+			if ( this[ this_posn ] != token[ token_posn ] )
+			{
+				itDoes = 0;
+				break;
+			}
+			this_posn--;
+			token_posn--;
+		}
+	}
+	return itDoes;
 }
 
 bool StdString_matches( const StdString* self, const char* str )
