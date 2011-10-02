@@ -54,6 +54,7 @@ int                      StdSequence_size( const StdSequence* self );
 int                   StdSequence_isEmpty( const StdSequence* self );
 
 IPIterator*         StdSequence_positions( const StdSequence* self );
+IIterator*           StdSequence_elements( const StdSequence* self );
 
 
 	#ifdef __cplusplus

@@ -50,6 +50,7 @@ struct _IFile
 	bool                        (*isNewerThan)( const IFile* self, const IFile* other );
 	bool                             (*isOpen)( const IFile* self );
 	bool                              (*isEOF)( const IFile* self );
+//	bool                             (*isFile)( const IFile* self );
 };
 
 EXPORT	IFile*                          new_File( const char* location );

@@ -1,5 +1,6 @@
 #include <openxds.core/IObject.h>
 #include <openxds.core.adt/IPosition.h>
+#include <openxds.core.adt.std/StdIterator.h>
 #include <openxds.core.adt.std/StdSequence.h>
 #include <openxds.core.adt.std/StdADTFactory.h>
 #include <openxds.core.adt.std/StdPIterator.h>
@@ -75,6 +76,7 @@ StdSequence* new_StdSequence()
 	self->super.previous     = (const IPosition*  (*)( const ISequence*, const IPosition*     )) StdSequence_previous;
 	self->super.next         = (const IPosition*  (*)( const ISequence*, const IPosition*     )) StdSequence_next;
 	self->super.positions    = (      IPIterator* (*)( const ISequence*                       )) StdSequence_positions;
+	self->super.elements     = (      IIterator*  (*)( const ISequence*                       )) StdSequence_elements;
 	
 	/* Vector */
 	self->super.add          = (      void        (*)(       ISequence*, int, E*              )) StdSequence_add;
@@ -221,13 +223,17 @@ E* StdSequence_removeFirst( StdSequence* self )
 
 E* StdSequence_removeLast( StdSequence* self )
 {
-	int r = StdSequence_size( self ) - 1;
-	int i = toIndex( self, r );
-	
-	E* e       = StdSequenceNode_replaceElement( self->V[i], NULL );
-	self->V[i] = free_StdSequenceNode( self->V[i] );
-	self->b    = i;
-	
+	E* e = NULL;
+	int size = StdSequence_size( self );
+	if ( 0 < size )
+	{
+		int r = size - 1;
+		int i = toIndex( self, r );
+		
+		e          = StdSequenceNode_replaceElement( self->V[i], NULL );
+		self->V[i] = free_StdSequenceNode( self->V[i] );
+		self->b    = i;
+	}
 	return e;
 }
 
@@ -384,6 +390,23 @@ IPIterator* StdSequence_positions( const StdSequence* self )
 		StdPIterator_addPosition( positions, p );
 	}
 	return (IPIterator*) positions;
+}
+
+IIterator* StdSequence_elements( const StdSequence* self )
+{
+	StdIterator* elements = new_StdIterator();
+
+	int n = StdSequence_size( self );
+	int r;
+	const IPosition* p = NULL;
+	for ( r=0; r < n; r++ )
+	{
+		p = StdSequence_atRank( self, r );
+		const void* e = p->getElement( p );
+		StdIterator_addElement( elements, e );
+	}
+
+	return (IIterator*) elements;
 }
 
 void shuffleUp( StdSequence* self, int rank )

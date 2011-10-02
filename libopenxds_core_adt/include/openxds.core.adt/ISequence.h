@@ -48,6 +48,7 @@ struct _ISequence
 	const IPosition*      (*previous)( const ISequence* self, const IPosition* p );
 	const IPosition*          (*next)( const ISequence* self, const IPosition* p );
 	      IPIterator*    (*positions)( const ISequence* self );
+	      IIterator*      (*elements)( const ISequence* self );
 
 	/* Vector */
 	void                       (*add)(       ISequence* self, int rank, E* anElement );

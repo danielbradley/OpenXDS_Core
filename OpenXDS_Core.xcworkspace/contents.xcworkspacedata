@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../../../../XCode/OpenXDS_Core.Testing/OpenXDS_Core.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:libopenxds_core_provider/libopenxds_core_provider.xcodeproj">
    </FileRef>
    <FileRef

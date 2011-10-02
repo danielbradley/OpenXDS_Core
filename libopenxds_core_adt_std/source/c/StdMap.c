@@ -14,6 +14,8 @@
 #include <openxds.core.adt.std/StdValue.h>
 #include <openxds.core.base/CRuntime.h>
 
+#include <stdio.h> //DEBUG
+
 struct _StdMap
 {
 	IMap super;
@@ -73,9 +75,12 @@ void* StdMap_put_ref( StdMap* self, const IKey* key, const void* value )
 void* StdMap_put_IValue( StdMap* self, const IKey* key, StdValue* aValue )
 {
 	void* ret = 0;
+	
+	int inserted = 0;
 
 	IPIterator* it = self->entries->positions( self->entries );
-	while ( it->hasNext( it ) )
+	bool loop = TRUE;
+	while ( loop && it->hasNext( it ) )
 	{
 		const IPosition* p = it->next( it );
 		const IEntry* entry = p->getElement( p );
@@ -86,12 +91,22 @@ void* StdMap_put_IValue( StdMap* self, const IKey* key, StdValue* aValue )
 			IValue* value = (IValue*) StdEntry_replaceValue( (StdEntry*) entry, aValue );
 			ret = value->replaceValue( value, NULL );
 			value->free( value );
+			inserted = 1;
 			break;
 		}
+		else if ( 0 < e_key->compareTo( e_key, key ) )
+		{
+			IEntry* entry = (IEntry*) new_StdEntry( key, (IValue*) aValue );
+			self->entries->insertBefore( self->entries, p, entry );
+			inserted = 1;
+			loop = FALSE;
+		}
+		//int x = e_key->compareTo( e_key, key );
+		//fprintf( stdout, "%i %s - %s\n", x, e_key->getChars( e_key ), key->getChars( key ) );
 	}
 	it->free( it );
 	
-	if ( 0 == ret )
+	if ( ! inserted )
 	{
 		IEntry* entry = (IEntry*) new_StdEntry( key, (IValue*) aValue );
 		self->entries->insertLast( self->entries, entry );
