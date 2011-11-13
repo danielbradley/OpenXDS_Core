@@ -15,14 +15,14 @@
 #include <openxds.core.base/CRuntime.h>
 #include <openxds.core.base/System.h>
 
-#include <strings.h>
+#include <string.h>
 #include <unistd.h>
 #include <ctype.h>
 
 static void Path_initialise( Path* self, const char* location );
-static void new_Path_UNC( Path* self, const char* location );
+//static void new_Path_UNC( Path* self, const char* location );
 static void new_Path_URL( Path* self, const char* location );
-static void new_Path_WinPOSIX_dynamic( Path* self, const char* location );
+//static void new_Path_WinPOSIX_dynamic( Path* self, const char* location );
 static void new_Path_WinPOSIX( Path* self, const char* location );
 
 static void  Path_setVolume( Path* self, char* volume );

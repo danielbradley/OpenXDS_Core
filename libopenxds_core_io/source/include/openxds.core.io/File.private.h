@@ -64,7 +64,7 @@ EXPORT	const ITime*    File_getLastAccess( const File* self );
 EXPORT	const ITime*    File_getLastModification( const File* self );
 EXPORT	const ITime*    File_getLastChange( const File* self );
 
-static const char* NameForDescriptor( int fd );
-static void        File_retrieveTimes( File* self );
+//static const char* NameForDescriptor( int fd );
+//static void        File_retrieveTimes( File* self );
 
 #endif

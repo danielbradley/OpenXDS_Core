@@ -1,4 +1,3 @@
-
 #include "openxds.core.base/Math.h"
 #include <math.h>
 
@@ -41,15 +40,15 @@ Math_floor( double aValue )
 }
 
 long
-Math_min( long a, long b )
-{
-	return (a < b) ? a : b;
-}
-
-long
 Math_max( long a, long b )
 {
 	return (a > b) ? a : b;
+}
+
+long
+Math_min( long a, long b )
+{
+	return (a < b) ? a : b;
 }
 
 double
@@ -105,3 +104,4 @@ Math_toPower_float( float base, float power )
 {
 	return powf( base, power );
 }
+

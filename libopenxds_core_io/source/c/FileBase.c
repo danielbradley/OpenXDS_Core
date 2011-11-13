@@ -10,11 +10,16 @@
 #include "openxds.core.io/File.private.h"
 
 #include <openxds.core.base/CharString.h>
+#include <openxds.core.base/Time.h>
 
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/stat.h>
+
+static void        File_retrieveTimes( File* self );
+static const char* File_NameForDescriptor( int fd );
+
 
 static void initialise( File* self )
 {
@@ -259,7 +264,7 @@ IFile* File_GetFileForStandardDescriptor( flags stream )
 	File* self = CRuntime_calloc( 1, sizeof( File ) );
 	initialise( self );
 
-	self->path = new_Path( NameForDescriptor( (int) stream ) );
+	self->path = new_Path( File_NameForDescriptor( (int) stream ) );
 	self->closeOnFree = 0;
 	
 	switch( stream )
@@ -288,7 +293,7 @@ IFile* File_GetFileForStandardStream( void* stream )
 	File* self = CRuntime_calloc( 1, sizeof( File ) );
 	initialise( self );
 
-	self->path = new_Path( NameForDescriptor( fd1 ) );
+	self->path = new_Path( File_NameForDescriptor( fd1 ) );
 	self->closeOnFree = 1;
 
 	switch( fd1 )
@@ -325,7 +330,7 @@ IFile* File_GetFileForStream( void* stream )
 	return (IFile*) self;
 }	
 
-const char* NameForDescriptor( int fd )
+static const char* File_NameForDescriptor( int fd )
 {
 	const char* name;
 	switch ( fd )
@@ -345,7 +350,7 @@ const char* NameForDescriptor( int fd )
 	return name;
 }
 
-void
+static void
 File_retrieveTimes( File* self )
 {
 	struct stat buf;

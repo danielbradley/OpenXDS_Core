@@ -7,58 +7,62 @@
  *  I.S.Labs is a registered trademark of Daniel Robert Bradley
  */
 
-#include "openocl/base/psa.h"
-#include "openocl/threads/psa/Mutex.h"
-#include "openocl/threads/psa/Mutex.protected.h"
+#include "openxds.core.threads/Mutex.private.h"
 
-#include <pthread.h>
+#include <openxds.core.base.h>
+
 #include <errno.h>
-
-struct _IMutex
-{
-	pthread_mutex_t     state;
-	pthread_mutexattr_t attributes;
-	bool                valid;
-};
+#include <pthread.h>
+#include <stdio.h>
 
 IMutex* new_Mutex()
 {
-	IMutex* self = CRuntime_calloc( 1, sizeof( IMutex ) );
-	self->valid = !pthread_mutex_init( &self->state, &self->attributes );
-	return self;
+	Mutex* self = CRuntime_calloc( 1, sizeof( Mutex ) );
+	self->super.free    = (IMutex* (*)( IMutex* self )) free_Mutex;
+	self->super.lock    = (bool    (*)( IMutex* self )) Mutex_lock;
+	self->super.tryLock = (bool    (*)( IMutex* self )) Mutex_tryLock;
+	self->super.unlock  = (bool    (*)( IMutex* self )) Mutex_unlock;
+	self->super.isValid = (bool    (*)( IMutex* self )) Mutex_isValid;
+
+	self->valid = !pthread_mutex_init( &self->state, NULL );/* &self->attributes ); */
+	self->locked = 0;
+
+	return (IMutex*) self;
 }
 
-void free_Mutex( IMutex* self )
+Mutex* free_Mutex( Mutex* self )
 {
-	CRuntime_free( self );
+	return CRuntime_free( self );
 }
 
-bool Mutex_lock( IMutex* self )
+bool Mutex_lock( Mutex* self )
 {
-	return !pthread_mutex_lock( &self->state );
-}
-
-bool Mutex_tryLock( IMutex* self )
-{
-	bool success = 1;
-	if ( EBUSY == pthread_mutex_trylock( &self->state ) )
+	if ( !self->locked )
 	{
-		success = 0;
+		self->locked = 1;
+		return !pthread_mutex_lock( &self->state );
 	}
-	return success;
+	return 0;
 }
 
-bool Mutex_unlock( IMutex* self )
+bool Mutex_tryLock( Mutex* self )
+{
+	fprintf( stderr, "Mutex_tryLock: unsupported on gnu-linux\n" );
+	return 0;
+}
+
+bool Mutex_unlock( Mutex* self )
 {
 	return !pthread_mutex_unlock( &self->state );
 }
 
-bool Mutex_isValid( IMutex* self )
+bool Mutex_isValid( Mutex* self )
 {
 	return self->valid;
 }
 
 void* Mutex_getState( IMutex* self )
 {
-	return &self->state;
+	Mutex* mutex = (Mutex*) self;
+	return &(mutex->state);
 }
