@@ -62,6 +62,11 @@ TreeNode* StdTreeNode_getParent( TreeNode* self )
 	return self->parent;
 }
 
+TreeNode* StdTreeNode_getChild( TreeNode* self, long i )
+{
+	return (TreeNode*) self->children->get( self->children, (int) i );
+}
+
 IObject* StdTreeNode_setElement( TreeNode* self, IObject* anElement )
 {
 	IObject* ret  = self->element;
@@ -169,6 +174,17 @@ StdTreeNode_hasParent( const TreeNode* self )
 	return (NULL != self->parent);
 }
 
+bool
+StdTreeNode_hasChild( const TreeNode* self, long i )
+{
+	return (i < self->children->size( self->children ));
+}
+
+long
+StdTreeNode_nrChildren( const TreeNode* self )
+{
+	return self->children->size( self->children );
+}
 
 IPIterator* StdTreeNode_children( const TreeNode* self )
 {

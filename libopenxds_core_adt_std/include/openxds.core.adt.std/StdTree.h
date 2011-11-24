@@ -27,14 +27,18 @@ EXPORT	      StdTree*    StdTree_removeAsTree(       StdTree* self, const IPosit
 
 EXPORT	const IPosition*          StdTree_root( const StdTree* self );
 EXPORT	const IPosition*        StdTree_parent( const StdTree* self, const IPosition* p );
+EXPORT	const IPosition*         StdTree_child( const StdTree* self, const IPosition* p, long i );
+
 EXPORT	bool                    StdTree_isRoot( const StdTree* self, const IPosition* p );
 EXPORT	bool                StdTree_isInternal( const StdTree* self, const IPosition* p );
 EXPORT	bool                StdTree_isExternal( const StdTree* self, const IPosition* p );
 EXPORT	bool                 StdTree_hasParent( const StdTree* self, const IPosition* p );
+EXPORT	bool                  StdTree_hasChild( const StdTree* self, const IPosition* p, long i );
 
 EXPORT	      IPIterator*     StdTree_children( const StdTree* self, const IPosition* p );
+EXPORT	long                StdTree_nrChildren( const StdTree* self, const IPosition* p );
 
-EXPORT  int                       StdTree_size( const StdTree* self );
+EXPORT  long                      StdTree_size( const StdTree* self );
 EXPORT  bool                   StdTree_isEmpty( const StdTree* self );
 
 	#ifdef __cplusplus

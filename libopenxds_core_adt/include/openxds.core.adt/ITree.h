@@ -30,13 +30,16 @@ struct _ITree
 
 	const IPosition*          (*root)( const ITree* self );
 	const IPosition*        (*parent)( const ITree* self, const IPosition* p );
+	const IPosition*         (*child)( const ITree* self, const IPosition* p, long i );
 	      IPIterator*     (*children)( const ITree* self, const IPosition* p );
 	      bool              (*isRoot)( const ITree* self, const IPosition* p );
 	      bool          (*isInternal)( const ITree* self, const IPosition* p );
 	      bool          (*isExternal)( const ITree* self, const IPosition* p );
 		  bool           (*hasParent)( const ITree* self, const IPosition* p );
+		  bool            (*hasChild)( const ITree* self, const IPosition* p, long i );
 	      bool             (*isEmpty)( const ITree* self );
-	      int                 (*size)( const ITree* self );
+		  long          (*nrChildren)( const ITree* self, const IPosition* p );
+	      long                (*size)( const ITree* self );
 };
 
 

@@ -26,13 +26,16 @@ StdTree* new_StdTree()
 	self->super.removeAsTree = (       ITree*      (*)(       ITree*, const IPosition* p           )) StdTree_removeAsTree;
 	self->super.root         = ( const IPosition*  (*)( const ITree*                               )) StdTree_root;
 	self->super.parent       = ( const IPosition*  (*)( const ITree*, const IPosition* p           )) StdTree_parent;
+	self->super.child        = ( const IPosition*  (*)( const ITree*, const IPosition* p, long i   )) StdTree_child;
 	self->super.isRoot       = (       bool        (*)( const ITree*, const IPosition* p           )) StdTree_isRoot;
 	self->super.isInternal   = (       bool        (*)( const ITree*, const IPosition* p           )) StdTree_isInternal;
 	self->super.isExternal   = (       bool        (*)( const ITree*, const IPosition* p           )) StdTree_isExternal;
 	self->super.hasParent    = (       bool        (*)( const ITree*, const IPosition* p           )) StdTree_hasParent;
+	self->super.hasChild     = (       bool        (*)( const ITree*, const IPosition* p, long i   )) StdTree_hasChild;
 	self->super.children     = (       IPIterator* (*)( const ITree*, const IPosition* p           )) StdTree_children;
 
-	self->super.size         = (       int         (*)( const ITree*                               )) StdTree_size;
+	self->super.nrChildren   = (       long        (*)( const ITree*, const IPosition* p           )) StdTree_nrChildren;
+	self->super.size         = (       long        (*)( const ITree*                               )) StdTree_size;
 	self->super.isEmpty      = (       bool        (*)( const ITree*                               )) StdTree_isEmpty;
 
 	self->root = NULL;
@@ -140,6 +143,12 @@ const IPosition* StdTree_parent( const StdTree* self, const IPosition* p )
 	return (IPosition*) StdTreeNode_getParent( node );
 }
 
+const IPosition* StdTree_child( const StdTree* self, const IPosition* p, long i )
+{
+	TreeNode* node = (TreeNode*) p;
+	return (IPosition*) StdTreeNode_getChild( node, i );
+}
+
 bool StdTree_isRoot( const StdTree* self, const IPosition* p )
 {
 	return (((TreeNode*)p) == self->root);
@@ -160,12 +169,23 @@ bool StdTree_hasParent( const StdTree* self, const IPosition* p )
 	return StdTreeNode_hasParent( (TreeNode*) p );
 }
 
+bool StdTree_hasChild( const StdTree* self, const IPosition* p, long i )
+{
+	return StdTreeNode_hasChild( (TreeNode*) p, i );
+}
+
 IPIterator* StdTree_children( const StdTree* self, const IPosition* p )
 {
 	return StdTreeNode_children( (TreeNode*) p );
 }
 
-int StdTree_size( const StdTree* self )
+long StdTree_nrChildren( const StdTree* self, const IPosition* p )
+{
+	TreeNode* node = (TreeNode*) p;
+	return StdTreeNode_nrChildren( node );
+}
+
+long StdTree_size( const StdTree* self )
 {
 	return self->size;
 }
