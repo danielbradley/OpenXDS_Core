@@ -18,23 +18,23 @@
 
 struct _IEnvironment
 {
-	IEnvironment*                              (*free)(       IEnvironment* self );
-	        char*                     (*searchPathFor)( const IEnvironment* self, const char* file );
-	  const char*                 (*getExecutableName)( const IEnvironment* self );
-	  const char*             (*getExecutableLocation)( const IEnvironment* self );
-	  const char*  (*getDirectoryContainingExecutable)( const IEnvironment* self );
+	IEnvironment*                                (*free)(       IEnvironment* self );
+	        char*                       (*searchPathFor)( const IEnvironment* self, const char* file );
+	  const char*                   (*getExecutableName)( const IEnvironment* self );
+	  const char*               (*getExecutableLocation)( const IEnvironment* self );
+	  const char*    (*getDirectoryContainingExecutable)( const IEnvironment* self );
 
-	  const char*                           (*getPath)( const IEnvironment* self );
-	  const char*            (*getEnvironmentVariable)( const char* variable );
-	  void                   (*setEnvironmentVariable)( const char* key, const char* value, bool overwrite );
+	  const char*                             (*getPath)( const IEnvironment* self );
+	  const char*              (*getEnvironmentVariable)( const char* variable );
+	  void                     (*setEnvironmentVariable)( const char* key, const char* value, bool overwrite );
 	  
-	  char                         (*getFileSeparator)();
+	  char                           (*getFileSeparator)();
 };
 
-EXPORT	IEnvironment* new_Environment( const char* argv_0 );
-EXPORT	IEnvironment* new_Environment_using( const char* argv_0, char fileSeparator );
+EXPORT	IEnvironment*                    new_Environment( const char* argv_0 );
+EXPORT	IEnvironment*              new_Environment_using( const char* argv_0, char fileSeparator );
 
-EXPORT	char          Environment_getFileSeparator();
+EXPORT	char                Environment_getFileSeparator(void);
 EXPORT	const char*   Environment_getEnvironmentVariable( const char* variable );
 
 	#ifdef __cplusplus

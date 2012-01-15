@@ -4,6 +4,7 @@
 
 #include "openxds.core.base/CharString.h"
 #include "openxds.core.base/Environment.h"
+#include "openxds.core.base/Environment.private.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -12,10 +13,8 @@
 
 static const char* EMPTY_STRING = "";
 
-bool Environment_private_CheckExistance( const char* path, const char* filename );
-
 void
-Environment_setEnvironmentVariable( const char* key, const char* value, int overwrite )
+Environment_setEnvironmentVariable( const char* key, const char* value, bool overwrite )
 {
 	setenv( key, value, overwrite );
 }

@@ -31,17 +31,17 @@ struct _IClock
 	     unsigned long          (*getClockCyclesUsed)();
 };
 
-EXPORT	IClock*            new_Clock();
+EXPORT	IClock*                                  new_Clock( void );
 
-EXPORT	long               Clock_GetTimeAsInt();
-EXPORT	unsigned long      Clock_GetUserTime();
-EXPORT	unsigned long      Clock_GetSystemTime();
-EXPORT	unsigned long      Clock_GetUptime();
+EXPORT	long                            Clock_GetTimeAsInt( void );
+EXPORT	unsigned long                    Clock_GetUserTime( void );
+EXPORT	unsigned long                  Clock_GetSystemTime( void );
+EXPORT	unsigned long                      Clock_GetUptime( void );
 
-EXPORT	unsigned long long Clock_GetMicroSecondsSinceEpoch();
-EXPORT	unsigned long long Clock_GetSecondsSinceEpoch();
+EXPORT	unsigned long long Clock_GetMicroSecondsSinceEpoch( void );
+EXPORT	unsigned long long      Clock_GetSecondsSinceEpoch( void );
 
-EXPORT	unsigned long      Clock_GetClockCyclesUsed(); 
+EXPORT	unsigned long             Clock_GetClockCyclesUsed( void ); 
 
 	#ifdef __cplusplus
 		};};};};

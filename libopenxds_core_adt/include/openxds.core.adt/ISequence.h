@@ -51,17 +51,17 @@ struct _ISequence
 	      IIterator*      (*elements)( const ISequence* self );
 
 	/* Vector */
-	void                       (*add)(       ISequence* self, int rank, E* anElement );
-	E*                         (*set)(       ISequence* self, int rank, E* anElement );
-	E*                  (*removeFrom)(       ISequence* self, int rank );
-	const E*                   (*get)( const ISequence* self, int rank );
+	void                       (*add)(       ISequence* self, long rank, E* anElement );
+	E*                         (*set)(       ISequence* self, long rank, E* anElement );
+	E*                  (*removeFrom)(       ISequence* self, long rank );
+	const E*                   (*get)( const ISequence* self, long rank );
 
 	/* Bridging */
-	int                     (*rankOf)( const ISequence* self, const IPosition* p );
-	const IPosition*        (*atRank)( const ISequence* self, int rank );
+	long                    (*rankOf)( const ISequence* self, const IPosition* p );
+	const IPosition*        (*atRank)( const ISequence* self, long rank );
 
 	/* Common */
-	int                       (*size)( const ISequence* self );
+	long                      (*size)( const ISequence* self );
 	bool                   (*isEmpty)( const ISequence* self );
 };
 

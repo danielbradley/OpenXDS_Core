@@ -17,7 +17,7 @@
 /*
  *  Lifecycle functions
  */
-EXPORT char** new_CharStringList();
+EXPORT char** new_CharStringList( void );
 EXPORT char** new_CharStringList_from( const char** list );
 EXPORT char** free_CharStringList( char** self );
 

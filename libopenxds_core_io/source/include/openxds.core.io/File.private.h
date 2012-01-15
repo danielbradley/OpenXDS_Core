@@ -45,8 +45,8 @@ EXPORT	int             File_close( File* self );
  *	Returns nr of bytes read, or 0 if error.
  */
 EXPORT	char*           File_readCharacters(       File* self );
-EXPORT	unsigned long            File_write(       File* self, const byte* buffer, unsigned long bufferSize );
-EXPORT	unsigned long             File_read( const File* self,       byte* buffer, unsigned long bufferSize );
+EXPORT	long                     File_write(       File* self, const byte* buffer, long bufferSize );
+EXPORT	long                      File_read( const File* self,       byte* buffer, long bufferSize );
 
 EXPORT	const IPath*           File_getPath( const File* self );
 

@@ -27,7 +27,7 @@ struct _ITime
 };
 
 EXPORT	ITime* new_Time( unsigned long long );
-EXPORT	ITime* Time_Now();
+EXPORT	ITime* Time_Now( void );
 
 	#ifdef __cplusplus
 		};};};};

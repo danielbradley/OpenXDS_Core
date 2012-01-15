@@ -144,8 +144,8 @@ Path_initialise( Path* self, const char* location )
 		new_Path_WinPOSIX( self, location );
 	}
 
-	self->basename  = Path_extractBasename( self->common );
-	self->dirname   = Path_extractDirname( self->common );
+	self->basename  = Path_extractBasename( self->absolute );
+	self->dirname   = Path_extractDirname( self->absolute );
 	self->extension = Path_extractExtension( self->condensed );
 	self->native    = Path_toNative( self->common );
 }

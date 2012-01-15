@@ -37,8 +37,8 @@ struct _IFile
 	int                               (*flush)(       IFile* self );
 	int                               (*close)(       IFile* self );
 	char*                    (*readCharacters)(       IFile* self );
-	unsigned int                      (*write)(       IFile* self, const byte* buffer, unsigned int bufferSize );
-	unsigned int                       (*read)( const IFile* self,       byte* buffer, unsigned int bufferSize );
+	long                              (*write)(       IFile* self, const byte* buffer, long bufferSize );
+	long                               (*read)( const IFile* self,       byte* buffer, long bufferSize );
 	const IPath*                    (*getPath)( const IFile* self );
 
 	int                          (*createFile)( const IFile* self );

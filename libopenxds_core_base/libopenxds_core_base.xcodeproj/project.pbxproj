@@ -47,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		651ED3DD1479E8A500462CDB /* mtx */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mtx; sourceTree = "<group>"; };
 		65345F361411D8AA0070D495 /* Math.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Math.c; sourceTree = "<group>"; };
 		65345F381411D8BD0070D495 /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Math.h; sourceTree = "<group>"; };
 		65DB086F14124063004B1E7E /* openxds.core.export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openxds.core.export.h; sourceTree = "<group>"; };
@@ -159,6 +160,7 @@
 		65DDE6A8140F5ECE005FB15E /* source */ = {
 			isa = PBXGroup;
 			children = (
+				651ED3DD1479E8A500462CDB /* mtx */,
 				65DDE6A9140F5ECE005FB15E /* c */,
 				65DDE6C0140F5ECE005FB15E /* include */,
 			);
@@ -273,7 +275,7 @@
 		65DDE685140F5E21005FB15E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0410;
+				LastUpgradeCheck = 0420;
 			};
 			buildConfigurationList = 65DDE688140F5E21005FB15E /* Build configuration list for PBXProject "libopenxds_core_base" */;
 			compatibilityVersion = "Xcode 3.2";

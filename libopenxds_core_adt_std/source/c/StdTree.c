@@ -1,9 +1,10 @@
 #include "openxds.core.adt.std/StdTree.h"
 
+#include "openxds.core.adt.std/StdTreeNode.h"
+
 #include <openxds.core.h>
 #include <openxds.core.adt.h>
 #include <openxds.core.adt/ITree.h>
-#include <openxds.core.adt.std/StdTreeNode.h>
 #include <openxds.core.base/CRuntime.h>
 
 struct _StdTree

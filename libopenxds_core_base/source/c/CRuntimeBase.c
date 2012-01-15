@@ -73,6 +73,6 @@ void* CRuntime_free( void* ptr )
 
 long long CRuntime_GetAllocationCount()
 {
-	return (int) allocated;
+	return allocated;
 }
 

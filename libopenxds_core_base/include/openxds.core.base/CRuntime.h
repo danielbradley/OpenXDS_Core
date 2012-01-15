@@ -44,7 +44,7 @@ EXPORT	void*		CRuntime_recalloc( void* ptr, size_t old, size_t size );
 EXPORT	void*		CRuntime_recalloc_type( void* ptr, size_t old, size_t size, size_t type );
 EXPORT	void*		CRuntime_free( void* ptr );
 
-EXPORT	long long	CRuntime_GetAllocationCount();
+EXPORT	long long	CRuntime_GetAllocationCount(void);
 EXPORT	void		CRuntime_SleepForSeconds( unsigned int seconds );
 EXPORT	void		CRuntime_SleepForMicroseconds( unsigned int microseconds );
 

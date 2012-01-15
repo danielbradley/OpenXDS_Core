@@ -25,6 +25,7 @@ static StdString* construct_StdString()
 	self->super.copy             = (IString*    (*)(const IString*))                           StdString_copy;
 	self->super.substring        = (IString*    (*)(const IString*, int, int))                 StdString_substring;
 	self->super.removeWhitespace = (IString*    (*)(const IString*))                           StdString_removeWhitespace;
+	self->super.trim             = (IString*    (*)(const IString*))                           StdString_trim;
 	self->super.between          = (IString*    (*)(const IString*, const char*, const char*)) StdString_between;
 	self->super.token            = (IString*    (*)(const IString*, int, const char*))         StdString_token;
 
@@ -56,14 +57,16 @@ StdString* new_StdString( const char* str )
 
 StdString* new_StdString_start_length( const char* str, long start, long length )
 {
-	int i;
+	long max = strlen( str );
+	long i;
+
 	StdString* self = construct_StdString();
 	self->length    = length;
 	self->data      = CRuntime_malloc( (self->length + 1) * sizeof( char ) );
 	
 	for ( i=0; i < length; i++ )
 	{
-		if ( '\0' == str[i + start] )
+		if ( max <= (i + start) )
 		{
 			self->length = i;
 			break;
@@ -91,6 +94,25 @@ StdString* StdString_substring( const StdString* self, int start, int length )
 }
 
 StdString* StdString_removeWhitespace( const StdString* self )
+{
+	long len = StdString_getLength( self );
+	char tmp[len+1];
+	
+	long s;
+	long t = 0;
+	for ( s=0; s < len; s++ )
+	{
+		if ( !IsWhitespace( self->data[s] ) )
+		{
+			tmp[t] = self->data[s];
+			t++;
+		}
+	}
+	tmp[t] = '\0';
+	return new_StdString( tmp );
+}
+
+StdString* StdString_trim( const StdString* self )
 {
 	long first;
 	long last;

@@ -37,13 +37,13 @@ struct _IProcess
 	             bool                  (*hasFinished)( const IProcess* self );
 	             bool            (*hasExitedNormally)( const IProcess* self );
 
-	             unsigned int         (*getCurrentID)();
-	             unsigned int   (*getCurrentParentID)();
+	             unsigned int         (*getCurrentID)( void );
+	             unsigned int   (*getCurrentParentID)( void );
 };
 
 EXPORT	IProcess* new_Process( const char* executable, const char** arguments );
-EXPORT	unsigned int Process_GetCurrentID();
-EXPORT	unsigned int Process_GetCurrentParentID();
+EXPORT	unsigned int Process_GetCurrentID(void);
+EXPORT	unsigned int Process_GetCurrentParentID(void);
 
 
 	#ifdef __cplusplus

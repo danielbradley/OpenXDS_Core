@@ -3,7 +3,7 @@
  */
 
 #include <openxds.core/types.h>
-#include <openxds.core.adt.std/StdListNode.h>
+#include "openxds.core.adt.std/StdListNode.h"
 
 typedef struct _LinkedList LinkedList;
 

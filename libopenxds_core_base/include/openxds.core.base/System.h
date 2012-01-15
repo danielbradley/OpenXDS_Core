@@ -21,11 +21,11 @@ EXPORT void System_Initialize( int argc, char** argv );
 /*
  *  System allocating functions
  */
-EXPORT	char* System_CurrentDirectory();
-EXPORT	char* System_CurrentVolume();
-EXPORT	char* System_Hostname();
+EXPORT	char*              System_CurrentDirectory( void );
+EXPORT	char*                 System_CurrentVolume( void );
+EXPORT	char*                      System_Hostname( void );
 
-EXPORT	IEnvironment* System_GetInitialEnvironment();
+EXPORT	IEnvironment* System_GetInitialEnvironment( void );
 
 	#ifdef __cplusplus
 		};};};};

@@ -22,6 +22,7 @@ struct _IString
 	IString*             (*copy)( const IString* self );
 	IString*        (*substring)( const IString* self, int start, int length );
 	IString* (*removeWhitespace)( const IString* self );
+	IString*             (*trim)( const IString* self );
 	IString*          (*between)( const IString* self, const char* prefix, const char* postfix );
 	IString*            (*token)( const IString* self, int start, const char* delimiter );
 

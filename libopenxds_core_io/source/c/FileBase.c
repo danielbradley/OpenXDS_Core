@@ -29,8 +29,8 @@ static void initialise( File* self )
 	self->super.close               = (         int  (*)(       IFile* )) File_close;
 
 	self->super.readCharacters      = (        char* (*)(       IFile* ))                                              File_readCharacters; 
-	self->super.write               = (unsigned int  (*)(       IFile*, const byte* buffer, unsigned int bufferSize )) File_write;
-	self->super.read                = (unsigned int  (*)( const IFile*,       byte* buffer, unsigned int bufferSize )) File_read;
+	self->super.write               = (        long  (*)(       IFile*, const byte* buffer, long bufferSize )) File_write;
+	self->super.read                = (        long  (*)( const IFile*,       byte* buffer, long bufferSize )) File_read;
 
 	self->super.getPath             = ( const IPath* (*)( const IFile* ))                     File_getPath;
 
@@ -158,8 +158,8 @@ File_readCharacters( File* self )
 	return buffer;
 }
 
-unsigned long
-File_read( const File* self, byte* buffer, unsigned long bufferSize )
+long
+File_read( const File* self, byte* buffer, long bufferSize )
 {
 	unsigned long read = fread( buffer, 1, bufferSize, self->stream );
 	if ( feof( self->stream ) )
@@ -169,8 +169,8 @@ File_read( const File* self, byte* buffer, unsigned long bufferSize )
 	return read;
 }
 
-unsigned long
-File_write( File* self, const byte* buffer, unsigned long bufferSize )
+long
+File_write( File* self, const byte* buffer, long bufferSize )
 {
 	return fwrite( buffer, bufferSize, 1, self->stream );
 }

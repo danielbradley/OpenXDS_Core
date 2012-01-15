@@ -44,6 +44,8 @@ EXPORT  bool Environment_isLink( const char* path );
 EXPORT  char* Environment_readLink( const char* path );
 EXPORT	char Environment_getFileSeparator();
 
+		bool Environment_private_CheckExistance( const char* path, const char* filename );
+
 #ifdef __cplusplus
 }
 };};};

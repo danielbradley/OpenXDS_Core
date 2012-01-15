@@ -23,6 +23,7 @@ EXPORT	StdString*             free_StdString( StdString* self );
 EXPORT	StdString*             StdString_copy( const StdString* self );
 EXPORT	StdString*        StdString_substring( const StdString* self, int start, int length );
 EXPORT	StdString* StdString_removeWhitespace( const StdString* self );
+EXPORT	StdString*             StdString_trim( const StdString* self );
 EXPORT	StdString*          StdString_between( const StdString* self, const char* prefix, const char* postfix );
 EXPORT	StdString*            StdString_token( const StdString* self, int start, const char* delimiter );
 

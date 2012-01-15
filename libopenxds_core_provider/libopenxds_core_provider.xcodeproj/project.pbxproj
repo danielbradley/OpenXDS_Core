@@ -179,6 +179,9 @@
 /* Begin PBXProject section */
 		65A57B421410BC6C00B22EFA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 65A57B451410BC6C00B22EFA /* Build configuration list for PBXProject "libopenxds_core_provider" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
