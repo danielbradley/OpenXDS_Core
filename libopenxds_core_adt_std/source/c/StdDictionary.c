@@ -38,6 +38,7 @@ StdDictionary* new_StdDictionary()
 	
 	self->super.findAll         = (      IEIterator*  (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_findAll;
 	self->super.entries         = (      IEIterator*  (*) ( const IDictionary*                              ))    StdDictionary_entries;
+	self->super.values          = (       IIterator*  (*) ( const IDictionary*                              ))    StdDictionary_values;
 
 	self->super.size            = (      int          (*) ( const IDictionary*                              ))    StdDictionary_size;
 	self->super.isEmpty         = (      bool         (*) ( const IDictionary*                              ))    StdDictionary_isEmpty;
@@ -191,6 +192,23 @@ IEIterator* StdDictionary_entries( const StdDictionary* self )
 	it->free( it );
 
 	return (IEIterator*) entries;
+}
+
+IIterator* StdDictionary_values( const StdDictionary* self )
+{
+	StdIterator* values = new_StdIterator();
+
+	IPIterator* it = self->entries->positions( self->entries );
+	while ( it->hasNext( it ) )
+	{
+		const IPosition* p = it->next( it );
+		const IEntry* e = (IEntry*) p->getElement( p );
+		const void*   v = (void*) e->getValue( e );
+		StdIterator_addElement( values, v );
+	}
+	it->free( it );
+
+	return (IIterator*) values;
 }
 
 int StdDictionary_size( const StdDictionary* self )

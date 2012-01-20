@@ -5,7 +5,7 @@
 #include "openxds.core.adt.std/StdSequenceNode.h"
 #include "openxds.core.base/CRuntime.h"
 
-StdSequenceNode* new_StdSequenceNode( E* anElement, int index )
+StdSequenceNode* new_StdSequenceNode( E* anElement, long index )
 {
 	StdSequenceNode* self = CRuntime_calloc( 1, sizeof( StdSequenceNode ) );
 
@@ -40,7 +40,7 @@ StdSequenceNode_getElement( const StdSequenceNode* self )
 	return self->e;
 }
 
-int
+long
 StdSequenceNode_getIndex( const StdSequenceNode* self )
 {
 	return self->i;

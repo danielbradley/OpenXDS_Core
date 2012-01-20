@@ -19,12 +19,12 @@
 
 typedef struct _Node StdSequenceNode;
 
-StdSequenceNode*            new_StdSequenceNode(       E*               anElement, int index );
+StdSequenceNode*            new_StdSequenceNode(       E*               anElement, long index );
 StdSequenceNode*           free_StdSequenceNode(       StdSequenceNode* self      );
 E*               StdSequenceNode_replaceElement(       StdSequenceNode* self, E* anElement );
 
 const E*             StdSequenceNode_getElement( const StdSequenceNode* self      );
-int                    StdSequenceNode_getIndex( const StdSequenceNode* self      );
+long                   StdSequenceNode_getIndex( const StdSequenceNode* self      );
 
 typedef struct _Node Node;
 
@@ -32,7 +32,7 @@ struct _Node
 {
 	IPosition super;
 	E*        e;
-	int       i;
+	long      i;
 };
 
 	#ifdef __cplusplus

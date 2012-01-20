@@ -33,6 +33,7 @@ struct _IDictionary
 	
 	IEIterator*            (*findAll)( const IDictionary* self, const IKey* key );
 	IEIterator*            (*entries)( const IDictionary* self );
+	IIterator*              (*values)( const IDictionary* self );
 
 	int                       (*size)( const IDictionary* self );
 	bool                   (*isEmpty)( const IDictionary* self );

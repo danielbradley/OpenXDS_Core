@@ -76,7 +76,7 @@ IObject* StdTreeNode_setElement( TreeNode* self, IObject* anElement )
 
 TreeNode* StdTreeNode_addChild( TreeNode* self, IObject* anElement )
 {
-	int size = self->children->size( self->children );
+	long size = self->children->size( self->children );
 	TreeNode* child = new_StdTreeNode( self, anElement );
 	self->children->add( self->children, size, child );
 	return child;
@@ -189,8 +189,8 @@ StdTreeNode_nrChildren( const TreeNode* self )
 IPIterator* StdTreeNode_children( const TreeNode* self )
 {
 	StdPIterator* it = new_StdPIterator();
-	int max = self->children->size( self->children );
-	int i;
+	long max = self->children->size( self->children );
+	long i;
 	for ( i=0; i < max; i++ )
 	{
 		TreeNode* node = (TreeNode*) self->children->get( self->children, i );
