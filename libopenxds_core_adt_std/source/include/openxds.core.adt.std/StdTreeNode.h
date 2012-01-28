@@ -23,6 +23,8 @@ TreeNode*              new_StdTreeNode(       TreeNode* parent, IObject* anEleme
 void*                 free_StdTreeNode(       TreeNode* self );
 void*              freeAll_StdTreeNode(       TreeNode* self );
 
+void                  StdTreeNode_swap( TreeNode* self, TreeNode* other );
+
 /*	Implements openxds/core/adt/Position */
 const IObject*  StdTreeNode_getElement( const TreeNode* self );
 

@@ -27,6 +27,7 @@ struct _ITree
 	      E*               (*replace)(       ITree* self, const IPosition* p, E* value );
 	      E*                (*remove)(       ITree* self, const IPosition* p );
 	      ITree*      (*removeAsTree)(       ITree* self, const IPosition* p );
+		  void        (*swapSubtrees)(       ITree* self, const IPosition* p1, ITree* subtree, const IPosition* p2 );
 
 	const IPosition*          (*root)( const ITree* self );
 	const IPosition*        (*parent)( const ITree* self, const IPosition* p );

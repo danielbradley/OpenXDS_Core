@@ -24,6 +24,7 @@ EXPORT	const IPosition*    StdTree_addSubtree(       StdTree* self, const IPosit
 EXPORT	      E*               StdTree_replace(       StdTree* self, const IPosition* p, E* e );
 EXPORT	      E*                StdTree_remove(       StdTree* self, const IPosition* p );
 EXPORT	      StdTree*    StdTree_removeAsTree(       StdTree* self, const IPosition* p );
+EXPORT	      void        StdTree_swapSubtrees(       StdTree* self, const IPosition* p1, StdTree* tree, const IPosition* p2 );
 
 EXPORT	const IPosition*          StdTree_root( const StdTree* self );
 EXPORT	const IPosition*        StdTree_parent( const StdTree* self, const IPosition* p );

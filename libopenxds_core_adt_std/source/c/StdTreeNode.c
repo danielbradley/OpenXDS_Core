@@ -51,6 +51,18 @@ void* freeAll_StdTreeNode( TreeNode* self )
 	return CRuntime_free( self );
 }
 
+void StdTreeNode_swap( TreeNode* self, TreeNode* other )
+{
+	ISequence* tmp_children = other->children;
+	IObject*   tmp_element  = other->element;
+	
+	other->children = self->children;
+	other->element  = self->element;
+	
+	self->children = tmp_children;
+	self->element  = tmp_element;
+}
+
 /*	IPosition */
 const IObject* StdTreeNode_getElement( const TreeNode* self )
 {
