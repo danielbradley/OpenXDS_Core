@@ -34,6 +34,7 @@ TreeNode*           StdTreeNode_getParent(       TreeNode* self );
 TreeNode*            StdTreeNode_getChild(       TreeNode* self, long i );
 IObject*           StdTreeNode_setElement(       TreeNode* self, IObject* anElement );
 TreeNode*            StdTreeNode_addChild(       TreeNode* self, IObject* anElement );
+TreeNode*          StdTreeNode_addChildAt(       TreeNode* self, IObject* anElement, long i );
 TreeNode*             StdTreeNode_addNode(       TreeNode* self, TreeNode* child );
 E*                    StdTreeNode_replace(       TreeNode* self, E* e );
 E*                    StdTreeNode_extract(       TreeNode* self );
@@ -43,6 +44,7 @@ bool                StdTreeNode_hasParent( const TreeNode* self );
 bool                 StdTreeNode_hasChild( const TreeNode* self, long i );
 IPIterator*          StdTreeNode_children( const TreeNode* self );
 long               StdTreeNode_nrChildren( const TreeNode* self );
+long                StdTreeNode_nrOfChild( const TreeNode* self );
 int          StdTreeNode_countDescendents( const TreeNode* self );
 
 	#ifdef __cplusplus

@@ -23,6 +23,9 @@ struct _ITree
 
 	const IPosition*       (*addRoot)(       ITree* self,                     E* value );
 	const IPosition*      (*addChild)(       ITree* self, const IPosition* p, E* value );
+	const IPosition* (*insertChildAt)(       ITree* self, const IPosition* p, E* value, long index );
+
+
 	const IPosition*    (*addSubtree)(       ITree* self, const IPosition* p, ITree* t );
 	      E*               (*replace)(       ITree* self, const IPosition* p, E* value );
 	      E*                (*remove)(       ITree* self, const IPosition* p );
@@ -40,6 +43,7 @@ struct _ITree
 		  bool            (*hasChild)( const ITree* self, const IPosition* p, long i );
 	      bool             (*isEmpty)( const ITree* self );
 		  long          (*nrChildren)( const ITree* self, const IPosition* p );
+		  long           (*nrOfChild)( const ITree* self, const IPosition* p );
 	      long                (*size)( const ITree* self );
 };
 

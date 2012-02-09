@@ -2,6 +2,7 @@
  *  Copyright (C) 2007 Daniel Robert Bradley. All rights reserved.
  */
 
+#include "openxds.core.adt/IIterator.h"
 #include "openxds.core.adt/IPIterator.h"
 #include "openxds.core.adt.std/StdADTFactory.h"
 #include "openxds.core.adt.std/StdPIterator.h"
@@ -9,6 +10,7 @@
 
 #include <openxds.core.adt/ISequence.h>
 #include <openxds.core.base/CRuntime.h>
+#include <openxds.core.base/Math.h>
 
 struct _TreeNode
 {
@@ -61,6 +63,22 @@ void StdTreeNode_swap( TreeNode* self, TreeNode* other )
 	
 	self->children = tmp_children;
 	self->element  = tmp_element;
+
+	IIterator* it = self->children->elements( self->children );
+	while ( it->hasNext( it ) )
+	{
+		TreeNode* node = (TreeNode*) it->next( it );
+		node->parent = self;
+	}
+	it->free( it );
+	
+	it = other->children->elements( other->children );
+	while ( it->hasNext( it ) )
+	{
+		TreeNode* node = (TreeNode*) it->next( it );
+		node->parent = other;
+	}
+	it->free( it );
 }
 
 /*	IPosition */
@@ -91,6 +109,16 @@ TreeNode* StdTreeNode_addChild( TreeNode* self, IObject* anElement )
 	long size = self->children->size( self->children );
 	TreeNode* child = new_StdTreeNode( self, anElement );
 	self->children->add( self->children, size, child );
+	return child;
+}
+
+TreeNode* StdTreeNode_addChildAt( TreeNode* self, IObject* anElement, long i )
+{
+	long size = self->children->size( self->children );
+	long index = Math_min( i, size );
+	
+	TreeNode* child = new_StdTreeNode( self, anElement );
+	self->children->add( self->children, index, child );
 	return child;
 }
 
@@ -209,6 +237,11 @@ IPIterator* StdTreeNode_children( const TreeNode* self )
 		StdPIterator_addPosition( it, (IPosition*) node );
 	}
 	return (IPIterator*) it;
+}
+
+long StdTreeNode_nrOfChild( const TreeNode* self )
+{
+	return self->parent->children->rankOf( self->parent->children, (const IPosition*) self );
 }
 
 int
