@@ -241,7 +241,22 @@ IPIterator* StdTreeNode_children( const TreeNode* self )
 
 long StdTreeNode_nrOfChild( const TreeNode* self )
 {
-	return self->parent->children->rankOf( self->parent->children, (const IPosition*) self );
+	long ret = -1;
+	long i=0;
+	IIterator* it = self->parent->children->elements( self->parent->children );
+	while ( it->hasNext( it ) )
+	{
+		const void* element = it->next( it );
+		if ( element == self )
+		{
+			ret = i;
+			break;
+		}
+		i++;
+	}
+	it->free( it );
+
+	return ret;
 }
 
 int
