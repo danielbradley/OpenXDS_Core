@@ -16,6 +16,7 @@
 
 
 EXPORT	StdDictionary*      new_StdDictionary(void);
+EXPORT	StdDictionary*      new_StdSortedDictionary(void);
 EXPORT	StdDictionary*     free_StdDictionary( StdDictionary* self );
 
 /*	Implements openxds.core.adt/IMap */
@@ -25,6 +26,7 @@ EXPORT	const IEntry*            StdDictionary_insert_ref( StdDictionary* self, c
 EXPORT	const IEntry*        StdDictionary_insert_IObject( StdDictionary* self, const IKey* key, IObject* aValue );
 EXPORT	const IEntry*    StdDictionary_insert_IObject_ref( StdDictionary* self, const IKey* key, const IObject* aValue );
 EXPORT	const IEntry*         StdDictionary_insert_IValue( StdDictionary* self, const IKey* key, StdValue* aValue );
+EXPORT	const IEntry*   StdSortedDictionary_insert_IValue( StdDictionary* self, const IKey* key, StdValue* aValue );
 EXPORT	void*                        StdDictionary_remove( StdDictionary* self, const IEntry* entry );
 
 EXPORT  const IEntry*                  StdDictionary_find( const StdDictionary* self, const IKey* key );
@@ -33,6 +35,8 @@ EXPORT  IEIterator*                 StdDictionary_findAll( const StdDictionary* 
 
 EXPORT  IEIterator*                 StdDictionary_entries( const StdDictionary* self );
 EXPORT   IIterator*                  StdDictionary_values( const StdDictionary* self );
+
+EXPORT	bool                    StdDictionary_containsKey( const StdDictionary* self, const IKey* key );
 
 EXPORT  int                            StdDictionary_size( const StdDictionary* self );
 EXPORT  bool                        StdDictionary_isEmpty( const StdDictionary* self );
