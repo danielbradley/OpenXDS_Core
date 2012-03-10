@@ -88,6 +88,11 @@ IDictionary* StdADTFactory_createDictionary()
 	return (IDictionary*) new_StdDictionary();
 }
 
+IDictionary* StdADTFactory_createSortedDictionary()
+{
+	return (IDictionary*) new_StdSortedDictionary();
+}
+
 IVector* StdADTFactory_createVector()
 {
 	return (IVector*) new_StdVector();

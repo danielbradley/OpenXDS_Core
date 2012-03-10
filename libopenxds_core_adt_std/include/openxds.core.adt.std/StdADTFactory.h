@@ -42,6 +42,7 @@ IString*             StdADTFactory_createString( const char* str );
 IList*                 StdADTFactory_createList(void);
 IMap*                   StdADTFactory_createMap(void);
 IDictionary*     StdADTFactory_createDictionary(void);
+IDictionary*     StdADTFactory_createSortedDictionary(void);
 IVector*             StdADTFactory_createVector(void);
 ISequence*         StdADTFactory_createSequence(void);
 ITree*                 StdADTFactory_createTree(void);
