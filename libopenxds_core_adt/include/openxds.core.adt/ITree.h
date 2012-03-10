@@ -18,8 +18,8 @@
 
 struct _ITree
 {
-	ITree*                    (*free)(       ITree* self );
-	ITree*                 (*freeAll)(       ITree* self );
+	      ITree*              (*free)(       ITree* self );
+	      ITree*           (*freeAll)(       ITree* self );
 
 	const IPosition*       (*addRoot)(       ITree* self,                     E* value );
 	const IPosition*      (*addChild)(       ITree* self, const IPosition* p, E* value );
