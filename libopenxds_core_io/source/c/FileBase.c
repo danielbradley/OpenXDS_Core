@@ -84,11 +84,14 @@ File_open( File* self, const char* access )
 {
 	int status = 0;
 
+	const char* filepath = 0;
+
 	if ( File_isOpen( self ) )
 	{
 		status = 1;
 	} else {
-		self->stream = fopen( self->path->getNativeFormat( self->path ), access );
+		filepath = self->path->getNativeFormat( self->path );
+		self->stream = fopen( filepath, access );
 		if ( self->stream )
 		{
 			status = 1;
@@ -111,7 +114,7 @@ File_flush( File* self )
 int
 File_close( File* self )
 {
-	int status;
+	int status = 0;
 	if ( 0 == fclose( self->stream ) )
 	{
 		self->stream = NULL;

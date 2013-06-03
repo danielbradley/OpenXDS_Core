@@ -19,6 +19,7 @@
  */
 EXPORT char** new_CharStringList( void );
 EXPORT char** new_CharStringList_from( const char** list );
+EXPORT char** new_CharStringList_size( int size );
 EXPORT char** free_CharStringList( char** self );
 
 EXPORT int CharStringList_copyItem( char** self, const char* item );

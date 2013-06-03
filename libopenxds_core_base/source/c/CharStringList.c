@@ -33,6 +33,12 @@ char** new_CharStringList_from( const char** list )
 	return self;
 }
 
+char** new_CharStringList_size( int size )
+{
+	char** self = CRuntime_calloc( size + 1, sizeof( char* ) );
+	return self;
+}
+
 char** free_CharStringList( char** self )
 {
 	char** tmp = self;

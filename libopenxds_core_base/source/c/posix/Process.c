@@ -49,6 +49,11 @@ unsigned int Process_GetCurrentParentID()
 	return getppid();
 }
 
+/*
+ *	Static methods
+ */
+static char** addExeToArguments( const char* exe, const char** arguments );
+
 IProcess* new_Process( const char* executable, const char** arguments )
 {
 	Process* self = (Process*) CRuntime_calloc( 1, sizeof( Process ) );
@@ -74,7 +79,7 @@ IProcess* new_Process( const char* executable, const char** arguments )
 	self->super.getCurrentParentID        = (         unsigned int   (*)())                               Process_GetCurrentParentID;
 
 	self->executable = new_CharString( executable );
-	self->arguments = new_CharStringList_from( arguments );
+	self->arguments  = addExeToArguments( self->executable, arguments );
 
 	return (IProcess*) self;
 }
@@ -241,3 +246,19 @@ bool	Process_hasExitedNormally( const Process* self )
 	return self->exitedNormally;
 }
 
+char** addExeToArguments( const char* exe, const char** arguments )
+{
+	int len = CharStringList_getLength( arguments );
+
+	char** list = new_CharStringList_size( len + 1 );
+	{
+		int i;
+
+		CharStringList_copyItem( list, exe );
+		for ( i = 0; i < len; i++ )
+		{
+			CharStringList_copyItem( list, arguments[i] );
+		}
+	}
+	return list;
+}
