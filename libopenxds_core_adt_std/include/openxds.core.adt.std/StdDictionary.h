@@ -37,6 +37,7 @@ EXPORT  IEIterator*                 StdDictionary_entries( const StdDictionary* 
 EXPORT   IIterator*                  StdDictionary_values( const StdDictionary* self );
 
 EXPORT	bool                    StdDictionary_containsKey( const StdDictionary* self, const IKey* key );
+EXPORT	bool              StdDictionary_containsKeyPrefix( const StdDictionary* self, const IKey* key );
 
 EXPORT  int                            StdDictionary_size( const StdDictionary* self );
 EXPORT  bool                        StdDictionary_isEmpty( const StdDictionary* self );

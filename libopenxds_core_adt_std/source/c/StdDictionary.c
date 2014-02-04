@@ -28,24 +28,25 @@ StdDictionary* new_StdDictionary()
 {
 	StdDictionary* self = CRuntime_calloc( 1, sizeof( StdDictionary ) );
 	
-	self->super.free            = (      IDictionary* (*) (       IDictionary*                              ))    free_StdDictionary;
-	self->super.insert          = (const IEntry*      (*) (       IDictionary*, const IKey*, void*          ))    StdDictionary_insert;
-	self->super.insertRef       = (const IEntry*      (*) (       IDictionary*, const IKey*, const void*    ))    StdDictionary_insert_ref;
-	self->super.insertObject    = (const IEntry*      (*) (       IDictionary*, const IKey*, IObject*       ))    StdDictionary_insert_IObject;
-	self->super.insertObjectRef = (const IEntry*      (*) (       IDictionary*, const IKey*, const IObject* ))    StdDictionary_insert_IObject_ref;
-	self->super.insertValue     = (const IEntry*      (*) (       IDictionary*, const IKey*, IValue*        ))    StdDictionary_insert_IValue;
-	self->super.remove          = (      void*        (*) (       IDictionary*, const IEntry*               ))    StdDictionary_remove;
-	self->super.find            = (const IEntry*      (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_find;
-	self->super.startsWith      = (const IEntry*      (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_startsWith;
+	self->super.free              = (      IDictionary* (*) (       IDictionary*                              ))    free_StdDictionary;
+	self->super.insert            = (const IEntry*      (*) (       IDictionary*, const IKey*, void*          ))    StdDictionary_insert;
+	self->super.insertRef         = (const IEntry*      (*) (       IDictionary*, const IKey*, const void*    ))    StdDictionary_insert_ref;
+	self->super.insertObject      = (const IEntry*      (*) (       IDictionary*, const IKey*, IObject*       ))    StdDictionary_insert_IObject;
+	self->super.insertObjectRef   = (const IEntry*      (*) (       IDictionary*, const IKey*, const IObject* ))    StdDictionary_insert_IObject_ref;
+	self->super.insertValue       = (const IEntry*      (*) (       IDictionary*, const IKey*, IValue*        ))    StdDictionary_insert_IValue;
+	self->super.remove            = (      void*        (*) (       IDictionary*, const IEntry*               ))    StdDictionary_remove;
+	self->super.find              = (const IEntry*      (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_find;
+	self->super.startsWith        = (const IEntry*      (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_startsWith;
 	
-	self->super.findAll         = (      IEIterator*  (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_findAll;
-	self->super.entries         = (      IEIterator*  (*) ( const IDictionary*                              ))    StdDictionary_entries;
-	self->super.values          = (       IIterator*  (*) ( const IDictionary*                              ))    StdDictionary_values;
+	self->super.findAll           = (      IEIterator*  (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_findAll;
+	self->super.entries           = (      IEIterator*  (*) ( const IDictionary*                              ))    StdDictionary_entries;
+	self->super.values            = (       IIterator*  (*) ( const IDictionary*                              ))    StdDictionary_values;
 
-	self->super.containsKey     = (      bool         (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_containsKey;
+	self->super.containsKey       = (      bool         (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_containsKey;
+	self->super.containsKeyPrefix = (      bool         (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_containsKeyPrefix;
 
-	self->super.size            = (      int          (*) ( const IDictionary*                              ))    StdDictionary_size;
-	self->super.isEmpty         = (      bool         (*) ( const IDictionary*                              ))    StdDictionary_isEmpty;
+	self->super.size              = (      int          (*) ( const IDictionary*                              ))    StdDictionary_size;
+	self->super.isEmpty           = (      bool         (*) ( const IDictionary*                              ))    StdDictionary_isEmpty;
 	
 	self->entries = StdADTFactory_createList();
 	
@@ -56,24 +57,25 @@ StdDictionary* new_StdSortedDictionary()
 {
 	StdDictionary* self = CRuntime_calloc( 1, sizeof( StdDictionary ) );
 	
-	self->super.free            = (      IDictionary* (*) (       IDictionary*                              ))    free_StdDictionary;
-	self->super.insert          = (const IEntry*      (*) (       IDictionary*, const IKey*, void*          ))    StdDictionary_insert;
-	self->super.insertRef       = (const IEntry*      (*) (       IDictionary*, const IKey*, const void*    ))    StdDictionary_insert_ref;
-	self->super.insertObject    = (const IEntry*      (*) (       IDictionary*, const IKey*, IObject*       ))    StdDictionary_insert_IObject;
-	self->super.insertObjectRef = (const IEntry*      (*) (       IDictionary*, const IKey*, const IObject* ))    StdDictionary_insert_IObject_ref;
-	self->super.insertValue     = (const IEntry*      (*) (       IDictionary*, const IKey*, IValue*        ))    StdSortedDictionary_insert_IValue;
-	self->super.remove          = (      void*        (*) (       IDictionary*, const IEntry*               ))    StdDictionary_remove;
-	self->super.find            = (const IEntry*      (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_find;
-	self->super.startsWith      = (const IEntry*      (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_startsWith;
+	self->super.free              = (      IDictionary* (*) (       IDictionary*                              ))    free_StdDictionary;
+	self->super.insert            = (const IEntry*      (*) (       IDictionary*, const IKey*, void*          ))    StdDictionary_insert;
+	self->super.insertRef         = (const IEntry*      (*) (       IDictionary*, const IKey*, const void*    ))    StdDictionary_insert_ref;
+	self->super.insertObject      = (const IEntry*      (*) (       IDictionary*, const IKey*, IObject*       ))    StdDictionary_insert_IObject;
+	self->super.insertObjectRef   = (const IEntry*      (*) (       IDictionary*, const IKey*, const IObject* ))    StdDictionary_insert_IObject_ref;
+	self->super.insertValue       = (const IEntry*      (*) (       IDictionary*, const IKey*, IValue*        ))    StdSortedDictionary_insert_IValue;
+	self->super.remove            = (      void*        (*) (       IDictionary*, const IEntry*               ))    StdDictionary_remove;
+	self->super.find              = (const IEntry*      (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_find;
+	self->super.startsWith        = (const IEntry*      (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_startsWith;
 	
-	self->super.findAll         = (      IEIterator*  (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_findAll;
-	self->super.entries         = (      IEIterator*  (*) ( const IDictionary*                              ))    StdDictionary_entries;
-	self->super.values          = (       IIterator*  (*) ( const IDictionary*                              ))    StdDictionary_values;
+	self->super.findAll           = (      IEIterator*  (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_findAll;
+	self->super.entries           = (      IEIterator*  (*) ( const IDictionary*                              ))    StdDictionary_entries;
+	self->super.values            = (       IIterator*  (*) ( const IDictionary*                              ))    StdDictionary_values;
 
-	self->super.containsKey     = (      bool         (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_containsKey;
+	self->super.containsKey       = (      bool         (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_containsKey;
+	self->super.containsKeyPrefix = (      bool         (*) ( const IDictionary*, const IKey*                 ))    StdDictionary_containsKeyPrefix;
 
-	self->super.size            = (      int          (*) ( const IDictionary*                              ))    StdDictionary_size;
-	self->super.isEmpty         = (      bool         (*) ( const IDictionary*                              ))    StdDictionary_isEmpty;
+	self->super.size              = (      int          (*) ( const IDictionary*                              ))    StdDictionary_size;
+	self->super.isEmpty           = (      bool         (*) ( const IDictionary*                              ))    StdDictionary_isEmpty;
 	
 	self->entries = StdADTFactory_createList();
 	
@@ -114,8 +116,10 @@ const IEntry* StdDictionary_insert_IObject_ref( StdDictionary* self, const IKey*
 
 const IEntry* StdDictionary_insert_IValue( StdDictionary* self, const IKey* key, StdValue* aValue )
 {
-	StdEntry* e = new_StdEntry( key, (IValue*) aValue );
-	self->entries->insertLast( self->entries, e );
+	StdEntry*        e = new_StdEntry( key, (IValue*) aValue );
+	const IPosition* p = self->entries->insertLast( self->entries, e );
+	
+	StdEntry_setPosition( e, p );
 
 	return (IEntry*) e;
 }
@@ -135,13 +139,18 @@ const IEntry* StdSortedDictionary_insert_IValue( StdDictionary* self, const IKey
 	
 		if ( strcmp( key->getChars( key ), k1 ) < 0 )
 		{
-			self->entries->insertBefore( self->entries, p, e );
+			const IPosition* _p = self->entries->insertBefore( self->entries, p, e );
+			StdEntry_setPosition( e, _p );
 			loop = 0;
 		}
 	}
 	it->free( it );
 
-	if ( loop ) self->entries->insertLast( self->entries, e );
+	if ( loop )
+	{
+		const IPosition* _p = self->entries->insertLast( self->entries, e );
+		StdEntry_setPosition( e, _p );
+	}
 
 	return (IEntry*) e;
 }
@@ -150,29 +159,42 @@ void* StdDictionary_remove( StdDictionary* self, const IEntry* entry )
 {
 	void* ret = NULL;
 
-	IPIterator* it = self->entries->positions( self->entries );
-	while ( it->hasNext( it ) )
-	{
-		const IPosition* p = it->next( it );
-		const IEntry* e1 = (const IEntry*) p->getElement( p );
-		
-		if ( entry == e1 )
-		{
-			StdEntry* e = (StdEntry*) self->entries->remove( self->entries, p );
-			StdValue* v = StdEntry_replaceValue( e, NULL );
-			free_StdEntry( e );
-			ret = StdValue_replaceValue( v, NULL );
-			free_StdValue( v );
-			break;
-		}
-	}
-	it->free( it );
+	const IPosition* p = StdEntry_getPosition( (StdEntry*) entry );
+	
+	StdEntry* e = (StdEntry*) self->entries->remove( self->entries, p );
+	StdValue* v = StdEntry_replaceValue( e, NULL );
+
+	ret = StdValue_replaceValue( v, NULL );
+
+	free_StdEntry( e );
+	free_StdValue( v );
+
+	return ret;
+
+//	IPIterator* it = self->entries->positions( self->entries );
+//	while ( it->hasNext( it ) )
+//	{
+//		const IPosition* p = it->next( it );
+//		const IEntry* e1 = (const IEntry*) p->getElement( p );
+//		
+//		if ( entry == e1 )
+//		{
+//			StdEntry* e = (StdEntry*) self->entries->remove( self->entries, p );
+//			StdValue* v = StdEntry_replaceValue( e, NULL );
+//			free_StdEntry( e );
+//			ret = StdValue_replaceValue( v, NULL );
+//			free_StdValue( v );
+//			break;
+//		}
+//	}
+//	it->free( it );
 
 	return ret;
 }
 
 const IEntry* StdDictionary_find( const StdDictionary* self, const IKey* key )
 {
+	const char*  _key = key->getChars( key );
 	const IEntry* ret = 0;
 
 	IPIterator* it = self->entries->positions( self->entries );
@@ -180,7 +202,8 @@ const IEntry* StdDictionary_find( const StdDictionary* self, const IKey* key )
 	{
 		const IPosition* p = it->next( it );
 		const IEntry* e = (const IEntry*) p->getElement( p );
-		const IKey* k = e->getKey( e );
+		const IKey*   k = e->getKey( e );
+		const char*  _k = k->getChars( k );
 		
 		if ( k->contentEquals( k, key ) )
 		{
@@ -281,6 +304,28 @@ bool StdDictionary_containsKey( const StdDictionary* self, const IKey* key )
 		const IKey* k = e->getKey( e );
 		
 		if ( k->contentEquals( k, key ) )
+		{
+			ret = 1;
+			break;
+		}
+	}
+	it->free( it );
+
+	return ret;
+}
+
+bool StdDictionary_containsKeyPrefix( const StdDictionary* self, const IKey* key )
+{
+	bool ret = 0;
+
+	IPIterator* it = self->entries->positions( self->entries );
+	while ( it->hasNext( it ) )
+	{
+		const IPosition* p = it->next( it );
+		const IEntry* e = (const IEntry*) p->getElement( p );
+		const IKey* k = e->getKey( e );
+		
+		if ( k->startsWith( k, key ) )
 		{
 			ret = 1;
 			break;

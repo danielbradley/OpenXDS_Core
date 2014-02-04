@@ -27,6 +27,9 @@ EXPORT	const void*         StdEntry_getValue( const StdEntry* self );
 
 		      StdValue* StdEntry_replaceValue( StdEntry* self, StdValue* value );
 
+	                void StdEntry_setPosition( StdEntry* self, const IPosition* value );
+        const IPosition* StdEntry_getPosition( StdEntry* self );
+
 
 	#ifdef __cplusplus
 		};};};};};

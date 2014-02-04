@@ -36,6 +36,7 @@ struct _IDictionary
 	IIterator*              (*values)( const IDictionary* self );
 
 	bool               (*containsKey)( const IDictionary* self, const IKey* key );
+	bool         (*containsKeyPrefix)( const IDictionary* self, const IKey* key );
 
 	int                       (*size)( const IDictionary* self );
 	bool                   (*isEmpty)( const IDictionary* self );

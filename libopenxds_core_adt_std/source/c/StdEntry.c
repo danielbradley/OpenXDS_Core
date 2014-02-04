@@ -9,8 +9,10 @@ struct _StdEntry
 {
 	IEntry super;
 	
-	IKey*    key;
-	IValue*  value;
+	IKey*        key;
+	IValue*    value;
+
+	const IPosition* p;
 };
 
 StdEntry* new_StdEntry( const IKey* key, IValue* value )
@@ -23,6 +25,7 @@ StdEntry* new_StdEntry( const IKey* key, IValue* value )
 
 	self->key   = key->copy( key );
 	self->value = value;
+	self->p     = NULL;
 
 	return self;
 }
@@ -52,3 +55,12 @@ StdValue* StdEntry_replaceValue( StdEntry* self, StdValue* aValue )
 	return ret;
 }
 
+void StdEntry_setPosition( StdEntry* self, const IPosition* p )
+{
+	self->p = p;
+}
+
+const IPosition* StdEntry_getPosition( StdEntry* self )
+{
+	return self->p;
+}
