@@ -116,10 +116,8 @@ const IEntry* StdDictionary_insert_IObject_ref( StdDictionary* self, const IKey*
 
 const IEntry* StdDictionary_insert_IValue( StdDictionary* self, const IKey* key, StdValue* aValue )
 {
-	StdEntry*        e = new_StdEntry( key, (IValue*) aValue );
-	const IPosition* p = self->entries->insertLast( self->entries, e );
-	
-	StdEntry_setPosition( e, p );
+	StdEntry* e = new_StdEntry( key, (IValue*) aValue );
+	self->entries->insertLast( self->entries, e );
 
 	return (IEntry*) e;
 }
@@ -139,18 +137,13 @@ const IEntry* StdSortedDictionary_insert_IValue( StdDictionary* self, const IKey
 	
 		if ( strcmp( key->getChars( key ), k1 ) < 0 )
 		{
-			const IPosition* _p = self->entries->insertBefore( self->entries, p, e );
-			StdEntry_setPosition( e, _p );
+			self->entries->insertBefore( self->entries, p, e );
 			loop = 0;
 		}
 	}
 	it->free( it );
 
-	if ( loop )
-	{
-		const IPosition* _p = self->entries->insertLast( self->entries, e );
-		StdEntry_setPosition( e, _p );
-	}
+	if ( loop ) self->entries->insertLast( self->entries, e );
 
 	return (IEntry*) e;
 }
@@ -159,42 +152,29 @@ void* StdDictionary_remove( StdDictionary* self, const IEntry* entry )
 {
 	void* ret = NULL;
 
-	const IPosition* p = StdEntry_getPosition( (StdEntry*) entry );
-	
-	StdEntry* e = (StdEntry*) self->entries->remove( self->entries, p );
-	StdValue* v = StdEntry_replaceValue( e, NULL );
-
-	ret = StdValue_replaceValue( v, NULL );
-
-	free_StdEntry( e );
-	free_StdValue( v );
-
-	return ret;
-
-//	IPIterator* it = self->entries->positions( self->entries );
-//	while ( it->hasNext( it ) )
-//	{
-//		const IPosition* p = it->next( it );
-//		const IEntry* e1 = (const IEntry*) p->getElement( p );
-//		
-//		if ( entry == e1 )
-//		{
-//			StdEntry* e = (StdEntry*) self->entries->remove( self->entries, p );
-//			StdValue* v = StdEntry_replaceValue( e, NULL );
-//			free_StdEntry( e );
-//			ret = StdValue_replaceValue( v, NULL );
-//			free_StdValue( v );
-//			break;
-//		}
-//	}
-//	it->free( it );
+	IPIterator* it = self->entries->positions( self->entries );
+	while ( it->hasNext( it ) )
+	{
+		const IPosition* p = it->next( it );
+		const IEntry* e1 = (const IEntry*) p->getElement( p );
+		
+		if ( entry == e1 )
+		{
+			StdEntry* e = (StdEntry*) self->entries->remove( self->entries, p );
+			StdValue* v = StdEntry_replaceValue( e, NULL );
+			free_StdEntry( e );
+			ret = StdValue_replaceValue( v, NULL );
+			free_StdValue( v );
+			break;
+		}
+	}
+	it->free( it );
 
 	return ret;
 }
 
 const IEntry* StdDictionary_find( const StdDictionary* self, const IKey* key )
 {
-	const char*  _key = key->getChars( key );
 	const IEntry* ret = 0;
 
 	IPIterator* it = self->entries->positions( self->entries );
@@ -202,8 +182,7 @@ const IEntry* StdDictionary_find( const StdDictionary* self, const IKey* key )
 	{
 		const IPosition* p = it->next( it );
 		const IEntry* e = (const IEntry*) p->getElement( p );
-		const IKey*   k = e->getKey( e );
-		const char*  _k = k->getChars( k );
+		const IKey* k = e->getKey( e );
 		
 		if ( k->contentEquals( k, key ) )
 		{
