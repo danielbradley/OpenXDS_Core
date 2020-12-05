@@ -5,3 +5,7 @@ doc:
 
 quasi:
 	quasi -f . source/mtx/*mtx*
+
+clean:
+	rm -rf obj
+	rm -rf lib
